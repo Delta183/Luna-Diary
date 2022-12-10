@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9805468C29438901006301CF /* jinxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805468B29438901006301CF /* jinxImage.swift */; };
 		98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */; };
 		98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B229427B3E00FFCFA1 /* ContentView.swift */; };
 		98E3F2B529427B4100FFCFA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E3F2B429427B4100FFCFA1 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9805468B29438901006301CF /* jinxImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jinxImage.swift; sourceTree = "<group>"; };
 		98E3F2AD29427B3E00FFCFA1 /* Luna-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luna-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryApp.swift; sourceTree = "<group>"; };
 		98E3F2B229427B3E00FFCFA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				98E3F2B229427B3E00FFCFA1 /* ContentView.swift */,
 				98E3F2B429427B4100FFCFA1 /* Assets.xcassets */,
 				98E3F2B629427B4100FFCFA1 /* Preview Content */,
+				9805468B29438901006301CF /* jinxImage.swift */,
 			);
 			path = "Luna-Diary";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */,
 				98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */,
+				9805468C29438901006301CF /* jinxImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
