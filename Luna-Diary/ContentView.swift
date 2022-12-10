@@ -25,12 +25,17 @@ struct ContentView: View {
                     .offset(y:30)
                     .foregroundColor(Color("headerItemColour"))
                     Spacer()
-                Image(systemName: "ellipsis.circle")
-                    .resizable()
-                    .frame(width: 28.0, height: 28.0)
-                    .padding(.trailing, 12.0)
-                    .foregroundColor(Color("headerItemColour"))
-                    .offset(y:30)
+                Button(action: {
+                    print("button pressed")
+                }) {
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 28.0, height: 28.0)
+                        .padding(.trailing, 12.0)
+                        .foregroundColor(Color("headerItemColour"))
+                        .offset(y:30)
+                }
+                
             }.frame(width: .infinity, height: 125)
             .background(Color("headerColour"))
             .cornerRadius(15)
@@ -54,11 +59,15 @@ struct ContentView: View {
                     .padding(.leading, 12.0)
                     .labelsHidden()
                     .frame(width: 130.0, height: 50.0)
-                Image(systemName: "checkmark.rectangle.fill")
-                    .foregroundColor(Color("headerItemColour"))
-                    .padding(.trailing, 5.0)
-                    .frame(width: 50.0, height: 50.0)
-                    .background(.white)
+                Button(action: {
+                    print("button pressed 2")
+                }) {
+                    Image(systemName: "checkmark.rectangle.fill")
+                        .foregroundColor(Color("headerItemColour"))
+                        .padding(.trailing, 5.0)
+                        .frame(width: 50.0, height: 50.0)
+                        .background(.white)
+                }
             }
             .frame(width: 180, height: 50)
             .background(Color("selectionColour"))
