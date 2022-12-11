@@ -35,18 +35,17 @@ struct CurrentDayView: View {
                 Button("View Entry") {
                            print("Button pressed 5!")
                 }
-                .padding(.bottom, 24.0)
-                .padding(.top, 12.0)
+               
                 .buttonStyle(FallButton())
                 Button("Make a New Entry") {
                            print("Button pressed 6!")
                 }
-                .padding(.bottom, 24.0)
-                .padding(.top, 12.0)
+              
                 .buttonStyle(FallButton())
-            }
-            Spacer()
-        }.offset(y:25)
+            }.padding(.bottom, 36.0)
+                .padding(.top, 12.0)
+            
+        }
         .background(Color("backgroundColour"))
     }
 }

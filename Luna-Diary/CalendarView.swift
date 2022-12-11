@@ -15,30 +15,41 @@ struct CalendarView: View {
 
     var body: some View {
         VStack {
-            Text("Pick a date to review entries from that day")
+            Text("Pick a date to make or review entries")
                 .font(.title)
                 .foregroundColor(Color("headerItemColour"))
                 .multilineTextAlignment(.center)
-            Divider()
-                .frame(height: 2.0)
+            VStack {
+                Divider()
+                    .frame(height: 2.0)
                 .background(Color("headerItemColour"))
-            DatePicker(
-                    "Start Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                ).datePickerStyle(.graphical)
-                .accentColor(Color("headerItemColour"))
-            Divider()
-                .frame(height: 2.0)
-                .background(Color("headerItemColour"))
-            Button("Review Entries") {
-                       print("Button pressed 3!")
-                   }
-                   .buttonStyle(FallButton())
+                DatePicker(
+                        "Start Date",
+                        selection: $date,
+                        displayedComponents: [.date]
+                    ).datePickerStyle(.graphical)
+                    
+                    .accentColor(Color("headerItemColour"))
+                Divider()
+                    .frame(height: 2.0)
+                    .background(Color("headerItemColour"))
+            }.background(.white)
+            
+            HStack {
+                Button("Make an Entry") {
+                           print("Button pressed 3!")
+                       }
+                       .buttonStyle(FallButton())
                    .padding(.vertical, 12.0)
+                Button("Review Entries") {
+                           print("Button pressed 3!")
+                       }
+                       .buttonStyle(FallButton())
+                   .padding(.vertical, 12.0)
+            }
             Spacer()
             // offset the stack by a bit so that the title isn't as high up
-        }.offset(y:100)
+        }.offset(y:50)
         .background(Color("backgroundColour"))
     }
 }
