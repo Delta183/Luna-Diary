@@ -6,22 +6,35 @@
 //
 
 import SwiftUI
-// To work on later
+
+struct Ocean: Identifiable {
+    let name: String
+    let id = UUID()
+}
+
+private var oceans = [
+    Ocean(name: "Pacific"),
+    Ocean(name: "Atlantic"),
+    Ocean(name: "Indian"),
+    Ocean(name: "Southern"),
+    Ocean(name: "Arctic")
+]
+
 struct SearchView: View {
+    
     @State private var searchText = ""
 
     var body: some View {
         VStack{
             Text("Search for Entries")
                 .font(.largeTitle)
+                .fontWeight(.bold)
                 .foregroundColor(Color("headerItemColour"))
                 .multilineTextAlignment(.center)
-            NavigationStack {
-                        Text("Searching for \(searchText)")
-                            .navigationTitle("Search for Entries")
-                    }
-                    .searchable(text: $searchText)
-                    
+            SearchBar(text: $searchText)
+            List(oceans) {
+                Text($0.name)
+            }.padding(.top, -15.0).scrollContentBackground(.hidden)
         }.background(Color("backgroundColour"))
         
     }
@@ -33,36 +46,4 @@ struct SearchView_Previews: PreviewProvider {
     }
 }
 
-struct SearchBar: View {
-    @Binding var text: String
- 
-    @State private var isEditing = false
- 
-    var body: some View {
-        HStack {
- 
-            TextField("Search ...", text: $text)
-                .padding(7)
-                .padding(.horizontal, 25)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal, 10)
-                .onTapGesture {
-                    self.isEditing = true
-                }
- 
-            if isEditing {
-                Button(action: {
-                    self.isEditing = false
-                    self.text = ""
- 
-                }) {
-                    Text("Cancel")
-                }
-                .padding(.trailing, 10)
-                .transition(.move(edge: .trailing))
-                .animation(.default)
-            }
-        }
-    }
-}
+

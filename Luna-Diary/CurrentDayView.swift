@@ -12,6 +12,7 @@ struct CurrentDayView: View {
         VStack {
             Text("On This Day")
                 .font(.largeTitle)
+                .fontWeight(.bold)
                 .foregroundColor(Color("headerItemColour"))
                 .multilineTextAlignment(.center)
             Text("December 21st 2012")
@@ -42,7 +43,7 @@ struct CurrentDayView: View {
                 }
               
                 .buttonStyle(FallButton())
-            }.padding(.bottom, 36.0)
+            }.padding(.bottom, 40.0)
                 .padding(.top, 12.0)
             
         }

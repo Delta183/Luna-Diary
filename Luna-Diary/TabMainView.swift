@@ -31,10 +31,9 @@ struct TabMainView: View {
                 .tabItem {
                     Label("On This Day", systemImage: "clock")
                 }
-            Text("Search").tabItem {
-                                Image(systemName: "magnifyingglass")
-                                Text("Search")
-                            }
+            SearchView().tabItem {
+                Label("Search", systemImage: "magnifyingglass")
+            }
             Text("Settings").tabItem {
                                 Image(systemName: "gear")
                                 Text("Settings")

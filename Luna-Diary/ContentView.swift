@@ -48,6 +48,7 @@ struct ContentView: View {
                     .frame(width: 300.0, height: 300.0)
                 Text("No Entries... Yet.")
                     .font(.largeTitle)
+                    .fontWeight(.bold)
                     .foregroundColor(Color("headerItemColour"))
                 Text("Write a memory made on:")
                     .font(.headline)
