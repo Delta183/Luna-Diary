@@ -33,7 +33,7 @@ struct SearchView: View {
                 .multilineTextAlignment(.center)
             SearchBar(text: $searchText)
             List(oceans) {
-                Text($0.name)
+                Text($0.name) .listRowBackground(Color("headerColour"))
             }.padding(.top, -15.0).scrollContentBackground(.hidden)
         }.background(Color("backgroundColour"))
         

@@ -8,6 +8,7 @@
 import SwiftUI
 
 @main
+// Have to get understanding of this
 struct Luna_DiaryApp: App {
     var body: some Scene {
         WindowGroup {

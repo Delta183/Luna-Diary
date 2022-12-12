@@ -41,16 +41,25 @@ struct CalendarView: View {
                            print("Button pressed 3!")
                        }
                        .buttonStyle(FallButton())
-                   .padding(.vertical, 12.0)
                 Button("Review Entries") {
                            print("Button pressed 3!")
                        }
                        .buttonStyle(FallButton())
-                   .padding(.vertical, 12.0)
-            }
+                   
+            }.padding(.top, 6.0)
+            Text("There are N entries for that day")
+                .font(.subheadline)
+                .fontWeight(.bold)
+                .foregroundColor(Color("headerItemColour"))
+            List {
+                Text("I was looking for a job")
+                Text("Then I found a job")
+                Text("And heaven knows I'm miserable now...")
+            }.scrollContentBackground(.hidden)
+                .padding(.top, -40)
             Spacer()
             // offset the stack by a bit so that the title isn't as high up
-        }.offset(y:50)
+        }
         .background(Color("backgroundColour"))
     }
 }
