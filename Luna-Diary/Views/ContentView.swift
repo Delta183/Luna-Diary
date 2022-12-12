@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var date = Date()
+    @State private var isPresented = false
 
     var body: some View {
             VStack {
@@ -59,14 +60,17 @@ struct ContentView: View {
                         .padding(.leading, 12.0)
                         .labelsHidden()
                         .frame(width: 130.0, height: 50.0)
+                    // MAKE THIS BUTTON A STRUCT
                     Button(action: {
-                        print("button pressed 2")
+                        isPresented.toggle()
                     }) {
                         Image(systemName: "checkmark.rectangle.fill")
                             .foregroundColor(Color("headerItemColour"))
                             .padding(.trailing, 5.0)
                             .frame(width: 50.0, height: 50.0)
                             .background(.white)
+                    }.fullScreenCover(isPresented: self.$isPresented){
+                        EntryView()
                     }
                 }
                 .frame(width: 180, height: 50)

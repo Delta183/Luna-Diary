@@ -12,7 +12,7 @@ import SwiftUI
 struct Luna_DiaryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabMainView()
         }
     }
 }

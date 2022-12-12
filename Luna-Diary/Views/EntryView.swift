@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct EntryView: View {
+    // Place holder text for the entry
     @State private var profileText = ""
+    // Needed for dismissing view
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
@@ -44,7 +47,7 @@ struct EntryView: View {
                 .background(Color("headerItemColour"))
             HStack {
                 Button("Cancel") {
-                           print("Button pressed 5!")
+                    dismiss()
                 }
                
                 .buttonStyle(FallButton())
