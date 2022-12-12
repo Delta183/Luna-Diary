@@ -60,7 +60,6 @@ struct ContentView: View {
                         .padding(.leading, 12.0)
                         .labelsHidden()
                         .frame(width: 130.0, height: 50.0)
-                    // MAKE THIS BUTTON A STRUCT
                     Button(action: {
                         isPresented.toggle()
                     }) {

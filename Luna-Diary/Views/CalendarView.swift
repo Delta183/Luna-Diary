@@ -12,6 +12,7 @@ import SwiftUI
 struct CalendarView: View {
     // Get the current date for the calendar to begin at
     @State private var date = Date()
+    @State private var isPresented = false
 
     var body: some View {
         VStack {
@@ -38,9 +39,12 @@ struct CalendarView: View {
             
             HStack {
                 Button("Make an Entry") {
-                           print("Button pressed 3!")
+                            isPresented.toggle()
                        }
                        .buttonStyle(FallButton())
+                       .fullScreenCover(isPresented: self.$isPresented){
+                           EntryView()
+                       }
                 Button("Review Entries") {
                            print("Button pressed 3!")
                        }

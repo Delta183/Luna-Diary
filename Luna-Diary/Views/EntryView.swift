@@ -10,6 +10,8 @@ import SwiftUI
 struct EntryView: View {
     // Place holder text for the entry
     @State private var profileText = ""
+    @State private var confirmationShown = false
+
     // Needed for dismissing view
     @Environment(\.dismiss) var dismiss
 
@@ -47,7 +49,15 @@ struct EntryView: View {
                 .background(Color("headerItemColour"))
             HStack {
                 Button("Cancel") {
-                    dismiss()
+                    confirmationShown.toggle()
+                }.confirmationDialog("Are you sure?", isPresented: $confirmationShown) {
+                    Button("Cancel Entry", role: .destructive) {
+                        withAnimation {
+                            dismiss()
+                        }
+                    }
+
+                    Button("Continue Writing", role: .cancel) {}
                 }
                
                 .buttonStyle(FallButton())

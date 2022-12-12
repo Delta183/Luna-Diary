@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CurrentDayView: View {
+    @State private var isPresented = false
+
     var body: some View {
         VStack {
             Text("On This Day")
@@ -42,8 +44,12 @@ struct CurrentDayView: View {
                
                 .buttonStyle(FallButton())
                 Button("Make a New Entry") {
-                           print("Button pressed 6!")
-                }
+                            isPresented.toggle()
+                       }
+                       .buttonStyle(FallButton())
+                       .fullScreenCover(isPresented: self.$isPresented){
+                           EntryView()
+                       }
               
                 .buttonStyle(FallButton())
             }.padding(.bottom, 40.0)
