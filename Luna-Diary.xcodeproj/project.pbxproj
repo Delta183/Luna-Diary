@@ -12,6 +12,7 @@
 		9808BF332946C3380050F8D1 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9808BF322946C3380050F8D1 /* EntryView.swift */; };
 		9835735A2944F54700038530 /* CurrentDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983573592944F54700038530 /* CurrentDayView.swift */; };
 		9835735C294509B200038530 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835735B294509B200038530 /* SearchView.swift */; };
+		984656822948105F000DE186 /* CurrentDateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984656812948105F000DE186 /* CurrentDateObject.swift */; };
 		987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE2294621EA00C807F2 /* TabMainView.swift */; };
 		987D8DE52946313900C807F2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE42946313900C807F2 /* SearchBar.swift */; };
 		98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */; };
@@ -46,6 +47,7 @@
 		9808BF322946C3380050F8D1 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		983573592944F54700038530 /* CurrentDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayView.swift; sourceTree = "<group>"; };
 		9835735B294509B200038530 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		984656812948105F000DE186 /* CurrentDateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDateObject.swift; sourceTree = "<group>"; };
 		987D8DE2294621EA00C807F2 /* TabMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainView.swift; sourceTree = "<group>"; };
 		987D8DE42946313900C807F2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		98E3F2AD29427B3E00FFCFA1 /* Luna-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luna-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9846568029481001000DE186 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				984656812948105F000DE186 /* CurrentDateObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		987D8DE6294636BA00C807F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		98E3F2AF29427B3E00FFCFA1 /* Luna-Diary */ = {
 			isa = PBXGroup;
 			children = (
+				9846568029481001000DE186 /* Models */,
 				987D8DE6294636BA00C807F2 /* Views */,
 				98E3F2B429427B4100FFCFA1 /* Assets.xcassets */,
 				98E3F2B629427B4100FFCFA1 /* Preview Content */,
@@ -286,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984656822948105F000DE186 /* CurrentDateObject.swift in Sources */,
 				98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */,
 				987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */,
 				98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */,

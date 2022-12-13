@@ -11,7 +11,8 @@ struct EntryView: View {
     // Place holder text for the entry
     @State private var profileText = ""
     @State private var confirmationShown = false
-
+    @EnvironmentObject var currentDateObject: CurrentDateObject
+    
     // Needed for dismissing view
     @Environment(\.dismiss) var dismiss
 
@@ -22,7 +23,9 @@ struct EntryView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color("headerItemColour"))
                 .multilineTextAlignment(.center)
-            Text("On December 21st, 2012")
+            // This is how you pass information to objects
+            // Also formatting the passed date
+            Text("On \(currentDateObject.date.formatted(.dateTime.day().month().year()))")
                 .font(.headline)
                 .foregroundColor(Color("headerItemColour"))
                 .multilineTextAlignment(.center)
@@ -76,6 +79,6 @@ struct EntryView: View {
 
 struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryView()
+        EntryView().environmentObject(CurrentDateObject())
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var date = Date()
     @State private var isPresented = false
+    @StateObject var currentDateObject = CurrentDateObject()
 
     var body: some View {
             VStack {
@@ -62,6 +63,8 @@ struct ContentView: View {
                         .frame(width: 130.0, height: 50.0)
                     Button(action: {
                         isPresented.toggle()
+                        currentDateObject.date = date
+                        // print("\(date)")
                     }) {
                         Image(systemName: "checkmark.rectangle.fill")
                             .foregroundColor(Color("headerItemColour"))
@@ -80,6 +83,7 @@ struct ContentView: View {
                 
                 
             }.background(Color("backgroundColour"))
+            .environmentObject(currentDateObject)
         
             
         }
