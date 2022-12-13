@@ -13,6 +13,10 @@ struct CalendarView: View {
     // Get the current date for the calendar to begin at
     @State private var date = Date()
     @State private var isPresented = false
+    // For sending information to the destination view, the state object must be made
+    // on the class that will deliver the data
+    @StateObject var currentDateObject = CurrentDateObject()
+
 
     var body: some View {
         VStack {
@@ -40,6 +44,8 @@ struct CalendarView: View {
             HStack {
                 Button("Make an Entry") {
                             isPresented.toggle()
+                            // Set the state object to the updated date of this class
+                            currentDateObject.date = date
                        }
                        .buttonStyle(FallButton())
                        .fullScreenCover(isPresented: self.$isPresented){
@@ -65,6 +71,7 @@ struct CalendarView: View {
             // offset the stack by a bit so that the title isn't as high up
         }
         .background(Color("backgroundColour"))
+        .environmentObject(currentDateObject)
     }
 }
 

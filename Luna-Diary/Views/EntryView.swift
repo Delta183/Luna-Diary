@@ -10,7 +10,9 @@ import SwiftUI
 struct EntryView: View {
     // Place holder text for the entry
     @State private var profileText = ""
+    // boolean for the confrimation dialog
     @State private var confirmationShown = false
+    // For the class that will receive the data, needs an enivroment object
     @EnvironmentObject var currentDateObject: CurrentDateObject
     
     // Needed for dismissing view
@@ -24,7 +26,7 @@ struct EntryView: View {
                 .foregroundColor(Color("headerItemColour"))
                 .multilineTextAlignment(.center)
             // This is how you pass information to objects
-            // Also formatting the passed date
+            // Also formatting the passed date for only day, month and year
             Text("On \(currentDateObject.date.formatted(.dateTime.day().month().year()))")
                 .font(.headline)
                 .foregroundColor(Color("headerItemColour"))
@@ -34,13 +36,14 @@ struct EntryView: View {
                 .background(Color("headerItemColour"))
             VStack {
                 Spacer()
+                // Look into putting underlines on each line
                 TextEditor(text: $profileText)
                     .font(.custom("HelveticaNeue", size: 18))
                     .cornerRadius(20)
                     .lineSpacing(5)
                     .foregroundColor(Color("headerItemColour"))
                     .navigationTitle("About you")
-                    .overlay( /// apply a rounded border
+                    .overlay( // apply a rounded border
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color("headerItemColour"), lineWidth: 5)
                     )
@@ -70,15 +73,17 @@ struct EntryView: View {
               
                 .buttonStyle(FallButton())
             }.padding(.bottom, 40.0)
-                .padding(.top, 12.0)
+                .padding(.top, 12.0) // Hstack end
             
         }
-        .background(Color("backgroundColour"))
+        .background(Color("backgroundColour")) // Vstack end
     }
 }
 
 struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
+        // Add this to previews to be compatible to enviroment objects otherwise
+        // the preview will crash
         EntryView().environmentObject(CurrentDateObject())
     }
 }

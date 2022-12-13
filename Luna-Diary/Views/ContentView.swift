@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var date = Date()
     @State private var isPresented = false
+    // For sending information to the destination view, the state object must be made
+    // on the class that will deliver the data
     @StateObject var currentDateObject = CurrentDateObject()
 
     var body: some View {
@@ -62,9 +64,10 @@ struct ContentView: View {
                         .labelsHidden()
                         .frame(width: 130.0, height: 50.0)
                     Button(action: {
+                        // toggle the boolean such that the entry view presents itself
                         isPresented.toggle()
+                        // Set the state object to the updated date of this class
                         currentDateObject.date = date
-                        // print("\(date)")
                     }) {
                         Image(systemName: "checkmark.rectangle.fill")
                             .foregroundColor(Color("headerItemColour"))
