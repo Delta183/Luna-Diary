@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var date = Date()
-    @State private var isPresented = false
+    // @State private var isPresented = false
     // For sending information to the destination view, the state object must be made
     // on the class that will deliver the data
-    @StateObject var currentDateObject = CurrentDateObject()
+    // @StateObject var currentDateObject = CurrentDateObject()
+    @State private var readyToNavigate : Bool = false
 
     var body: some View {
+        NavigationStack{
             VStack {
                 HStack {
                     Image(systemName: "square.and.pencil")
@@ -38,14 +40,12 @@ struct ContentView: View {
                             .foregroundColor(Color("headerItemColour"))
                             .offset(y:30)
                     }
-                    
                 }.frame(width: .infinity, height: 125)
                     .background(Color("headerColour"))
                     .cornerRadius(15)
                 //  This is used to ignore the safe area on top of screen
                     .ignoresSafeArea(edges: .top)
                 // header end
-                
                 Image("peng")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -63,18 +63,17 @@ struct ContentView: View {
                         .padding(.leading, 12.0)
                         .labelsHidden()
                         .frame(width: 130.0, height: 50.0)
-                    Button(action: {
-                        // toggle the boolean such that the entry view presents itself
-                        isPresented.toggle()
-                        // Set the state object to the updated date of this class
-                        currentDateObject.date = date
-                    }) {
-                        Image(systemName: "checkmark.rectangle.fill")
-                            .foregroundColor(Color("headerItemColour"))
-                            .padding(.trailing, 5.0)
-                            .frame(width: 50.0, height: 50.0)
-                            .background(.white)
-                    }.fullScreenCover(isPresented: self.$isPresented){
+                    VStack {
+                        Button(action: {
+                            readyToNavigate.toggle()
+                        }) {
+                            Image(systemName: "checkmark.rectangle.fill")
+                                .foregroundColor(Color("headerItemColour"))
+                                .padding(.trailing, 5.0)
+                                .frame(width: 50.0, height: 50.0)
+                                .background(.white)
+                        }
+                    }.navigationDestination(isPresented: $readyToNavigate) {
                         EntryView()
                     }
                 }
@@ -83,14 +82,9 @@ struct ContentView: View {
                 .cornerRadius(15)
                 // selection stack end
                 Spacer()
-                
-                
             }.background(Color("backgroundColour"))
-            .environmentObject(currentDateObject)
-        
-            
-        }
-    
+        }.accentColor(Color("headerItemColour"))
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
