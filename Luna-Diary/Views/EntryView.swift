@@ -20,17 +20,25 @@ struct EntryView: View {
 
     var body: some View {
         VStack {
-            Text("Creating an Entry")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(Color("headerItemColour"))
-                .multilineTextAlignment(.center)
-            // This is how you pass information to objects
-            // Also formatting the passed date for only day, month and year
-            Text("On \(currentDateObject.date.formatted(.dateTime.day().month().year()))")
-                .font(.headline)
-                .foregroundColor(Color("headerItemColour"))
-                .multilineTextAlignment(.center)
+            HStack {
+                Text("Creating an Entry")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("headerItemColour"))
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }
+            .padding(.leading, 6.0)
+                // This is how you pass information to objects
+                // Also formatting the passed date for only day, month and year
+            HStack {
+                Text("On \(currentDateObject.date.formatted(.dateTime.day().month().year()))")
+                        .font(.headline)
+                        .foregroundColor(Color("headerItemColour"))
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }.padding(.leading, 6.0)
+            
             Divider()
                 .frame(height: 2.0)
                 .background(Color("headerItemColour"))

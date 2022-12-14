@@ -20,7 +20,7 @@ struct CalendarView: View {
 
     var body: some View {
         VStack {
-            Text("Pick a date to make or review entries")
+            Text("Select a Date")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(Color("headerItemColour"))
