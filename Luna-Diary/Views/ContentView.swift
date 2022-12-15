@@ -18,6 +18,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack{
+            
             VStack {
                 HStack {
                     Image(systemName: "square.and.pencil")
@@ -39,12 +40,13 @@ struct ContentView: View {
                             .foregroundColor(Color("headerItemColour"))
                     }
                 }.frame(width: .infinity, height: 150)
-                .offset(y:50)
+                .offset(y:40)
                 .background(Color("headerColour"))
                 .cornerRadius(15)
                 //  This is used to ignore the safe area on top of screen
                 .ignoresSafeArea(edges: .top)
                 // header end
+                
                 // Entries/No Entries Screen
                 VStack {
                     Text("Today")
@@ -87,7 +89,11 @@ struct ContentView: View {
                 // selection stack end
                 Spacer()
             }.background(Color("backgroundColour"))
+             
+        // End of NavigationStack on the line below
         }.accentColor(Color("headerItemColour"))
+        
+        
     }
 }
 
