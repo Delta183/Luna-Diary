@@ -15,6 +15,10 @@
 		984656822948105F000DE186 /* CurrentDateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984656812948105F000DE186 /* CurrentDateObject.swift */; };
 		987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE2294621EA00C807F2 /* TabMainView.swift */; };
 		987D8DE52946313900C807F2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE42946313900C807F2 /* SearchBar.swift */; };
+		98DDB1E3294ABA3000D933D4 /* MADE-Waffle-Slab.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E2294ABA3000D933D4 /* MADE-Waffle-Slab.otf */; };
+		98DDB1E5294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */; };
+		98DDB1E9294ABA5400D933D4 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */; };
+		98DDB1EE294AC14B00D933D4 /* Holla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1ED294AC14B00D933D4 /* Holla.ttf */; };
 		98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */; };
 		98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B229427B3E00FFCFA1 /* ContentView.swift */; };
 		98E3F2B529427B4100FFCFA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E3F2B429427B4100FFCFA1 /* Assets.xcassets */; };
@@ -50,6 +54,11 @@
 		984656812948105F000DE186 /* CurrentDateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDateObject.swift; sourceTree = "<group>"; };
 		987D8DE2294621EA00C807F2 /* TabMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainView.swift; sourceTree = "<group>"; };
 		987D8DE42946313900C807F2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		98DDB1E2294ABA3000D933D4 /* MADE-Waffle-Slab.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MADE-Waffle-Slab.otf"; sourceTree = "<group>"; };
+		98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
+		98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		98DDB1EC294ABC5300D933D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		98DDB1ED294AC14B00D933D4 /* Holla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Holla.ttf; sourceTree = "<group>"; };
 		98E3F2AD29427B3E00FFCFA1 /* Luna-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luna-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryApp.swift; sourceTree = "<group>"; };
 		98E3F2B229427B3E00FFCFA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +118,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		98DDB1D9294AB2EC00D933D4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				98DDB1ED294AC14B00D933D4 /* Holla.ttf */,
+				98DDB1E2294ABA3000D933D4 /* MADE-Waffle-Slab.otf */,
+				98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */,
+				98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		98E3F2A429427B3E00FFCFA1 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +152,8 @@
 		98E3F2AF29427B3E00FFCFA1 /* Luna-Diary */ = {
 			isa = PBXGroup;
 			children = (
+				98DDB1EC294ABC5300D933D4 /* Info.plist */,
+				98DDB1D9294AB2EC00D933D4 /* Fonts */,
 				9846568029481001000DE186 /* Models */,
 				987D8DE6294636BA00C807F2 /* Views */,
 				98E3F2B429427B4100FFCFA1 /* Assets.xcassets */,
@@ -272,7 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				98E3F2B829427B4100FFCFA1 /* Preview Assets.xcassets in Resources */,
+				98DDB1E9294ABA5400D933D4 /* Poppins-Light.ttf in Resources */,
+				98DDB1E5294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf in Resources */,
+				98DDB1E3294ABA3000D933D4 /* MADE-Waffle-Slab.otf in Resources */,
 				98E3F2B529427B4100FFCFA1 /* Assets.xcassets in Resources */,
+				98DDB1EE294AC14B00D933D4 /* Holla.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +494,7 @@
 				DEVELOPMENT_TEAM = XQPN64PD78;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Luna-Diary/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -497,6 +524,7 @@
 				DEVELOPMENT_TEAM = XQPN64PD78;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Luna-Diary/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

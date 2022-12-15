@@ -14,6 +14,7 @@ struct ContentView: View {
     // on the class that will deliver the data
     // @StateObject var currentDateObject = CurrentDateObject()
     @State private var readyToNavigate : Bool = false
+    @State private var containsEntries : Bool = false
 
     var body: some View {
         NavigationStack{
@@ -24,10 +25,8 @@ struct ContentView: View {
                         .frame(width: 28.0, height: 28.0)
                         .padding(.leading, 12.0)
                         .foregroundColor(Color("headerItemColour"))
-                        .offset(y:30)
                     Text("Daniel Figueroa")
                         .font(.title)
-                        .offset(y:30)
                         .foregroundColor(Color("headerItemColour"))
                     Spacer()
                     Button(action: {
@@ -38,48 +37,53 @@ struct ContentView: View {
                             .frame(width: 28.0, height: 28.0)
                             .padding(.trailing, 12.0)
                             .foregroundColor(Color("headerItemColour"))
-                            .offset(y:30)
                     }
-                }.frame(width: .infinity, height: 125)
-                    .background(Color("headerColour"))
-                    .cornerRadius(15)
+                }.frame(width: .infinity, height: 150)
+                .offset(y:50)
+                .background(Color("headerColour"))
+                .cornerRadius(15)
                 //  This is used to ignore the safe area on top of screen
-                    .ignoresSafeArea(edges: .top)
+                .ignoresSafeArea(edges: .top)
                 // header end
-                Image("peng")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 300.0, height: 300.0)
-                Text("No Entries... Yet.")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                // Entries/No Entries Screen
+                VStack {
+                    Text("Today")
+                        .font(.largeTitle)
                     .foregroundColor(Color("headerItemColour"))
-                Text("Write a memory made on:")
-                    .font(.headline)
-                    .foregroundColor(Color("headerItemColour"))
-                HStack {
-                    // labelsHidden as each DatePicker comes with implicit Text
-                    DatePicker("", selection: $date, displayedComponents: .date)
-                        .padding(.leading, 12.0)
-                        .labelsHidden()
-                        .frame(width: 130.0, height: 50.0)
-                    VStack {
+                    Text("\(date.formatted(.dateTime.day().month().year()))")
+                        .font(.headline)
+                        .foregroundColor(Color("headerItemColour"))
+                    if(containsEntries){
+                        List{
+                            EntryRow().listRowSeparator(.hidden)
+                            EntryRow().listRowSeparator(.hidden)
+                            EntryRow().listRowSeparator(.hidden)
+                            EntryRow().listRowSeparator(.hidden)
+                            EntryRow().listRowSeparator(.hidden)
+                            EntryRow().listRowSeparator(.hidden)
+                            EntryRow().listRowSeparator(.hidden)
+                        }.frame( maxWidth: .infinity)
+                        .edgesIgnoringSafeArea(.horizontal)
+                        .listStyle(.plain)
+                    }
+                    else{
+                        NoEntriesView()
+                    }
+                  
+                }.offset(y:-60)
+                VStack {
+                        Text("Make a new entry today:")
+                            .font(.headline)
+                            .foregroundColor(Color("headerItemColour"))
                         Button(action: {
                             readyToNavigate.toggle()
                         }) {
-                            Image(systemName: "checkmark.rectangle.fill")
-                                .foregroundColor(Color("headerItemColour"))
-                                .padding(.trailing, 5.0)
-                                .frame(width: 50.0, height: 50.0)
-                                .background(.white)
+                            Image("newEntryIcon")
                         }
-                    }.navigationDestination(isPresented: $readyToNavigate) {
+                    }.offset(y:-60)
+                    .navigationDestination(isPresented: $readyToNavigate) {
                         EntryView()
                     }
-                }
-                .frame(width: 180, height: 50)
-                .background(Color("selectionColour"))
-                .cornerRadius(15)
                 // selection stack end
                 Spacer()
             }.background(Color("backgroundColour"))
@@ -93,3 +97,40 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct NoEntriesView: View{
+    var body: some View{
+        Image("peng")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 300.0, height: 300.0)
+        Text("No Entries... Yet.")
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .foregroundColor(Color("headerItemColour"))
+    }
+}
+
+
+struct EntryRow: View {
+
+    var body: some View {
+        HStack(){
+            VStack(alignment: .leading) {
+                Text("Steps to attain Heaven")
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("headerItemColour"))
+                    .lineLimit(1)
+                Text("Spiral staircase, Rhinoceros beetle,Desolation Row,Fig tart,Rhinoceros beetle,Via Dolorosa,Rhinoceros beetle,Singularity point,Giotto,Angel,Hydrangea,Rhinoceros beetle,Singularity point,Secret emperor...")
+                    .foregroundColor(Color("headerItemColour"))
+                    .lineLimit(1)
+                    .padding(.top, -8.0)
+                    .padding(.bottom, 4.0)
+                Color("backgroundColour")
+            }
+            .padding(.horizontal, -20.0)
+            .padding(.bottom, -20.0)
+            
+            
+        }.listRowBackground(Color("headerColour"))
+    }
+}

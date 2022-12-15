@@ -53,7 +53,8 @@ struct CurrentDayView: View {
                     .buttonStyle(FallButton())
                     Button("Make a New Entry") {
                         readyToNavigate.toggle()
-                    }.buttonStyle(FallButton()).navigationDestination(isPresented: $readyToNavigate) {
+                    }.buttonStyle(FallButton())
+                    .navigationDestination(isPresented: $readyToNavigate) {
                         EntryView()
                     }
                 }.padding(.bottom, 40.0)

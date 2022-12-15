@@ -12,34 +12,38 @@ struct EntryView: View {
     @State private var profileText = ""
     // boolean for the confrimation dialog
     @State private var confirmationShown = false
-    // For the class that will receive the data, needs an enivroment object
-    //@EnvironmentObject var currentDateObject: CurrentDateObject
-    
     // Needed for dismissing view
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
+        
         VStack {
-            HStack {
-                Text("Creating an Entry")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("headerItemColour"))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-            }
-            .padding(.leading, 6.0)
-            // This is how you pass information to objects
-            // Also formatting the passed date for only day, month and year
-            HStack {
-                // currentDateObject.date
-                Text("On \(Date().formatted(.dateTime.day().month().year()))")
-                    .font(.headline)
-                    .foregroundColor(Color("headerItemColour"))
-                    .multilineTextAlignment(.leading)
-                Spacer()
-            }.padding(.leading, 6.0)
-            
+            VStack{
+                HStack {
+                    Text("On \(Date().formatted(.dateTime.day().month().year()))")
+                        .font(Font.custom("Poppins-Light", size: 20))
+                        .foregroundColor(Color("headerItemColour"))
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                .padding(.leading, 6.0)
+                // This is how you pass information to objects
+                // Also formatting the passed date for only day, month and year
+                HStack {
+                    Text("[New Entry]")
+                        .font(Font.custom("Holla", size: 18))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("headerItemColour"))
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                    // currentDateObject.date
+                }.padding(.leading, 6.0)
+            }.frame(width: .infinity, height: 150)
+                .background(Color("headerColour"))
+                .offset(y: 40)
+                .cornerRadius(15)
+            //  This is used to ignore the safe area on top of screen
+                .ignoresSafeArea(edges: .top)
             Divider()
                 .frame(height: 2.0)
                 .background(Color("headerItemColour"))
@@ -47,15 +51,9 @@ struct EntryView: View {
                 Spacer()
                 // Look into putting underlines on each line
                 TextEditor(text: $profileText)
-                    .font(.custom("HelveticaNeue", size: 18))
-                    .cornerRadius(20)
-                    .lineSpacing(5)
-                    .foregroundColor(Color("headerItemColour"))
-                    .overlay( // apply a rounded border
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color("headerItemColour"), lineWidth: 5)
-                    )
-                    .padding(.all, 17.0)
+                    
+                    .padding(.horizontal, 5.0)
+                    .font(Font.custom("YanoneKaffeesatz-Light", size: 18))
                 Spacer()
             }.background(Color("headerColour"))
             Divider()
