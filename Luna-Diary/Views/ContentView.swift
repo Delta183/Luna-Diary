@@ -14,7 +14,7 @@ struct ContentView: View {
     // on the class that will deliver the data
     // @StateObject var currentDateObject = CurrentDateObject()
     @State private var readyToNavigate : Bool = false
-    @State private var containsEntries : Bool = false
+    @State private var containsEntries : Bool = true
 
     var body: some View {
         NavigationStack{
@@ -25,8 +25,8 @@ struct ContentView: View {
                         .frame(width: 28.0, height: 28.0)
                         .padding(.leading, 12.0)
                         .foregroundColor(Color("headerItemColour"))
-                    Text("Daniel Figueroa")
-                        .font(.title)
+                    Text("(username)'s Journal")
+                        .font(Font.custom("MADEWaffleSlab", size: 16))
                         .foregroundColor(Color("headerItemColour"))
                     Spacer()
                     Button(action: {
@@ -48,10 +48,10 @@ struct ContentView: View {
                 // Entries/No Entries Screen
                 VStack {
                     Text("Today")
-                        .font(.largeTitle)
-                    .foregroundColor(Color("headerItemColour"))
+                        .font(Font.custom("Holla", size: 72))
+                    .foregroundColor(Color("entryTextColour"))
                     Text("\(date.formatted(.dateTime.day().month().year()))")
-                        .font(.headline)
+                        .font(Font.custom("Poppins-Light", size: 18))
                         .foregroundColor(Color("headerItemColour"))
                     if(containsEntries){
                         List{
@@ -70,10 +70,10 @@ struct ContentView: View {
                         NoEntriesView()
                     }
                   
-                }.offset(y:-60)
+                }.offset(y:-50)
                 VStack {
                         Text("Make a new entry today:")
-                            .font(.headline)
+                            .font(Font.custom("Poppins-Light", size: 18))
                             .foregroundColor(Color("headerItemColour"))
                         Button(action: {
                             readyToNavigate.toggle()
@@ -104,27 +104,29 @@ struct NoEntriesView: View{
             .aspectRatio(contentMode: .fill)
             .frame(width: 300.0, height: 300.0)
         Text("No Entries... Yet.")
-            .font(.largeTitle)
-            .fontWeight(.bold)
+            .font(Font.custom("Holla", size: 48))            .fontWeight(.bold)
             .foregroundColor(Color("headerItemColour"))
     }
 }
 
 
 struct EntryRow: View {
-
     var body: some View {
         HStack(){
             VStack(alignment: .leading) {
                 Text("Steps to attain Heaven")
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("headerItemColour"))
+                    .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
+                    .foregroundColor(Color("entryTextColour"))
                     .lineLimit(1)
+                    .padding(.horizontal, 4)
+                    .padding(.top, 4)
                 Text("Spiral staircase, Rhinoceros beetle,Desolation Row,Fig tart,Rhinoceros beetle,Via Dolorosa,Rhinoceros beetle,Singularity point,Giotto,Angel,Hydrangea,Rhinoceros beetle,Singularity point,Secret emperor...")
-                    .foregroundColor(Color("headerItemColour"))
+                    .foregroundColor(Color("entryTextColour"))
+                    .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                     .lineLimit(1)
-                    .padding(.top, -8.0)
+                    .padding(.top, -4.0)
                     .padding(.bottom, 4.0)
+                    .padding(.horizontal, 4)
                 Color("backgroundColour")
             }
             .padding(.horizontal, -20.0)

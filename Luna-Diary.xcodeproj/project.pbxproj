@@ -19,6 +19,7 @@
 		98DDB1E9294ABA5400D933D4 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */; };
 		98DDB1EE294AC14B00D933D4 /* Holla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1ED294AC14B00D933D4 /* Holla.ttf */; };
 		98DDB1F4294AC80B00D933D4 /* MADEWaffleSlab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1F3294AC80B00D933D4 /* MADEWaffleSlab.ttf */; };
+		98DDB1F6294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1F5294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf */; };
 		98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */; };
 		98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B229427B3E00FFCFA1 /* ContentView.swift */; };
 		98E3F2B529427B4100FFCFA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E3F2B429427B4100FFCFA1 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		98DDB1EC294ABC5300D933D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		98DDB1ED294AC14B00D933D4 /* Holla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Holla.ttf; sourceTree = "<group>"; };
 		98DDB1F3294AC80B00D933D4 /* MADEWaffleSlab.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MADEWaffleSlab.ttf; sourceTree = "<group>"; };
+		98DDB1F5294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Bold.ttf"; sourceTree = "<group>"; };
 		98E3F2AD29427B3E00FFCFA1 /* Luna-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luna-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryApp.swift; sourceTree = "<group>"; };
 		98E3F2B229427B3E00FFCFA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		98DDB1D9294AB2EC00D933D4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				98DDB1F5294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf */,
 				98DDB1F3294AC80B00D933D4 /* MADEWaffleSlab.ttf */,
 				98DDB1ED294AC14B00D933D4 /* Holla.ttf */,
 				98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */,
@@ -293,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DDB1F6294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf in Resources */,
 				98E3F2B829427B4100FFCFA1 /* Preview Assets.xcassets in Resources */,
 				98DDB1E9294ABA5400D933D4 /* Poppins-Light.ttf in Resources */,
 				98DDB1F4294AC80B00D933D4 /* MADEWaffleSlab.ttf in Resources */,

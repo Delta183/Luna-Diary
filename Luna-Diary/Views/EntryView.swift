@@ -53,7 +53,7 @@ struct EntryView: View {
                     .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
 
             }.padding(.horizontal, 4.0)
-            .offset(y: -50)
+            .offset(y: -100)
         }.background(Color("backgroundColour")) // Vstack end
     }
 }
