@@ -9,20 +9,20 @@ import SwiftUI
 
 struct EntryView: View {
     // Place holder text for the entry
-    @State private var profileText = ""
+    @State private var profileText = "Enter text here..."
     // boolean for the confrimation dialog
     @State private var confirmationShown = false
     // Needed for dismissing view
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        
         VStack {
+            // header stack
             VStack{
                 HStack {
                     Text("On \(Date().formatted(.dateTime.day().month().year()))")
-                        .font(Font.custom("Poppins-Light", size: 20))
-                        .foregroundColor(Color("headerItemColour"))
+                        .font(Font.custom("MADEWaffleSlab", size: 20))
+                        .foregroundColor(Color("entryTextColour"))
                         .multilineTextAlignment(.leading)
                     Spacer()
                 }
@@ -31,7 +31,7 @@ struct EntryView: View {
                 // Also formatting the passed date for only day, month and year
                 HStack {
                     Text("[New Entry]")
-                        .font(Font.custom("Holla", size: 18))
+                        .font(Font.custom("MADEWaffleSlab", size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(Color("headerItemColour"))
                         .multilineTextAlignment(.leading)
@@ -44,45 +44,17 @@ struct EntryView: View {
                 .cornerRadius(15)
             //  This is used to ignore the safe area on top of screen
                 .ignoresSafeArea(edges: .top)
-            Divider()
-                .frame(height: 2.0)
-                .background(Color("headerItemColour"))
             VStack {
-                Spacer()
                 // Look into putting underlines on each line
                 TextEditor(text: $profileText)
-                    
-                    .padding(.horizontal, 5.0)
-                    .font(Font.custom("YanoneKaffeesatz-Light", size: 18))
-                Spacer()
-            }.background(Color("headerColour"))
-            Divider()
-                .frame(height: 2.0)
-                .background(Color("headerItemColour"))
-            HStack {
-                Button("Cancel") {
-                    confirmationShown.toggle()
-                }.confirmationDialog("Are you sure?", isPresented: $confirmationShown) {
-                    Button("Cancel Entry", role: .destructive) {
-                        withAnimation {
-                            dismiss()
-                        }
-                    }
-                    
-                    Button("Continue Writing", role: .cancel) {}
-                }
-                
-                .buttonStyle(FallButton())
-                Button("Save New Entry") {
-                    print("Button pressed 6!")
-                }
-                
-                .buttonStyle(FallButton())
-            }.padding(.bottom, 40.0)
-                .padding(.top, 12.0) // Hstack end
-            
-        }
-        .background(Color("backgroundColour")) // Vstack end
+                    .padding(.horizontal, 2.0)
+                    .scrollContentBackground(.hidden)
+                    .foregroundColor(Color("entryTextColour"))
+                    .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
+
+            }.padding(.horizontal, 4.0)
+            .offset(y: -50)
+        }.background(Color("backgroundColour")) // Vstack end
     }
 }
 
