@@ -10,6 +10,7 @@
 		9805468C29438901006301CF /* jinxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805468B29438901006301CF /* jinxImage.swift */; };
 		9805468E2944DFCF006301CF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805468D2944DFCF006301CF /* CalendarView.swift */; };
 		9808BF332946C3380050F8D1 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9808BF322946C3380050F8D1 /* EntryView.swift */; };
+		981D382A294C237300B30715 /* ReviewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D3829294C237200B30715 /* ReviewEntry.swift */; };
 		9835735A2944F54700038530 /* CurrentDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983573592944F54700038530 /* CurrentDayView.swift */; };
 		9835735C294509B200038530 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835735B294509B200038530 /* SearchView.swift */; };
 		984656822948105F000DE186 /* CurrentDateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984656812948105F000DE186 /* CurrentDateObject.swift */; };
@@ -52,6 +53,7 @@
 		9805468B29438901006301CF /* jinxImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jinxImage.swift; sourceTree = "<group>"; };
 		9805468D2944DFCF006301CF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9808BF322946C3380050F8D1 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		981D3829294C237200B30715 /* ReviewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntry.swift; sourceTree = "<group>"; };
 		983573592944F54700038530 /* CurrentDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayView.swift; sourceTree = "<group>"; };
 		9835735B294509B200038530 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		984656812948105F000DE186 /* CurrentDateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDateObject.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				9835735B294509B200038530 /* SearchView.swift */,
 				987D8DE2294621EA00C807F2 /* TabMainView.swift */,
 				9808BF322946C3380050F8D1 /* EntryView.swift */,
+				981D3829294C237200B30715 /* ReviewEntry.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				984656822948105F000DE186 /* CurrentDateObject.swift in Sources */,
 				98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */,
 				987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */,
+				981D382A294C237300B30715 /* ReviewEntry.swift in Sources */,
 				98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */,
 				9805468E2944DFCF006301CF /* CalendarView.swift in Sources */,
 				9805468C29438901006301CF /* jinxImage.swift in Sources */,

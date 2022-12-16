@@ -1,13 +1,13 @@
 //
-//  EntryView.swift
+//  ReviewEntry.swift
 //  Luna-Diary
 //
-//  Created by Daniel Figueroa on 2022-12-11.
+//  Created by Daniel Figueroa on 2022-12-15.
 //
 
 import SwiftUI
 
-struct EntryView: View {
+struct ReviewEntry: View {
     @State private var date = Date()
     // Place holder text for the entry
     @State private var profileText = "Enter text here..."
@@ -27,26 +27,28 @@ struct EntryView: View {
                 // header VStack
                 VStack{
                     HStack {
-                        Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
+                        Text(date, style: .date)
+                            .font(Font.custom("MADEWaffleSlab", size: 16))
                             .foregroundColor(Color("entryTextColour"))
-                        DatePicker(
-                                "",
-                                 selection: $date,
-                                 displayedComponents: [.date, .hourAndMinute]
-                        ).labelsHidden()
+                            .multilineTextAlignment(.leading)
+                        Text(date, style: .time)
+                            .font(Font.custom("MADEWaffleSlab", size: 16))
+                            .foregroundColor(Color("entryTextColour"))
+                            .multilineTextAlignment(.leading)
                         Spacer()
-                    }.offset(y: 10)
+                    }
                     .padding(.leading, 6.0)
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
-                    TextEditor(text: $entryTitle)
-                        .font(Font.custom("MADEWaffleSlab", size: 20))
-                        .foregroundColor(Color("headerItemColour"))
-                        .frame(height: 40.0)
-                        .multilineTextAlignment(.leading)
-                        .offset(y:-10)
-                        .scrollContentBackground(.hidden)
-                        .background(Color("headerColour"))
+                    HStack {
+                        Text(entryTitle)
+                            .font(Font.custom("MADEWaffleSlab", size: 20))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("headerItemColour"))
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                        // currentDateObject.date
+                    }.padding(.leading, 6.0)
                 }.frame(width: .infinity, height: 150)
                     .background(Color("headerColour"))
                     .offset(y: 40)
@@ -68,20 +70,17 @@ struct EntryView: View {
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
                 // Action for the navbar button here
-                print("Save button pressed...")
+                print("Edit button pressed...")
             }) {
-                Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                Text("Edit").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                 }
            )
         }// Outer VStack
     } // NavigationStack end
 }
 
-struct EntryView_Previews: PreviewProvider {
+struct ReviewEntry_Previews: PreviewProvider {
     static var previews: some View {
-        // Add this to previews to be compatible to enviroment objects otherwise
-        // the preview will crash
-        EntryView()
+        ReviewEntry()
     }
 }
-

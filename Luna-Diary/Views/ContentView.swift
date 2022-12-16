@@ -14,7 +14,7 @@ struct ContentView: View {
     // on the class that will deliver the data
     // @StateObject var currentDateObject = CurrentDateObject()
     @State private var readyToNavigate : Bool = false
-    @State private var containsEntries : Bool = true
+    @State private var containsEntries : Bool = false
 
     var body: some View {
         NavigationStack{
@@ -52,7 +52,7 @@ struct ContentView: View {
                     Text("Today")
                         .font(Font.custom("Holla", size: 72))
                     .foregroundColor(Color("entryTextColour"))
-                    Text("\(date.formatted(.dateTime.day().month().year()))")
+                    Text(date, style: .date)
                         .font(Font.custom("Poppins-Light", size: 18))
                         .foregroundColor(Color("headerItemColour"))
                     if(containsEntries){
@@ -69,6 +69,7 @@ struct ContentView: View {
                                 EntryRow()
                             }
                         }.padding(.top, -20)
+                        
                     }
                     else{
                         NoEntriesView()
