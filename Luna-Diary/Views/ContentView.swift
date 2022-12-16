@@ -56,17 +56,19 @@ struct ContentView: View {
                         .font(Font.custom("Poppins-Light", size: 18))
                         .foregroundColor(Color("headerItemColour"))
                     if(containsEntries){
-                        List{
-                            EntryRow().listRowSeparator(.hidden)
-                            EntryRow().listRowSeparator(.hidden)
-                            EntryRow().listRowSeparator(.hidden)
-                            EntryRow().listRowSeparator(.hidden)
-                            EntryRow().listRowSeparator(.hidden)
-                            EntryRow().listRowSeparator(.hidden)
-                            EntryRow().listRowSeparator(.hidden)
-                        }.frame( maxWidth: .infinity)
-                        .edgesIgnoringSafeArea(.horizontal)
-                        .listStyle(.plain)
+                        ScrollView {
+                            VStack{
+                                EntryRow().onTapGesture {
+                                    print("The whole VStack is tappable now 1!")
+                                  }
+                                EntryRow()
+                                EntryRow()
+                                EntryRow()
+                                EntryRow()
+                                EntryRow()
+                                EntryRow()
+                            }
+                        }.padding(.top, -20)
                     }
                     else{
                         NoEntriesView()
@@ -103,42 +105,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct NoEntriesView: View{
-    var body: some View{
-        Image("peng")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 300.0, height: 300.0)
-        Text("No Entries... Yet.")
-            .font(Font.custom("Holla", size: 48))            .fontWeight(.bold)
-            .foregroundColor(Color("headerItemColour"))
-    }
-}
 
 
-struct EntryRow: View {
-    var body: some View {
-        HStack(){
-            VStack(alignment: .leading) {
-                Text("Steps to attain Heaven")
-                    .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
-                    .foregroundColor(Color("entryTextColour"))
-                    .lineLimit(1)
-                    .padding(.horizontal, 4)
-                    .padding(.top, 4)
-                Text("Spiral staircase, Rhinoceros beetle,Desolation Row,Fig tart,Rhinoceros beetle,Via Dolorosa,Rhinoceros beetle,Singularity point,Giotto,Angel,Hydrangea,Rhinoceros beetle,Singularity point,Secret emperor...")
-                    .foregroundColor(Color("entryTextColour"))
-                    .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
-                    .lineLimit(1)
-                    .padding(.top, -4.0)
-                    .padding(.bottom, 4.0)
-                    .padding(.horizontal, 4)
-                Color("backgroundColour")
-            }
-            .padding(.horizontal, -20.0)
-            .padding(.bottom, -20.0)
-            
-            
-        }.listRowBackground(Color("headerColour"))
-    }
-}
+
