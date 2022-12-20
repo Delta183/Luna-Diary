@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct EntryView: View {
+    
+    @ObservedObject var diaryModelController: DiaryModelController
     @State private var date = Date()
-    // Place holder text for the entry
-    @State private var profileText = "Enter text here..."
     // Placeholder for the entry title
     @State private var entryTitle = "[New Entry]"
+    // Place holder text for the entry
+    @State private var content = "Enter text here..."
+    
     // boolean for the confrimation dialog
     // @State private var confirmationShown = false // Unused
     // boolean for review or creation mode
@@ -56,7 +59,7 @@ struct EntryView: View {
                 // TextEditor VStack begin
                 VStack {
                     // Look into putting underlines on each line
-                    TextEditor(text: $profileText)
+                    TextEditor(text: $content)
                         .padding(.horizontal, 2.0)
                         // This must be done to put custom background
                         .scrollContentBackground(.hidden)
@@ -67,8 +70,10 @@ struct EntryView: View {
             }.background(Color("backgroundColour"))
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
-                // Action for the navbar button here
-                print("Save button pressed...")
+                // Add the entry to the arrays here
+                self.diaryModelController.createDiaryEntry(title: entryTitle, content: self.content, date: self.date)
+                print("Diary Entry Added!")
+                // dismiss()
             }) {
                 Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                 }
@@ -81,7 +86,7 @@ struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
         // Add this to previews to be compatible to enviroment objects otherwise
         // the preview will crash
-        EntryView()
+        EntryView(diaryModelController: DiaryModelController())
     }
 }
 

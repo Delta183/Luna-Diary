@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var diaryModelController = DiaryModelController()
     @State private var date = Date()
     // @State private var isPresented = false
     // For sending information to the destination view, the state object must be made
     // on the class that will deliver the data
     // @StateObject var currentDateObject = CurrentDateObject()
     @State private var readyToNavigate : Bool = false
+    // This boolean changes the view of the contentView
     @State private var containsEntries : Bool = false
 
     var body: some View {
@@ -46,27 +48,26 @@ struct ContentView: View {
                 //  This is used to ignore the safe area on top of screen
                 .ignoresSafeArea(edges: .top)
                 // header end
-                
-                // Entries/No Entries Screen
-                VStack {
+                VStack{
                     Text("Today")
                         .font(Font.custom("Holla", size: 72))
                     .foregroundColor(Color("entryTextColour"))
                     Text(date, style: .date)
                         .font(Font.custom("Poppins-Light", size: 18))
                         .foregroundColor(Color("headerItemColour"))
+                }.offset(y:-30)
+                
+                // Entries/No Entries Screen
+                VStack {
                     if(containsEntries){
                         ScrollView {
                             VStack{
-                                EntryRow().onTapGesture {
-                                    print("The whole VStack is tappable now 1!")
-                                  }
-                                EntryRow()
-                                EntryRow()
-                                EntryRow()
-                                EntryRow()
-                                EntryRow()
-                                EntryRow()
+                                ForEach(self.diaryModelController.diaryEntries, id: \.id) { diaryEntry in EntryRow(diaryEntry: diaryEntry)
+                                }
+                                
+//                                    .onTapGesture {
+//                                    print("The whole VStack is tappable now 1!")
+//                                  }
                             }
                         }.padding(.top, -20)
                         
@@ -87,7 +88,7 @@ struct ContentView: View {
                         }
                     }.offset(y:-60)
                     .navigationDestination(isPresented: $readyToNavigate) {
-                        EntryView()
+                        EntryView(diaryModelController: DiaryModelController())
                     }
                 // selection stack end
                 Spacer()

@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct EntryRow: View {
+    
+    var diaryEntry: DiaryModel
+    
     var body: some View {
         VStack {
             Color("backgroundColour")
             VStack(alignment: .leading) {
-                    Text("Steps to attain Heaven")
+                Text(diaryEntry.title)
                         .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
                         .foregroundColor(Color("entryTextColour"))
                         .lineLimit(1)
                         .padding([.top, .leading], 4.0)
                         .padding(.bottom, 1.0)
-                    Text("Spiral staircase, Rhinoceros beetle,Desolation Row,Fig tart,Rhinoceros beetle,Via Dolorosa,Rhinoceros beetle,Singularity point,Giotto,Angel,Hydrangea,Rhinoceros beetle,Singularity point,Secret emperor...")
+                Text(diaryEntry.content)
                         .foregroundColor(Color("entryTextColour"))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                         .lineLimit(1)
@@ -34,6 +37,6 @@ struct EntryRow: View {
 
 struct EntryRow_Previews: PreviewProvider {
     static var previews: some View {
-        EntryRow()
+        EntryRow(diaryEntry: DiaryModel(title: "Steps to achieve Heaver", content: "Spiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
     }
 }

@@ -43,7 +43,7 @@ struct CalendarView: View {
 
                     }.buttonStyle(FallButton())
                     .navigationDestination(isPresented: $readyToNavigate) {
-                                   EntryView()
+                                   EntryView(diaryModelController: DiaryModelController())
                     }
                     Button("Review Entries") {
                         print("Button pressed 3!")
