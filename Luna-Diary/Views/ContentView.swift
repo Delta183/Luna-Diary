@@ -14,13 +14,12 @@ struct ContentView: View {
     // For sending information to the destination view, the state object must be made
     // on the class that will deliver the data
     // @StateObject var currentDateObject = CurrentDateObject()
-    @State private var readyToNavigate : Bool = false
     // This boolean changes the view of the contentView
-    @State private var containsEntries : Bool = false
-
+    @State private var readyToNavigate : Bool = false
+    
+    // SwiftUI requires the returning of views always, hence not being able to code as usual
     var body: some View {
         NavigationStack{
-            
             VStack {
                 HStack {
                     Image(systemName: "square.and.pencil")
@@ -48,26 +47,25 @@ struct ContentView: View {
                 //  This is used to ignore the safe area on top of screen
                 .ignoresSafeArea(edges: .top)
                 // header end
-                VStack{
-                    Text("Today")
-                        .font(Font.custom("Holla", size: 72))
-                    .foregroundColor(Color("entryTextColour"))
-                    Text(date, style: .date)
-                        .font(Font.custom("Poppins-Light", size: 18))
-                        .foregroundColor(Color("headerItemColour"))
-                }.offset(y:-30)
+                if(diaryModelController.diaryEntries.count > 0){
+                    TodayHeader().offset(y:-60)
+                }
+                else{
+                    TodayHeader().offset(y:-30)
+                }
                 
                 // Entries/No Entries Screen
                 VStack {
-                    if(containsEntries){
+                    if(diaryModelController.diaryEntries.count > 0){
                         ScrollView {
                             VStack{
-                                ForEach(self.diaryModelController.diaryEntries, id: \.id) { diaryEntry in EntryRow(diaryEntry: diaryEntry)
+                                // Generate all items in the list and make them link
+                                // to reviewEntry for each particular entry, id is sent too
+                                ForEach(self.diaryModelController.diaryEntries, id: \.id) { diaryEntry in
+                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
+                                            EntryRow(diaryEntry: diaryEntry)
+                                        }
                                 }
-                                
-//                                    .onTapGesture {
-//                                    print("The whole VStack is tappable now 1!")
-//                                  }
                             }
                         }.padding(.top, -20)
                         
@@ -93,11 +91,8 @@ struct ContentView: View {
                 // selection stack end
                 Spacer()
             }.background(Color("backgroundColour"))
-             
         // End of NavigationStack on the line below
         }.accentColor(Color("headerItemColour"))
-        
-        
     }
 }
 
@@ -106,6 +101,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
 
 
 

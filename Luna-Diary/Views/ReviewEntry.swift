@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReviewEntry: View {
+    var diaryEntry: DiaryModel
     @State private var date = Date()
     // Place holder text for the entry
     @State private var profileText = "Enter text here..."
@@ -27,11 +28,11 @@ struct ReviewEntry: View {
                 // header VStack
                 VStack{
                     HStack {
-                        Text(date, style: .date)
+                        Text(diaryEntry.date, style: .date)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
                             .foregroundColor(Color("entryTextColour"))
                             .multilineTextAlignment(.leading)
-                        Text(date, style: .time)
+                        Text(diaryEntry.date, style: .time)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
                             .foregroundColor(Color("entryTextColour"))
                             .multilineTextAlignment(.leading)
@@ -41,7 +42,7 @@ struct ReviewEntry: View {
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
                     HStack {
-                        Text(entryTitle)
+                        Text(diaryEntry.title)
                             .font(Font.custom("MADEWaffleSlab", size: 20))
                             .fontWeight(.bold)
                             .foregroundColor(Color("headerItemColour"))
@@ -58,14 +59,13 @@ struct ReviewEntry: View {
                 // TextEditor VStack begin
                 VStack {
                     // Look into putting underlines on each line
-                    TextEditor(text: $profileText)
-                        .padding(.horizontal, 2.0)
-                        // This must be done to put custom background
-                        .scrollContentBackground(.hidden)
+                    Text(diaryEntry.content)
                         .foregroundColor(Color("entryTextColour"))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
-                }.padding(.horizontal, 4.0)
-                .offset(y: -100)
+                        .lineSpacing(2)
+                }.padding(.horizontal, 2)
+                .offset( y:-90)
+                Spacer()
             }.background(Color("backgroundColour"))
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
@@ -81,6 +81,6 @@ struct ReviewEntry: View {
 
 struct ReviewEntry_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewEntry()
+        ReviewEntry(diaryEntry: DiaryModel(title: "Steps to achieve Heaven", content: "Spiral staircase, Rhinoceros beetle, Spiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
     }
 }
