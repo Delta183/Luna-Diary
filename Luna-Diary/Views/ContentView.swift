@@ -86,7 +86,7 @@ struct ContentView: View {
                         }
                     }.offset(y:-60)
                     .navigationDestination(isPresented: $readyToNavigate) {
-                        EntryView(diaryModelController: DiaryModelController())
+                        EntryView(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()))
                     }
                 // selection stack end
                 Spacer()

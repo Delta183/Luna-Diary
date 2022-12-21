@@ -28,22 +28,24 @@ class DiaryModelController: ObservableObject {
     
     }
     
-    func deleteDiaryEntry(at offset: IndexSet) {
+    // Change this to check for ID rather than other attributes
+    func deleteDiaryEntry(diaryEntry: DiaryModel) {
+        // Assuming this works, it will delete the particular element from the array
+        guard let index = diaryEntries.firstIndex(of: diaryEntry) else { return }
         
-        guard let index = Array(offset).first else { return }
-        print("INDEX: \(index)")
         diaryEntries.remove(at: index)
         
         saveToPersistentStore()
     }
     
     
-    func updateDiaryEntry(diaryEntry: DiaryModel, content: String) {
+    func updateDiaryEntry(diaryEntry: DiaryModel) {
         if let index = diaryEntries.firstIndex(of: diaryEntry) {
-            var diaryEntry = diaryEntries[index]
-            diaryEntry.content = content
-            
-            diaryEntries[index] = diaryEntry
+            var updatedDiaryEntry = diaryEntries[index]
+            updatedDiaryEntry.title = diaryEntry.title
+            updatedDiaryEntry.content = diaryEntry.content
+            updatedDiaryEntry.date = diaryEntry.date
+            diaryEntries[index] = updatedDiaryEntry
             saveToPersistentStore()
         }
     }
@@ -67,7 +69,7 @@ class DiaryModelController: ObservableObject {
             let data = try encoder.encode(diaryEntries)
             try data.write(to: url)
         } catch {
-            print("Error saving stars data: \(error)")
+            print("Error saving diary data: \(error)")
         }
     }
     
@@ -82,7 +84,7 @@ class DiaryModelController: ObservableObject {
             let decoder = PropertyListDecoder()
             diaryEntries = try decoder.decode([DiaryModel].self, from: data)
         } catch {
-            print("error loading stars data: \(error)")
+            print("error loading diary data: \(error)")
         }
     }
 }

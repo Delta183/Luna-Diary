@@ -55,7 +55,7 @@ struct CurrentDayView: View {
                         readyToNavigate.toggle()
                     }.buttonStyle(FallButton())
                     .navigationDestination(isPresented: $readyToNavigate) {
-                        EntryView(diaryModelController: DiaryModelController())
+                        EntryView(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()) )
                     }
                 }.padding(.bottom, 40.0)
                     .padding(.top, 12.0)

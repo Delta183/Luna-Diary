@@ -10,11 +10,7 @@ import SwiftUI
 struct EntryView: View {
     
     @ObservedObject var diaryModelController: DiaryModelController
-    @State private var date = Date()
-    // Placeholder for the entry title
-    @State private var entryTitle = "[New Entry]"
-    // Place holder text for the entry
-    @State private var content = "Enter text here..."
+    @State var diaryEntry: DiaryModel
     
     // boolean for the confrimation dialog
     // @State private var confirmationShown = false // Unused
@@ -34,7 +30,7 @@ struct EntryView: View {
                             .foregroundColor(Color("entryTextColour"))
                         DatePicker(
                                 "",
-                                 selection: $date,
+                                selection: $diaryEntry.date,
                                  displayedComponents: [.date, .hourAndMinute]
                         ).labelsHidden()
                         Spacer()
@@ -42,7 +38,7 @@ struct EntryView: View {
                     .padding(.leading, 6.0)
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
-                    TextEditor(text: $entryTitle)
+                    TextEditor(text: $diaryEntry.title)
                         .font(Font.custom("MADEWaffleSlab", size: 20))
                         .foregroundColor(Color("headerItemColour"))
                         .frame(height: 40.0)
@@ -59,7 +55,7 @@ struct EntryView: View {
                 // TextEditor VStack begin
                 VStack {
                     // Look into putting underlines on each line
-                    TextEditor(text: $content)
+                    TextEditor(text: $diaryEntry.content)
                         .padding(.horizontal, 2.0)
                         // This must be done to put custom background
                         .scrollContentBackground(.hidden)
@@ -70,9 +66,20 @@ struct EntryView: View {
             }.background(Color("backgroundColour"))
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
+                let entries = self.diaryModelController.diaryEntries
                 // Add the entry to the arrays here
-                self.diaryModelController.createDiaryEntry(title: entryTitle, content: self.content, date: self.date)
-                print("Diary Entry Added!")
+                if entries.contains(diaryEntry){
+                    // Send the entry once it is confirmed to be inside and update
+                    // Well aware of the O(n) search each time
+                    self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry)
+                    // Throw an alert afterwards
+                    print("Diary Entry Updated!")
+                }
+                else{
+                    // otherwise add it if its not in the entries
+                    self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
+                    print("Diary Entry Added!")
+                }
                 // dismiss()
             }) {
                 Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
@@ -86,7 +93,7 @@ struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
         // Add this to previews to be compatible to enviroment objects otherwise
         // the preview will crash
-        EntryView(diaryModelController: DiaryModelController())
+        EntryView(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()))
     }
 }
 

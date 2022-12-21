@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ReviewEntry: View {
+    @ObservedObject var diaryModelController = DiaryModelController()
     var diaryEntry: DiaryModel
-    @State private var date = Date()
+    @State private var readyToNavigate : Bool = false
+    // @State private var date = Date()
     // Place holder text for the entry
-    @State private var profileText = "Enter text here..."
+    // @State private var profileText = "Enter text here..."
     // Placeholder for the entry title
-    @State private var entryTitle = "[New Entry]"
+    // @State private var entryTitle = "[New Entry]"
     // boolean for the confrimation dialog
     // @State private var confirmationShown = false // Unused
     // boolean for review or creation mode
@@ -68,13 +70,28 @@ struct ReviewEntry: View {
                 Spacer()
             }.background(Color("backgroundColour"))
             // NavigationBar button placed below
-            .navigationBarItems(trailing: Button(action: {
-                // Action for the navbar button here
-                print("Edit button pressed...")
-            }) {
-                Text("Edit").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
-                }
-           )
+            .navigationBarItems(trailing:
+                HStack {
+                    Button(action: {
+                            // Action for the navbar button here
+                            // print("Edit button pressed...")
+                        readyToNavigate.toggle()
+                        }) {
+                            Text("Edit").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                        }.navigationDestination(isPresented: $readyToNavigate){
+                            EntryView(diaryModelController: diaryModelController, diaryEntry: diaryEntry)
+                        }
+                    // button end
+                    Button(action: {
+                            // Action for the navbar button here
+                        diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
+                        print("Delete button pressed...")
+                        dismiss()
+                        }) {
+                            Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                    }// button end
+                }// Hstack end for nav buttons
+               )
         }// Outer VStack
     } // NavigationStack end
 }
