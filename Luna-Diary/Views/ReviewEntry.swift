@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewEntry: View {
-    @ObservedObject var diaryModelController = DiaryModelController()
+    @ObservedObject var diaryModelController : DiaryModelController
     var diaryEntry: DiaryModel
     @State private var readyToNavigate : Bool = false
     // @State private var date = Date()
@@ -98,6 +98,6 @@ struct ReviewEntry: View {
 
 struct ReviewEntry_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewEntry(diaryEntry: DiaryModel(title: "Steps to achieve Heaven", content: "Spiral staircase, Rhinoceros beetle, Spiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
+        ReviewEntry(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "Steps to achieve Heaven", content: "Spiral staircase, Rhinoceros beetle, Spiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
     }
 }

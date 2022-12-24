@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var diaryModelController = DiaryModelController()
+    @StateObject var diaryModelController = DiaryModelController()
     @State private var date = Date()
     // @State private var isPresented = false
     // For sending information to the destination view, the state object must be made
@@ -56,13 +56,13 @@ struct ContentView: View {
                 
                 // Entries/No Entries Screen
                 VStack {
-                    if(diaryModelController.diaryEntries.count > 0){
+                    if !diaryModelController.diaryEntries.isEmpty {
                         ScrollView {
                             VStack{
                                 // Generate all items in the list and make them link
                                 // to reviewEntry for each particular entry, id is sent too
                                 ForEach(self.diaryModelController.diaryEntries, id: \.id) { diaryEntry in
-                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
+                                    NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
                                         }
                                 }
@@ -86,7 +86,7 @@ struct ContentView: View {
                         }
                     }.offset(y:-60)
                     .navigationDestination(isPresented: $readyToNavigate) {
-                        EntryView(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()))
+                        EntryView(diaryModelController: diaryModelController, diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()))
                     }
                 // selection stack end
                 Spacer()
