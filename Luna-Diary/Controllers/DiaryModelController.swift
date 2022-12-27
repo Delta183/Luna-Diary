@@ -39,18 +39,15 @@ class DiaryModelController: ObservableObject {
     }
     
     // Still subject to change if the next run doesn't work
-    func updateDiaryEntry(diaryEntry: DiaryModel, id: UUID) {
-        if let index = diaryEntries.firstIndex(where: {$0.id == id}) {
+    func updateDiaryEntry(diaryEntry: DiaryModel, index: Int) {
+        
             var updatedDiaryEntry = diaryEntries[index]
             updatedDiaryEntry.title = diaryEntry.title
             updatedDiaryEntry.content = diaryEntry.content
             updatedDiaryEntry.date = diaryEntry.date
             diaryEntries[index] = updatedDiaryEntry
             saveToPersistentStore()
-        }
-        else{
-            print("No match found")
-        }
+            print("Diary Entry Updated!")
     }
     
     // MARK: Save, Load from Persistent

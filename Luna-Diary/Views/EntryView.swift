@@ -68,19 +68,20 @@ struct EntryView: View {
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
                 let entries = self.diaryModelController.diaryEntries
-                if !entries.isEmpty{
+                let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
+                if index != nil{
                     // Send the entry once it is confirmed to be inside and update
                     // Well aware of the O(n) search each time
-                    self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, id: diaryEntry.id)
+                    self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
                     // Throw an alert afterwards
-                    print("Diary Entry Updated!")
-                    print(diaryEntry.id)
+                    dismiss()
                 }
                 else{
                     // otherwise add it if its not in the entries
                     self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
                     print("Diary Entry Added!")
                     print(diaryEntry.id)
+                    dismiss()
                 }
                 // dismiss()
             }) {
