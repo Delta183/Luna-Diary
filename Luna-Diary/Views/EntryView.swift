@@ -11,6 +11,7 @@ struct EntryView: View {
     
     @ObservedObject var diaryModelController: DiaryModelController
     @State var diaryEntry: DiaryModel
+    // Hypothesis is that the new entry is being compared and it obviously isnt there thus it simply adds
     
     // boolean for the confrimation dialog
     // @State private var confirmationShown = false // Unused
@@ -67,18 +68,19 @@ struct EntryView: View {
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
                 let entries = self.diaryModelController.diaryEntries
-                // Add the entry to the arrays here
-                if entries.contains(diaryEntry){
+                if !entries.isEmpty{
                     // Send the entry once it is confirmed to be inside and update
                     // Well aware of the O(n) search each time
-                    self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry)
+                    self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, id: diaryEntry.id)
                     // Throw an alert afterwards
                     print("Diary Entry Updated!")
+                    print(diaryEntry.id)
                 }
                 else{
                     // otherwise add it if its not in the entries
                     self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
                     print("Diary Entry Added!")
+                    print(diaryEntry.id)
                 }
                 // dismiss()
             }) {
@@ -93,7 +95,7 @@ struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
         // Add this to previews to be compatible to enviroment objects otherwise
         // the preview will crash
-        EntryView(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()))
+        EntryView(diaryModelController: DiaryModelController(), diaryEntry: .DummyDiaryEntry)
     }
 }
 

@@ -38,15 +38,18 @@ class DiaryModelController: ObservableObject {
         saveToPersistentStore()
     }
     
-    
-    func updateDiaryEntry(diaryEntry: DiaryModel) {
-        if let index = diaryEntries.firstIndex(of: diaryEntry) {
+    // Still subject to change if the next run doesn't work
+    func updateDiaryEntry(diaryEntry: DiaryModel, id: UUID) {
+        if let index = diaryEntries.firstIndex(where: {$0.id == id}) {
             var updatedDiaryEntry = diaryEntries[index]
             updatedDiaryEntry.title = diaryEntry.title
             updatedDiaryEntry.content = diaryEntry.content
             updatedDiaryEntry.date = diaryEntry.date
             diaryEntries[index] = updatedDiaryEntry
             saveToPersistentStore()
+        }
+        else{
+            print("No match found")
         }
     }
     

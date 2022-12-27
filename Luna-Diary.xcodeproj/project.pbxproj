@@ -21,6 +21,7 @@
 		98B40B0D294BBEC400463C68 /* NoEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0C294BBEC400463C68 /* NoEntriesView.swift */; };
 		98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0E294BBF2500463C68 /* EntryRow.swift */; };
 		98D70D2A2952503600410D33 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D70D292952503600410D33 /* TodayHeader.swift */; };
+		98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */; };
 		98DDB1E5294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */; };
 		98DDB1E9294ABA5400D933D4 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */; };
 		98DDB1EE294AC14B00D933D4 /* Holla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1ED294AC14B00D933D4 /* Holla.ttf */; };
@@ -67,6 +68,7 @@
 		98B40B0C294BBEC400463C68 /* NoEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEntriesView.swift; sourceTree = "<group>"; };
 		98B40B0E294BBF2500463C68 /* EntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRow.swift; sourceTree = "<group>"; };
 		98D70D292952503600410D33 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
+		98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDiaryEntry.swift; sourceTree = "<group>"; };
 		98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
 		98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		98DDB1EC294ABC5300D933D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				984656812948105F000DE186 /* CurrentDateObject.swift */,
 				985CFA9A295137E1001FB400 /* DiaryModel.swift */,
+				98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				9808BF332946C3380050F8D1 /* EntryView.swift in Sources */,
 				98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */,
 				985CFA9B295137E1001FB400 /* DiaryModel.swift in Sources */,
+				98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

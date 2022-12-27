@@ -21,6 +21,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             VStack {
+                // header begins
                 HStack {
                     Image(systemName: "square.and.pencil")
                         .resizable()
@@ -47,6 +48,7 @@ struct ContentView: View {
                 //  This is used to ignore the safe area on top of screen
                 .ignoresSafeArea(edges: .top)
                 // header end
+                // Today Header below
                 if(diaryModelController.diaryEntries.count > 0){
                     TodayHeader().offset(y:-60)
                 }
@@ -75,6 +77,7 @@ struct ContentView: View {
                     }
                   
                 }.offset(y:-50)
+                // Below is the button and text prompt for new entries
                 VStack {
                         Text("Make a new entry today:")
                             .font(Font.custom("Poppins-Light", size: 18))
@@ -86,7 +89,9 @@ struct ContentView: View {
                         }
                     }.offset(y:-60)
                     .navigationDestination(isPresented: $readyToNavigate) {
-                        EntryView(diaryModelController: diaryModelController, diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: Date()))
+                        // New Entry Button Functionality
+                        // Be sure to send the observed controller
+                        EntryView(diaryModelController: diaryModelController, diaryEntry: .DummyDiaryEntry)
                     }
                 // selection stack end
                 Spacer()
@@ -103,6 +108,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
+// Fix the date bug when sent over to the next page
 
 
 
