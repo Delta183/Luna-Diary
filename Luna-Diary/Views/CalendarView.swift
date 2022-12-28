@@ -9,13 +9,15 @@ import SwiftUI
 
 struct CalendarView: View {
     // Get the current date for the calendar to begin at
+    @StateObject var diaryModelController = DiaryModelController()
     @State private var date = Date()
+    @State var entries: [DiaryModel]
+    private let calendar = Calendar.current
     @State private var readyToNavigate : Bool = false
 
     var body: some View {
         NavigationStack {
             VStack {
-               
                 Text("Select a Date")
                     .font(.title)
                     .fontWeight(.bold)
@@ -30,8 +32,11 @@ struct CalendarView: View {
                         selection: $date,
                         displayedComponents: [.date]
                     ).datePickerStyle(.graphical)
-                    
-                        .accentColor(Color("headerItemColour"))
+                    .accentColor(Color("headerItemColour"))
+                    .onChange(of: date, perform: { value in
+                        entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
+                         // Do what you want with "date", like array.timeStamp = date
+                    )});
                     Divider()
                         .frame(height: 2.0)
                         .background(Color("headerItemColour"))
@@ -44,7 +49,7 @@ struct CalendarView: View {
                     }.buttonStyle(FallButton())
                     .navigationDestination(isPresented: $readyToNavigate) {
                         // This will be subject to change 
-                                   EntryView(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter text here...", date: date))
+                        EntryView(diaryModelController: diaryModelController, diaryEntry: .DummyDiaryEntry)
                     }
                     Button("Review Entries") {
                         print("Button pressed 3!")
@@ -52,17 +57,29 @@ struct CalendarView: View {
                     .buttonStyle(FallButton())
                     
                 }.padding(.top, 6.0)
-                Text("There are N entries for that day")
+                Text("There are \(entries.count) entries for that day")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundColor(Color("headerItemColour"))
-                List {
-                    Text("I was looking for a job")
-                    Text("Then I found a job")
-                    Text("And heaven knows I'm miserable now...")
-                }.scrollContentBackground(.hidden)
-                    .padding(.top, -40)
-                Spacer()
+                VStack {
+                    // need to populate it with the initial values
+                    if !entries.isEmpty {
+                        ScrollView {
+                            VStack{
+                                // bounding id makes each navigation link unique and refreshable on filter.
+                                ForEach(entries, id: \.id) { diaryEntry in
+                                    NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
+                                            EntryRow(diaryEntry: diaryEntry)
+                                    }.id(diaryEntry) // important
+                                }
+                            }
+                        }.padding(.top, 50)
+                    }
+                    else{
+                        Spacer()
+                    }
+                }.offset(y:-50)
+                
                 // offset the stack by a bit so that the title isn't as high up
             }
             .background(Color("backgroundColour"))
@@ -72,7 +89,7 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarView(entries: [])
     }
 }
 

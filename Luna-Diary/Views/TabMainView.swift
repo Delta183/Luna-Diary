@@ -11,9 +11,13 @@ import SwiftUI
 // for all the views so to speak and that frame gets
 // replaced each time hence it is alone
 struct TabMainView: View {
+    // Have to do this so the calendar starts with
+    @StateObject var diaryModelController = DiaryModelController()
+    let calendar = Calendar.current
+
+
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
-        
     }
     var body: some View {
         // This is the tab view on the bottom
@@ -22,7 +26,7 @@ struct TabMainView: View {
                 .tabItem {
                     Label("Today", systemImage: "heart")
                 }
-            CalendarView()
+            CalendarView(entries: diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)}))
                 .tabItem {
                     Label("Entries", systemImage: "calendar")
                 }
