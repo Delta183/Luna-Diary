@@ -60,8 +60,11 @@ struct ContentView: View {
                     if !diaryModelController.diaryEntries.isEmpty {
                         ScrollView {
                             VStack{
+                                // Modify this to check different days
+                                let calendar = Calendar.current
+                                var entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
                                 // bounding id makes each navigation link unique and refreshable on filter.
-                                ForEach(self.diaryModelController.diaryEntries, id: \.id) { diaryEntry in
+                                ForEach(entries, id: \.id) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
                                     }.id(diaryEntry) // important

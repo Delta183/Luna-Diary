@@ -9,7 +9,9 @@ import SwiftUI
 
 struct TodayHeader: View {
     @State private var date = Date()
-
+    // date = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+    
+    
     var body: some View {
         Text("Today")
             .font(Font.custom("Holla", size: 72))
