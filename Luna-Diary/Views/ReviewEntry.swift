@@ -11,13 +11,8 @@ struct ReviewEntry: View {
     @ObservedObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     @State private var readyToNavigate : Bool = false
-    // @State private var date = Date()
-    // Place holder text for the entry
-    // @State private var profileText = "Enter text here..."
-    // Placeholder for the entry title
-    // @State private var entryTitle = "[New Entry]"
     // boolean for the confrimation dialog
-    // @State private var confirmationShown = false // Unused
+    @State private var confirmationShown = false // Unused
     // boolean for review or creation mode
     // @State private var inReviewMode = false // Unused
     // Needed for dismissing view
@@ -82,14 +77,18 @@ struct ReviewEntry: View {
                             EntryView(diaryModelController: diaryModelController, diaryEntry: diaryEntry)
                         }
                     // button end
-                    Button(action: {
-                            // Action for the navbar button here
-                        diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
-                        print("Delete button pressed...")
-                        dismiss()
+                    Button(action: {                       
+                        confirmationShown.toggle()
+                        // dismiss()
                         }) {
                             Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
-                    }// button end
+                    }.confirmationDialog("Are you sure?",
+                                          isPresented: $confirmationShown) {
+                                          Button("Confirm Delete", role: .destructive) {
+                                              diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
+                                              dismiss()
+                                           }
+                                         }// button end
                 }// Hstack end for nav buttons
                )
         }// Outer VStack

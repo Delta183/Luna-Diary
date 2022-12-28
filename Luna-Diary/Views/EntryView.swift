@@ -11,10 +11,11 @@ struct EntryView: View {
     
     @ObservedObject var diaryModelController: DiaryModelController
     @State var diaryEntry: DiaryModel
+    // @State private var showingAlert = false
+
     // Hypothesis is that the new entry is being compared and it obviously isnt there thus it simply adds
     
-    // boolean for the confrimation dialog
-    // @State private var confirmationShown = false // Unused
+    
     // boolean for review or creation mode
     // @State private var inReviewMode = false // Unused
     // Needed for dismissing view
@@ -73,20 +74,23 @@ struct EntryView: View {
                     // Send the entry once it is confirmed to be inside and update
                     // Well aware of the O(n) search each time
                     self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
+                    // showingAlert.toggle()
                     dismiss()
-                    // Throw an alert afterwards
+                    // Alert doesn't go well with it personally speaking
                 }
                 else{
                     // otherwise add it if its not in the entries
                     self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
-                   
+                    //showingAlert.toggle()
                     dismiss()
                 }
                 // dismiss()
             }) {
                 Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                 }
-           )
+                //.alert("Entry Saved", isPresented: $showingAlert) { Button("OK", role: .cancel) { dismiss()} }
+            )
+            
         }// Outer VStack
     } // NavigationStack end
 }
