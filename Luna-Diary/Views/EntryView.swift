@@ -47,7 +47,7 @@ struct EntryView: View {
                         .offset(y:-10)
                         .scrollContentBackground(.hidden)
                         .background(Color("headerColour"))
-                }.frame(width: .infinity, height: 150)
+                }.frame(width: UIScreen.main.bounds.width, height: 150)
                     .background(Color("headerColour"))
                     .offset(y: 40)
                     .cornerRadius(15)

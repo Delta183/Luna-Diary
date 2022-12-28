@@ -52,7 +52,7 @@ struct ReviewEntry: View {
                         Spacer()
                         // currentDateObject.date
                     }.padding(.leading, 6.0)
-                }.frame(width: .infinity, height: 150)
+                }.frame(width: UIScreen.main.bounds.width, height: 150)
                     .background(Color("headerColour"))
                     .offset(y: 40)
                     .cornerRadius(15)

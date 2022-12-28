@@ -40,7 +40,7 @@ struct ContentView: View {
                             .padding(.trailing, 12.0)
                             .foregroundColor(Color("headerItemColour"))
                     }
-                }.frame(width: .infinity, height: 150)
+                }.frame(width: UIScreen.main.bounds.width, height: 150)
                 .offset(y:40)
                 .background(Color("headerColour"))
                 .cornerRadius(15)

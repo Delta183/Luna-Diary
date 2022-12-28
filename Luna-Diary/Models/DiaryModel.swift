@@ -8,6 +8,7 @@
 import Foundation
 
 // Identifiable guarantees unique IDs
+// Hashable allowed me to bind an id to each navigationLink
 struct DiaryModel: Identifiable, Equatable, Codable, Hashable{
     var id = UUID()
     var title: String

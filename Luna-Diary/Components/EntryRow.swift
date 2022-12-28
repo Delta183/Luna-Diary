@@ -10,6 +10,7 @@ import SwiftUI
 struct EntryRow: View {
     
     // Something about making this state turned it not active
+    // Perhaps observed object?
     var diaryEntry: DiaryModel
     
     var body: some View {
