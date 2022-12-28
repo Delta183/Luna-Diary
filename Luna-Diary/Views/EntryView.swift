@@ -73,14 +73,13 @@ struct EntryView: View {
                     // Send the entry once it is confirmed to be inside and update
                     // Well aware of the O(n) search each time
                     self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
-                    // Throw an alert afterwards
                     dismiss()
+                    // Throw an alert afterwards
                 }
                 else{
                     // otherwise add it if its not in the entries
                     self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
-                    print("Diary Entry Added!")
-                    print(diaryEntry.id)
+                   
                     dismiss()
                 }
                 // dismiss()

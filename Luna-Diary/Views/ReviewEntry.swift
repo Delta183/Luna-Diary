@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReviewEntry: View {
     @ObservedObject var diaryModelController : DiaryModelController
-    var diaryEntry: DiaryModel
+    @State var diaryEntry: DiaryModel
     @State private var readyToNavigate : Bool = false
     // @State private var date = Date()
     // Place holder text for the entry

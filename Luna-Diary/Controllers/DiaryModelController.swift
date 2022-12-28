@@ -25,22 +25,23 @@ class DiaryModelController: ObservableObject {
         
         diaryEntries.append(newDiaryEntry)
         saveToPersistentStore()
-    
+        print("Diary Entry Added!")
     }
     
     // Change this to check for ID rather than other attributes
     func deleteDiaryEntry(diaryEntry: DiaryModel) {
         // Assuming this works, it will delete the particular element from the array
+        // This does work yet the edit doesn't seemm to work on the same logic
         guard let index = diaryEntries.firstIndex(of: diaryEntry) else { return }
         
         diaryEntries.remove(at: index)
         
         saveToPersistentStore()
+        print("Diary Entry Deleted!")
     }
     
     // Still subject to change if the next run doesn't work
     func updateDiaryEntry(diaryEntry: DiaryModel, index: Int) {
-        
             var updatedDiaryEntry = diaryEntries[index]
             updatedDiaryEntry.title = diaryEntry.title
             updatedDiaryEntry.content = diaryEntry.content

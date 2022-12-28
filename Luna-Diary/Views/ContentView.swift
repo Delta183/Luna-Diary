@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var diaryModelController = DiaryModelController()
-    @State private var date = Date()
     // @State private var isPresented = false
     // For sending information to the destination view, the state object must be made
     // on the class that will deliver the data
@@ -61,12 +60,11 @@ struct ContentView: View {
                     if !diaryModelController.diaryEntries.isEmpty {
                         ScrollView {
                             VStack{
-                                // Generate all items in the list and make them link
-                                // to reviewEntry for each particular entry, id is sent too
+                                // bounding id makes each navigation link unique and refreshable on filter.
                                 ForEach(self.diaryModelController.diaryEntries, id: \.id) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
-                                        }
+                                    }.id(diaryEntry) // important
                                 }
                             }
                         }.padding(.top, -20)

@@ -8,7 +8,7 @@
 import Foundation
 
 // Identifiable guarantees unique IDs
-struct DiaryModel: Identifiable, Equatable, Codable {
+struct DiaryModel: Identifiable, Equatable, Codable, Hashable{
     var id = UUID()
     var title: String
     var content: String
