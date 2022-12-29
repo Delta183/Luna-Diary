@@ -11,6 +11,7 @@ struct CalendarView: View {
     // Get the current date for the calendar to begin at
     @StateObject var diaryModelController = DiaryModelController()
     @State private var date = Date()
+    // It must remain a state to be subject to change
     @State var entries: [DiaryModel]
     private let calendar = Calendar.current
     @State private var readyToNavigate : Bool = false
@@ -35,7 +36,7 @@ struct CalendarView: View {
                     .accentColor(Color("headerItemColour"))
                     .onChange(of: date, perform: { value in
                         entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
-                         // Do what you want with "date", like array.timeStamp = date
+                         // This fetch needs to be done on successful edit as well
                     )});
                     Divider()
                         .frame(height: 2.0)
@@ -49,7 +50,7 @@ struct CalendarView: View {
                     }.buttonStyle(FallButton())
                     .navigationDestination(isPresented: $readyToNavigate) {
                         // This will be subject to change 
-                        EntryView(diaryModelController: diaryModelController, diaryEntry: .DummyDiaryEntry)
+                        EntryView(diaryModelController: diaryModelController, diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter Text here...", date: date))
                     }
                     Button("Review Entries") {
                         print("Button pressed 3!")

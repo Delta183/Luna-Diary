@@ -15,10 +15,12 @@ struct ContentView: View {
     // @StateObject var currentDateObject = CurrentDateObject()
     // This boolean changes the view of the contentView
     @State private var readyToNavigate : Bool = false
-    
+    let calendar = Calendar.current
     // SwiftUI requires the returning of views always, hence not being able to code as usual
     var body: some View {
         NavigationStack{
+            // Fetch the entries of today
+            let entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
             VStack {
                 // header begins
                 HStack {
@@ -48,7 +50,7 @@ struct ContentView: View {
                 .ignoresSafeArea(edges: .top)
                 // header end
                 // Today Header below
-                if(diaryModelController.diaryEntries.count > 0){
+                if(!entries.isEmpty){
                     TodayHeader().offset(y:-60)
                 }
                 else{
@@ -57,12 +59,11 @@ struct ContentView: View {
                 
                 // Entries/No Entries Screen
                 VStack {
-                    if !diaryModelController.diaryEntries.isEmpty {
+                   
+                    // if today's entries are filled
+                    if !entries.isEmpty {
                         ScrollView {
                             VStack{
-                                // Modify this to check different days
-                                let calendar = Calendar.current
-                                var entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
                                 // bounding id makes each navigation link unique and refreshable on filter.
                                 ForEach(entries, id: \.id) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
