@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewEntry: View {
-    @ObservedObject var diaryModelController : DiaryModelController
+    @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     @State private var readyToNavigate : Bool = false
     // boolean for the confrimation dialog
@@ -74,7 +74,7 @@ struct ReviewEntry: View {
                         }) {
                             Text("Edit").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                         }.navigationDestination(isPresented: $readyToNavigate){
-                            EntryView(diaryModelController: diaryModelController, diaryEntry: diaryEntry)
+                            EntryView(diaryEntry: diaryEntry)
                         }
                     // button end
                     Button(action: {                       
@@ -97,6 +97,6 @@ struct ReviewEntry: View {
 
 struct ReviewEntry_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewEntry(diaryModelController: DiaryModelController(), diaryEntry: DiaryModel(title: "Steps to achieve Heaven", content: "Spiral staircase, Rhinoceros beetle, Spiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
+        ReviewEntry(diaryEntry: DiaryModel(title: "Steps to achieve Heaven", content: "Spiral staircase, Rhinoceros beetle, Spiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
     }
 }

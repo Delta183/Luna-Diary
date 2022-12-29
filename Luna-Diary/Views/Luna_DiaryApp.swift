@@ -12,7 +12,8 @@ import SwiftUI
 struct Luna_DiaryApp: App {
     var body: some Scene {
         WindowGroup {
-            TabMainView()
+            // .enviromentObject instantiates the controller for all the classes to use
+            TabMainView().environmentObject(DiaryModelController())
         }
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EntryView: View {
     
-    @ObservedObject var diaryModelController: DiaryModelController
+    @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     // @State private var showingAlert = false
 
@@ -99,7 +99,7 @@ struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
         // Add this to previews to be compatible to enviroment objects otherwise
         // the preview will crash
-        EntryView(diaryModelController: DiaryModelController(), diaryEntry: .DummyDiaryEntry)
+        EntryView( diaryEntry: .DummyDiaryEntry)
     }
 }
 

@@ -12,8 +12,9 @@ import SwiftUI
 // replaced each time hence it is alone
 struct TabMainView: View {
     // Have to do this so the calendar starts with
-    @StateObject var diaryModelController = DiaryModelController()
+    @EnvironmentObject var diaryModelController : DiaryModelController
     let calendar = Calendar.current
+    @State var selection = 0 // <- Here declare selection
 
 
     init() {
@@ -21,27 +22,27 @@ struct TabMainView: View {
     }
     var body: some View {
         // This is the tab view on the bottom
-        TabView {
+        TabView(selection: $selection) { // <- Use selection here
             ContentView()
                 .tabItem {
                     Label("Today", systemImage: "heart")
-                }
+                }.tag(0)
             CalendarView(entries: diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)}))
                 .tabItem {
                     Label("Entries", systemImage: "calendar")
-                }
+                }.tag(1)
             CurrentDayView()
                 .badge(1)
                 .tabItem {
                     Label("On This Day", systemImage: "clock")
-                }
+                }.tag(2)
             SearchView().tabItem {
                 Label("Search", systemImage: "magnifyingglass")
-            }
+            }.tag(4)
             Text("Settings").tabItem {
                                 Image(systemName: "gear")
                                 Text("Settings")
-                            }
+            }.tag(5)
         }
     }
 }

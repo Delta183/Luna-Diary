@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var diaryModelController = DiaryModelController()
+    @EnvironmentObject var diaryModelController : DiaryModelController
     // @State private var isPresented = false
     // For sending information to the destination view, the state object must be made
     // on the class that will deliver the data
@@ -59,14 +59,13 @@ struct ContentView: View {
                 
                 // Entries/No Entries Screen
                 VStack {
-                   
                     // if today's entries are filled
                     if !entries.isEmpty {
                         ScrollView {
                             VStack{
                                 // bounding id makes each navigation link unique and refreshable on filter.
                                 ForEach(entries, id: \.id) { diaryEntry in
-                                    NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
+                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
                                     }.id(diaryEntry) // important
                                 }
@@ -93,7 +92,7 @@ struct ContentView: View {
                     .navigationDestination(isPresented: $readyToNavigate) {
                         // New Entry Button Functionality
                         // Be sure to send the observed controller
-                        EntryView(diaryModelController: diaryModelController, diaryEntry: .DummyDiaryEntry)
+                        EntryView(diaryEntry: .DummyDiaryEntry)
                     }
                 // selection stack end
                 Spacer()

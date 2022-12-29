@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     // Get the current date for the calendar to begin at
-    @StateObject var diaryModelController = DiaryModelController()
+    @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var date = Date()
     // It must remain a state to be subject to change
     @State var entries: [DiaryModel]
@@ -50,7 +50,7 @@ struct CalendarView: View {
                     }.buttonStyle(FallButton())
                     .navigationDestination(isPresented: $readyToNavigate) {
                         // This will be subject to change 
-                        EntryView(diaryModelController: diaryModelController, diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter Text here...", date: date))
+                        EntryView(diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter Text here...", date: date))
                     }
                     Button("Review Entries") {
                         print("Button pressed 3!")
@@ -69,7 +69,7 @@ struct CalendarView: View {
                             VStack{
                                 // bounding id makes each navigation link unique and refreshable on filter.
                                 ForEach(entries, id: \.id) { diaryEntry in
-                                    NavigationLink(destination: ReviewEntry(diaryModelController: diaryModelController, diaryEntry: diaryEntry)){
+                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
                                     }.id(diaryEntry) // important
                                 }
