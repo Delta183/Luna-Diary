@@ -27,7 +27,8 @@ struct TabMainView: View {
                 .tabItem {
                     Label("Today", systemImage: "heart")
                 }.tag(0)
-            CalendarView(entries: diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)}))
+            // entries: diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
+            CalendarView()
                 .tabItem {
                     Label("Entries", systemImage: "calendar")
                 }.tag(1)

@@ -12,7 +12,8 @@ struct CalendarView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var date = Date()
     // It must remain a state to be subject to change
-    @State var entries: [DiaryModel]
+    @ObservedObject var entriesOfDay = EntriesOfDay()
+    // @State var entries: [DiaryModel]
     private let calendar = Calendar.current
     @State private var readyToNavigate : Bool = false
 
@@ -35,7 +36,7 @@ struct CalendarView: View {
                     ).datePickerStyle(.graphical)
                     .accentColor(Color("headerItemColour"))
                     .onChange(of: date, perform: { value in
-                        entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
+                        entriesOfDay.entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
                          // This fetch needs to be done on successful edit as well
                     )});
                     Divider()
@@ -58,17 +59,17 @@ struct CalendarView: View {
                     .buttonStyle(FallButton())
                     
                 }.padding(.top, 6.0)
-                Text("There are \(entries.count) entries for that day")
+                Text("There are \(entriesOfDay.entries.count) entries for that day")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundColor(Color("headerItemColour"))
                 VStack {
                     // need to populate it with the initial values
-                    if !entries.isEmpty {
+                    if !entriesOfDay.entries.isEmpty {
                         ScrollView {
                             VStack{
                                 // bounding id makes each navigation link unique and refreshable on filter.
-                                ForEach(entries, id: \.id) { diaryEntry in
+                                ForEach(entriesOfDay.entries, id: \.id) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
                                     }.id(diaryEntry) // important
@@ -82,15 +83,17 @@ struct CalendarView: View {
                 }.offset(y:-50)
                 
                 // offset the stack by a bit so that the title isn't as high up
-            }
-            .background(Color("backgroundColour"))
+            }.background(Color("backgroundColour"))
         }.accentColor(Color("headerItemColour"))
+            .onAppear{
+                self.entriesOfDay.entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
+            }
     }
 }
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(entries: [])
+        CalendarView()
     }
 }
 
