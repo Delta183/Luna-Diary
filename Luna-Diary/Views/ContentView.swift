@@ -9,11 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
-    // @State private var isPresented = false
-    // For sending information to the destination view, the state object must be made
-    // on the class that will deliver the data
-    // @StateObject var currentDateObject = CurrentDateObject()
-    // This boolean changes the view of the contentView
     @State private var readyToNavigate : Bool = false
     let calendar = Calendar.current
     // SwiftUI requires the returning of views always, hence not being able to code as usual

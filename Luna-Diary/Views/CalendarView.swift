@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
     // Get the current date for the calendar to begin at
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var date = Date()
-    // It must remain a state to be subject to change
-    @StateObject var entriesOfDay = EntriesOfDay()
-    // @State var entries: [DiaryModel]
+    // For all the correct changes to appear, the Published array
+    // itself must be DIRECTLY referenced, my issue was that I was simply making a copy previously
     private let calendar = Calendar.current
     @State private var readyToNavigate : Bool = false
 
     var body: some View {
         NavigationStack {
+            // Call the array directly rather than make a copy
+            var entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)})
             VStack {
                 Text("Select a Date")
                     .font(.title)
@@ -37,7 +37,7 @@ struct CalendarView: View {
                     ).datePickerStyle(.graphical)
                     .accentColor(Color("headerItemColour"))
                     .onChange(of: date, perform: { value in
-                        entriesOfDay.entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
+                        entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
                          // This fetch needs to be done on successful edit as well
                     )});
                     Divider()
@@ -60,26 +60,31 @@ struct CalendarView: View {
                     .buttonStyle(FallButton())
                     
                 }.padding(.top, 6.0)
-                Text("There are \(entriesOfDay.entries.count) entries for that day")
+                Text("There are \(entries.count) entries for that day")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .foregroundColor(Color("headerItemColour"))
                 VStack {
                     // need to populate it with the initial values
-                    if !entriesOfDay.entries.isEmpty {
-                        EntriesList(entriesOfDay: entriesOfDay).padding(.top, 50)
+                    if !entries.isEmpty {
+                        ScrollView {
+                            VStack{
+                                // bounding id makes each navigation link unique and refreshable on filter.
+                                ForEach(entries, id: \.id) { diaryEntry in
+                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
+                                        EntryRow(diaryEntry: diaryEntry)
+                                    }.id(diaryEntry) // important
+                                }
+                            }
+                        }.padding(.top, 50)
                     }
                     else{
                         Spacer()
                     }
                 }.offset(y:-50)
-                
                 // offset the stack by a bit so that the title isn't as high up
             }.background(Color("backgroundColour"))
         }.accentColor(Color("headerItemColour"))
-            .onAppear{
-                self.entriesOfDay.entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
-            }
     }
 }
 
@@ -89,21 +94,5 @@ struct CalendarView_Previews: PreviewProvider {
     }
 }
 
-// Structures can be used to create classes, a style for a button in this case
-struct EntriesList: View{
-    @ObservedObject var entriesOfDay: EntriesOfDay
-    var body: some View{
-        ScrollView {
-            VStack{
-                // bounding id makes each navigation link unique and refreshable on filter.
-                ForEach(entriesOfDay.entries, id: \.id) { diaryEntry in
-                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
-                            EntryRow(diaryEntry: diaryEntry)
-                    }.id(diaryEntry) // important
-                }
-            }
-        }
-    }
-}
 
 
