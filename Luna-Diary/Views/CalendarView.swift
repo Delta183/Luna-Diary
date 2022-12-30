@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct CalendarView: View {
+    
     // Get the current date for the calendar to begin at
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var date = Date()
     // It must remain a state to be subject to change
-    @ObservedObject var entriesOfDay = EntriesOfDay()
+    @StateObject var entriesOfDay = EntriesOfDay()
     // @State var entries: [DiaryModel]
     private let calendar = Calendar.current
     @State private var readyToNavigate : Bool = false
@@ -66,16 +67,7 @@ struct CalendarView: View {
                 VStack {
                     // need to populate it with the initial values
                     if !entriesOfDay.entries.isEmpty {
-                        ScrollView {
-                            VStack{
-                                // bounding id makes each navigation link unique and refreshable on filter.
-                                ForEach(entriesOfDay.entries, id: \.id) { diaryEntry in
-                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
-                                            EntryRow(diaryEntry: diaryEntry)
-                                    }.id(diaryEntry) // important
-                                }
-                            }
-                        }.padding(.top, 50)
+                        EntriesList(entriesOfDay: entriesOfDay).padding(.top, 50)
                     }
                     else{
                         Spacer()
@@ -98,12 +90,20 @@ struct CalendarView_Previews: PreviewProvider {
 }
 
 // Structures can be used to create classes, a style for a button in this case
-struct FallButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .background(Color("headerItemColour"))
-            .foregroundColor(Color("backgroundColour"))
-            .clipShape(Capsule())
+struct EntriesList: View{
+    @ObservedObject var entriesOfDay: EntriesOfDay
+    var body: some View{
+        ScrollView {
+            VStack{
+                // bounding id makes each navigation link unique and refreshable on filter.
+                ForEach(entriesOfDay.entries, id: \.id) { diaryEntry in
+                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
+                            EntryRow(diaryEntry: diaryEntry)
+                    }.id(diaryEntry) // important
+                }
+            }
+        }
     }
 }
+
+
