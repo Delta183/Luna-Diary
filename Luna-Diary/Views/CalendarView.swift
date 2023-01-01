@@ -19,7 +19,7 @@ struct CalendarView: View {
     var body: some View {
         NavigationStack {
             // Call the array directly rather than make a copy
-            var entries = self.diaryModelController.getDiaryEntries(date: date)
+            var entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)})
             VStack {
                 Text("Select a Date")
                     .font(.title)
@@ -37,9 +37,9 @@ struct CalendarView: View {
                     ).datePickerStyle(.graphical)
                     .accentColor(Color("headerItemColour"))
                     .onChange(of: date, perform: { value in
-                        entries = self.diaryModelController.getDiaryEntries(date: date)
+                        entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
                          // This fetch needs to be done on successful edit as well
-                    });
+                    )});
                     Divider()
                         .frame(height: 2.0)
                         .background(Color("headerItemColour"))

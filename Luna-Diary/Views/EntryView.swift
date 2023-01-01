@@ -11,7 +11,7 @@ struct EntryView: View {
     
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
-    // @State private var showingAlert = false
+    // @State private var showingAlert = false    
     
     // boolean for review or creation mode
     // @State private var inReviewMode = false // Unused
@@ -65,7 +65,7 @@ struct EntryView: View {
             }.background(Color("backgroundColour"))
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
-                let entries = self.diaryModelController.getDiaryEntries(date: diaryEntry.date)
+                let entries = self.diaryModelController.diaryEntries
                 let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
                 if index != nil{
                     // Send the entry once it is confirmed to be inside and update

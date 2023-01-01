@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodayHeader: View {
-    @State private var date = Date()
+    @State var date = Date()
     // date = Calendar.current.date(byAdding: .day, value: -7, to: Date())
     
     
