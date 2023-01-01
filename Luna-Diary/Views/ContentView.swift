@@ -15,7 +15,8 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             // Fetch the entries of today
-            let entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
+            let entries = self.diaryModelController.getDiaryEntries(date: Date())
+            // let entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
             VStack {
                 // header begins
                 HStack {

@@ -12,9 +12,6 @@ struct EntryView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     // @State private var showingAlert = false
-
-    // Hypothesis is that the new entry is being compared and it obviously isnt there thus it simply adds
-    
     
     // boolean for review or creation mode
     // @State private var inReviewMode = false // Unused
@@ -68,7 +65,7 @@ struct EntryView: View {
             }.background(Color("backgroundColour"))
             // NavigationBar button placed below
             .navigationBarItems(trailing: Button(action: {
-                let entries = self.diaryModelController.diaryEntries
+                let entries = self.diaryModelController.getDiaryEntries(date: diaryEntry.date)
                 let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
                 if index != nil{
                     // Send the entry once it is confirmed to be inside and update
