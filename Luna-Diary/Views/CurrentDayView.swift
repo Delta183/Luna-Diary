@@ -13,7 +13,7 @@ struct CurrentDayView: View {
     var currentDate = Date()
     let calendar = Calendar.current
     let yearLimit = 10
-    var currentYearCount = 1
+    @State var currentYearCount = 0
     var previousDates = datesList()
     // SwiftUI requires the returning of views always, hence not being able to code as usual
     var body: some View {
@@ -70,7 +70,7 @@ struct CurrentDayView: View {
                                     var entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: prevDate)})
                                     // If there are entries, the print out the view
                                     if !entries.isEmpty{
-                                        Text("N year(s) ago").foregroundColor(Color("headerItemColour"))
+                                        incrementYearView(date2: prevDate)
                                         ForEach(entries, id: \.id) { diaryEntry in
                                             NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                                 EntryRow(diaryEntry: diaryEntry)
@@ -81,16 +81,30 @@ struct CurrentDayView: View {
                                 }
                                
                             }
-                            Text("That's all, folks!").font(Font.custom("Holla", size: 36)).foregroundColor(Color("entryTextColour"))
+                            
                         }.padding(.top, -20)
-                       
                     // }
                 }.offset(y:-50)
+                Text("That's all, folks!").font(Font.custom("Holla", size: 36)).foregroundColor(Color("entryTextColour"))
                 Spacer()
             }.background(Color("backgroundColour"))
         // End of NavigationStack on the line below
         }.accentColor(Color("headerItemColour"))
     }
+
+    func incrementYearView(date2:Date) -> some View{
+        let date1Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.currentDate)
+        let date2Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date2)
+        let numOfYearDiff = date1Components.year! - date2Components.year!
+        if numOfYearDiff <= 1 {
+            return Text("\(numOfYearDiff) year ago").foregroundColor(Color("headerItemColour"))
+        }
+        else{
+            return Text("\(numOfYearDiff) years ago").foregroundColor(Color("headerItemColour"))
+        }
+    }
+    
+
 }
 
 struct CurrentDayView_Previews: PreviewProvider {
@@ -101,16 +115,14 @@ struct CurrentDayView_Previews: PreviewProvider {
 
 func generateLastDays(date: Date, limit: Int) -> [Date]{
     var listOfDates : [Date] = []
+    var negatedNumber = 0
+    var prevDate = Date()
     // Loop through every year from 1 to the limit, negate the number and subtract it from the date
     for year in 1...limit{
-        var negatedNumber = year * -1
-        var prevDate = Calendar.current.date(byAdding: .year, value: negatedNumber, to: date)!
+        negatedNumber = year * -1
+        prevDate = Calendar.current.date(byAdding: .year, value: negatedNumber, to: date)!
         listOfDates.append(prevDate)
     }
     return listOfDates
 }
 
-struct datesList: Identifiable, Codable{
-    var id = UUID()
-    var listOfDates = generateLastDays(date: Date(), limit: 10)
-}

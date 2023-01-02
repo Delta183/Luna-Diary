@@ -36,6 +36,7 @@
 		98E3F2C229427B4200FFCFA1 /* Luna_DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2C129427B4200FFCFA1 /* Luna_DiaryTests.swift */; };
 		98E3F2CC29427B4200FFCFA1 /* Luna_DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2CB29427B4200FFCFA1 /* Luna_DiaryUITests.swift */; };
 		98E3F2CE29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */; };
+		98F8EF3829625BA00098EF71 /* datesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3729625BA00098EF71 /* datesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		98E3F2C729427B4200FFCFA1 /* Luna-DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Luna-DiaryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E3F2CB29427B4200FFCFA1 /* Luna_DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryUITests.swift; sourceTree = "<group>"; };
 		98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		98F8EF3729625BA00098EF71 /* datesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datesList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				985CFA9A295137E1001FB400 /* DiaryModel.swift */,
 				98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */,
 				98DB8577295E2C740048A596 /* EntriesOfDay.swift */,
+				98F8EF3729625BA00098EF71 /* datesList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */,
 				985CFA9B295137E1001FB400 /* DiaryModel.swift in Sources */,
 				98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */,
+				98F8EF3829625BA00098EF71 /* datesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
