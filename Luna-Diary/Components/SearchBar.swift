@@ -52,9 +52,10 @@ struct SearchBar: View {
                 }) {
                     Text("Cancel")
                 }
+                .font(Font.custom("MADEWaffleSlab", size: 14))
+                .buttonStyle(SearchCancelButton())
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
-                .animation(.default)
             }
         }
     }

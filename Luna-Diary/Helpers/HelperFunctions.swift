@@ -25,3 +25,4 @@ func getShortStringFromDate(date: Date) -> String{
     formatter1.dateStyle = .short
     return (formatter1.string(from: date))
 }
+

@@ -37,6 +37,7 @@
 		98F8EF3829625BA00098EF71 /* datesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3729625BA00098EF71 /* datesList.swift */; };
 		98F8EF3A29626F8D0098EF71 /* EntryRowDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */; };
 		98F8EF3D2962720D0098EF71 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */; };
+		98F8EF3F29629F7E0098EF71 /* SearchCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3E29629F7E0098EF71 /* SearchCancelButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		98F8EF3729625BA00098EF71 /* datesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datesList.swift; sourceTree = "<group>"; };
 		98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRowDate.swift; sourceTree = "<group>"; };
 		98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		98F8EF3E29629F7E0098EF71 /* SearchCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCancelButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				98D70D292952503600410D33 /* TodayHeader.swift */,
 				98DB8579295EAEA90048A596 /* FallButton.swift */,
 				98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */,
+				98F8EF3E29629F7E0098EF71 /* SearchCancelButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				987D8DE52946313900C807F2 /* SearchBar.swift in Sources */,
 				9835735C294509B200038530 /* SearchView.swift in Sources */,
 				98B40B0D294BBEC400463C68 /* NoEntriesView.swift in Sources */,
+				98F8EF3F29629F7E0098EF71 /* SearchCancelButton.swift in Sources */,
 				9835735A2944F54700038530 /* CurrentDayView.swift in Sources */,
 				9808BF332946C3380050F8D1 /* EntryView.swift in Sources */,
 				98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */,

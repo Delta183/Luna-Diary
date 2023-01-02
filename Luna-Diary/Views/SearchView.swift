@@ -21,23 +21,45 @@ private var oceans = [
 ]
 
 struct SearchView: View {
+    @EnvironmentObject var diaryModelController : DiaryModelController
+    @State private var readyToNavigate : Bool = false
+    let calendar = Calendar.current
     
     @State private var searchText = ""
 
     var body: some View {
-        VStack{
-            Text("Search for Entries")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(Color("headerItemColour"))
-                .multilineTextAlignment(.center)
-            SearchBar(text: $searchText)
-            List(oceans) {
-                Text($0.name) .listRowBackground(Color("headerColour"))
-            }.padding(.top, -15.0).scrollContentBackground(.hidden)
-        }.background(Color("backgroundColour"))
-        
-    }
+        NavigationStack{
+            VStack{
+                Text("Search for Entries")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("headerItemColour"))
+                    .multilineTextAlignment(.center)
+                    SearchBar(text: $searchText)
+                
+                    if !searchResults.isEmpty {
+                        ScrollView {
+                            VStack{
+                                // bounding id makes each navigation link unique and refreshable on filter.
+                                ForEach(searchResults, id: \.id) { diaryEntry in
+                                    NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
+                                        EntryRowDate(diaryEntry: diaryEntry)
+                                    }.id(diaryEntry) // important
+                                }
+                            }
+                        }
+                        
+                    } else{
+                        Text("No results found...")
+                    }
+                    Spacer()
+                }.background(Color("backgroundColour"))
+            // NavStack ends
+            }.accentColor(Color("headerItemColour"))
+        }// body end
+        var searchResults: [DiaryModel] {
+            return diaryModelController.diaryEntries.filter { $0.content.localizedCaseInsensitiveContains(searchText) || $0.title.localizedCaseInsensitiveContains(searchText)}
+       }
 }
 
 struct SearchView_Previews: PreviewProvider {

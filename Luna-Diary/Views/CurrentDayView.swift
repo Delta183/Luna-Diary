@@ -92,6 +92,7 @@ struct CurrentDayView: View {
         }.accentColor(Color("headerItemColour"))
     }
 
+    // This function is to subvert the issues with changes in Views when it came to incrementing a variable
     func getYearDifference(date2:Date) -> some View{
         let date1Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.currentDate)
         let date2Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date2)
