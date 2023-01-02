@@ -70,10 +70,10 @@ struct CurrentDayView: View {
                                     var entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: prevDate)})
                                     // If there are entries, the print out the view
                                     if !entries.isEmpty{
-                                        incrementYearView(date2: prevDate)
+                                        getYearDifference(date2: prevDate)
                                         ForEach(entries, id: \.id) { diaryEntry in
                                             NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
-                                                EntryRow(diaryEntry: diaryEntry)
+                                                EntryRowDate(diaryEntry: diaryEntry)
                                             }.id(diaryEntry) // important
                                         }
                                     }
@@ -92,7 +92,7 @@ struct CurrentDayView: View {
         }.accentColor(Color("headerItemColour"))
     }
 
-    func incrementYearView(date2:Date) -> some View{
+    func getYearDifference(date2:Date) -> some View{
         let date1Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.currentDate)
         let date2Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date2)
         let numOfYearDiff = date1Components.year! - date2Components.year!
@@ -103,26 +103,11 @@ struct CurrentDayView: View {
             return Text("\(numOfYearDiff) years ago").foregroundColor(Color("headerItemColour"))
         }
     }
-    
-
 }
 
 struct CurrentDayView_Previews: PreviewProvider {
     static var previews: some View {
         CurrentDayView().environmentObject(DiaryModelController())
     }
-}
-
-func generateLastDays(date: Date, limit: Int) -> [Date]{
-    var listOfDates : [Date] = []
-    var negatedNumber = 0
-    var prevDate = Date()
-    // Loop through every year from 1 to the limit, negate the number and subtract it from the date
-    for year in 1...limit{
-        negatedNumber = year * -1
-        prevDate = Calendar.current.date(byAdding: .year, value: negatedNumber, to: date)!
-        listOfDates.append(prevDate)
-    }
-    return listOfDates
 }
 

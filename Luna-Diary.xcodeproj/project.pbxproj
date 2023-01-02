@@ -13,7 +13,6 @@
 		981D382A294C237300B30715 /* ReviewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D3829294C237200B30715 /* ReviewEntry.swift */; };
 		9835735A2944F54700038530 /* CurrentDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983573592944F54700038530 /* CurrentDayView.swift */; };
 		9835735C294509B200038530 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9835735B294509B200038530 /* SearchView.swift */; };
-		984656822948105F000DE186 /* CurrentDateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984656812948105F000DE186 /* CurrentDateObject.swift */; };
 		985CFA9B295137E1001FB400 /* DiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985CFA9A295137E1001FB400 /* DiaryModel.swift */; };
 		985CFA9E29513BAF001FB400 /* DiaryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985CFA9D29513BAF001FB400 /* DiaryModelController.swift */; };
 		987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE2294621EA00C807F2 /* TabMainView.swift */; };
@@ -22,7 +21,6 @@
 		98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0E294BBF2500463C68 /* EntryRow.swift */; };
 		98D70D2A2952503600410D33 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D70D292952503600410D33 /* TodayHeader.swift */; };
 		98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */; };
-		98DB8578295E2C740048A596 /* EntriesOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB8577295E2C740048A596 /* EntriesOfDay.swift */; };
 		98DB857A295EAEA90048A596 /* FallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB8579295EAEA90048A596 /* FallButton.swift */; };
 		98DDB1E5294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */; };
 		98DDB1E9294ABA5400D933D4 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */; };
@@ -37,6 +35,8 @@
 		98E3F2CC29427B4200FFCFA1 /* Luna_DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2CB29427B4200FFCFA1 /* Luna_DiaryUITests.swift */; };
 		98E3F2CE29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */; };
 		98F8EF3829625BA00098EF71 /* datesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3729625BA00098EF71 /* datesList.swift */; };
+		98F8EF3A29626F8D0098EF71 /* EntryRowDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */; };
+		98F8EF3D2962720D0098EF71 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +63,6 @@
 		981D3829294C237200B30715 /* ReviewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntry.swift; sourceTree = "<group>"; };
 		983573592944F54700038530 /* CurrentDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDayView.swift; sourceTree = "<group>"; };
 		9835735B294509B200038530 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		984656812948105F000DE186 /* CurrentDateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDateObject.swift; sourceTree = "<group>"; };
 		985CFA9A295137E1001FB400 /* DiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModel.swift; sourceTree = "<group>"; };
 		985CFA9D29513BAF001FB400 /* DiaryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryModelController.swift; sourceTree = "<group>"; };
 		987D8DE2294621EA00C807F2 /* TabMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainView.swift; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		98B40B0E294BBF2500463C68 /* EntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRow.swift; sourceTree = "<group>"; };
 		98D70D292952503600410D33 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
 		98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDiaryEntry.swift; sourceTree = "<group>"; };
-		98DB8577295E2C740048A596 /* EntriesOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesOfDay.swift; sourceTree = "<group>"; };
 		98DB8579295EAEA90048A596 /* FallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallButton.swift; sourceTree = "<group>"; };
 		98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
 		98DDB1E8294ABA5400D933D4 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -91,6 +89,8 @@
 		98E3F2CB29427B4200FFCFA1 /* Luna_DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryUITests.swift; sourceTree = "<group>"; };
 		98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		98F8EF3729625BA00098EF71 /* datesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datesList.swift; sourceTree = "<group>"; };
+		98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRowDate.swift; sourceTree = "<group>"; };
+		98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,10 +121,8 @@
 		9846568029481001000DE186 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				984656812948105F000DE186 /* CurrentDateObject.swift */,
 				985CFA9A295137E1001FB400 /* DiaryModel.swift */,
 				98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */,
-				98DB8577295E2C740048A596 /* EntriesOfDay.swift */,
 				98F8EF3729625BA00098EF71 /* datesList.swift */,
 			);
 			path = Models;
@@ -161,6 +159,7 @@
 				98B40B0E294BBF2500463C68 /* EntryRow.swift */,
 				98D70D292952503600410D33 /* TodayHeader.swift */,
 				98DB8579295EAEA90048A596 /* FallButton.swift */,
+				98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -200,6 +199,7 @@
 		98E3F2AF29427B3E00FFCFA1 /* Luna-Diary */ = {
 			isa = PBXGroup;
 			children = (
+				98F8EF3B296271FB0098EF71 /* Helpers */,
 				985CFA9C29513B94001FB400 /* Controllers */,
 				98B40B0B294BBE4300463C68 /* Components */,
 				98DDB1EC294ABC5300D933D4 /* Info.plist */,
@@ -236,6 +236,14 @@
 				98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */,
 			);
 			path = "Luna-DiaryUITests";
+			sourceTree = "<group>";
+		};
+		98F8EF3B296271FB0098EF71 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,17 +381,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98DB8578295E2C740048A596 /* EntriesOfDay.swift in Sources */,
 				985CFA9E29513BAF001FB400 /* DiaryModelController.swift in Sources */,
-				984656822948105F000DE186 /* CurrentDateObject.swift in Sources */,
 				98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */,
 				987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */,
 				981D382A294C237300B30715 /* ReviewEntry.swift in Sources */,
 				98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */,
+				98F8EF3D2962720D0098EF71 /* HelperFunctions.swift in Sources */,
 				98D70D2A2952503600410D33 /* TodayHeader.swift in Sources */,
 				9805468E2944DFCF006301CF /* CalendarView.swift in Sources */,
 				98DB857A295EAEA90048A596 /* FallButton.swift in Sources */,
 				9805468C29438901006301CF /* jinxImage.swift in Sources */,
+				98F8EF3A29626F8D0098EF71 /* EntryRowDate.swift in Sources */,
 				987D8DE52946313900C807F2 /* SearchBar.swift in Sources */,
 				9835735C294509B200038530 /* SearchView.swift in Sources */,
 				98B40B0D294BBEC400463C68 /* NoEntriesView.swift in Sources */,

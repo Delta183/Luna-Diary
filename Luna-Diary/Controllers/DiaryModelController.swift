@@ -12,7 +12,6 @@ class DiaryModelController: ObservableObject {
     
     //MARK: - Properties
     @Published var diaryEntries: [DiaryModel] = []
-    let calendar = Calendar.current
 
     init() {
         loadFromPersistentStore()
