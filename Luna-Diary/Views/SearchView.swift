@@ -4,24 +4,11 @@
 //
 //  Created by Daniel Figueroa on 2022-12-10.
 //
-
 import SwiftUI
-
-struct Ocean: Identifiable {
-    let name: String
-    let id = UUID()
-}
-
-private var oceans = [
-    Ocean(name: "Pacific"),
-    Ocean(name: "Atlantic"),
-    Ocean(name: "Indian"),
-    Ocean(name: "Southern"),
-    Ocean(name: "Arctic")
-]
 
 struct SearchView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
+    // @StateObject var debounceObject = DebounceObject()
     @State private var readyToNavigate : Bool = false
     let calendar = Calendar.current
     
@@ -36,7 +23,6 @@ struct SearchView: View {
                     .foregroundColor(Color("headerItemColour"))
                     .multilineTextAlignment(.center)
                     SearchBar(text: $searchText)
-                
                     if !searchResults.isEmpty {
                         ScrollView {
                             VStack{
