@@ -67,6 +67,7 @@ struct ReviewEntry: View {
             // NavigationBar button placed below
             .navigationBarItems(trailing:
                 HStack {
+                    // Edit Button
                     Button(action: {
                             // Action for the navbar button here
                             // print("Edit button pressed...")
@@ -74,9 +75,10 @@ struct ReviewEntry: View {
                         }) {
                             Text("Edit").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                         }.navigationDestination(isPresented: $readyToNavigate){
-                            EntryView(diaryEntry: diaryEntry)
+                            UpdateEntry(diaryEntry: diaryEntry, originalEntry: diaryEntry)
                         }
-                    // button end
+                    // edit button end
+                    // delete button begin
                     Button(action: {                       
                         confirmationShown.toggle()
                         // dismiss()
@@ -88,7 +90,7 @@ struct ReviewEntry: View {
                                               diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
                                               dismiss()
                                            }
-                                         }// button end
+                                         }// delete button end
                 }// Hstack end for nav buttons
                )
         }// Outer VStack

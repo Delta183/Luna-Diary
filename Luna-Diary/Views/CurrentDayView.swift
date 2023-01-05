@@ -71,7 +71,7 @@ struct CurrentDayView: View {
                                     // If there are entries, the print out the view
                                     if !entries.isEmpty{
                                         getYearDifference(date2: prevDate)
-                                        ForEach(entries, id: \.id) { diaryEntry in
+                                        ForEach(entries, id: \.self) { diaryEntry in
                                             NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                                 EntryRowDate(diaryEntry: diaryEntry)
                                             }.id(diaryEntry) // important

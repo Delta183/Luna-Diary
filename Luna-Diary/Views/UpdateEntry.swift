@@ -1,21 +1,16 @@
 //
-//  EntryView.swift
+//  UpdateEntry.swift
 //  Luna-Diary
 //
-//  Created by Daniel Figueroa on 2022-12-11.
+//  Created by Daniel Figueroa on 2023-01-04.
 //
 
 import SwiftUI
 
-struct EntryView: View {
-    
+struct UpdateEntry: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
-    // @State private var showingAlert = false    
-    
-    // boolean for review or creation mode
-    // @State private var inReviewMode = false // Unused
-    // Needed for dismissing view
+    @State var originalEntry: DiaryModel
     @Environment(\.dismiss) var dismiss
   
     var body: some View {
@@ -71,25 +66,35 @@ struct EntryView: View {
                     let entries = self.diaryModelController.diaryEntries
                     let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
                     if index != nil{
-                        // Create a new entry in the array if it is truly a new diary entry
-                        self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
-                        dismiss()
+                        if entries[index!] == diaryEntry {
+                            // print("First")
+                            dismiss()
+                        }
+                        else{
+                            // print("boi")
+                            self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
+                            dismiss()
+                        }
                     }
-                    
                 }) {
                     Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                 }
+                Button(action: {
+                  // Revert text
+                    diaryEntry.title = originalEntry.title
+                    diaryEntry.content = originalEntry.content
+                    diaryEntry.date = originalEntry.date
+                }) {
+                    Text("Revert").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                }
             })
             
-        }// Outer VStack
+        }.navigationBarBackButtonHidden(true)// Outer VStack
     } // NavigationStack end
 }
 
-struct EntryView_Previews: PreviewProvider {
+struct UpdateEntry_Previews: PreviewProvider {
     static var previews: some View {
-        // Add this to previews to be compatible to enviroment objects otherwise
-        // the preview will crash
-        EntryView( diaryEntry: .DummyDiaryEntry)
+        UpdateEntry(diaryEntry: .DummyDiaryEntry, originalEntry: .DummyDiaryEntry)
     }
 }
-

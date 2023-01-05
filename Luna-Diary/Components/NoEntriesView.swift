@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoEntriesView: View{
     var body: some View{
-        Image("peng")
+        Image("peng1")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 300.0, height: 300.0)

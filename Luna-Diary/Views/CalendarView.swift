@@ -70,7 +70,7 @@ struct CalendarView: View {
                         ScrollView {
                             VStack{
                                 // bounding id makes each navigation link unique and refreshable on filter.
-                                ForEach(entries, id: \.id) { diaryEntry in
+                                ForEach(entries, id: \.self) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                         EntryRow(diaryEntry: diaryEntry)
                                     }.id(diaryEntry) // important
