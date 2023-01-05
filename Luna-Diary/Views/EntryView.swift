@@ -11,11 +11,6 @@ struct EntryView: View {
     
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
-    // @State private var showingAlert = false    
-    
-    // boolean for review or creation mode
-    // @State private var inReviewMode = false // Unused
-    // Needed for dismissing view
     @Environment(\.dismiss) var dismiss
   
     var body: some View {
@@ -27,13 +22,14 @@ struct EntryView: View {
                         Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
                             .foregroundColor(Color("entryTextColour"))
                         DatePicker(
-                                "",
-                                selection: $diaryEntry.date,
-                                 displayedComponents: [.date, .hourAndMinute]
-                        ).labelsHidden()
+                            "",
+                            selection: $diaryEntry.date,
+                            displayedComponents: [.date, .hourAndMinute]
+                        ).labelsHidden() // This hides the given text of DatePicker
                         Spacer()
-                    }.offset(y: 10)
+                    }.offset(y: 10) // HStack
                     .padding(.leading, 6.0)
+                    
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
                     TextEditor(text: $diaryEntry.title)
@@ -48,8 +44,8 @@ struct EntryView: View {
                     .background(Color("headerColour"))
                     .offset(y: 40)
                     .cornerRadius(15)
-                //  This is used to ignore the safe area on top of screen
-                    .ignoresSafeArea(edges: .top)
+                    .ignoresSafeArea(edges: .top) //  This is used to ignore the safe area on top of screen
+                
                 // TextEditor VStack begin
                 VStack {
                     // Look into putting underlines on each line
@@ -62,25 +58,23 @@ struct EntryView: View {
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
             }.background(Color("backgroundColour"))
-            // .navigationBarBackButtonHidden(true)
-            // NavigationBar button placed below
             .navigationBarItems(trailing:
-            HStack{
-                // Save button begin
-                Button(action: {
-                    let entries = self.diaryModelController.diaryEntries
-                    let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
-                    if index != nil{
-                        // Create a new entry in the array if it is truly a new diary entry
-                        self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
-                        dismiss()
+                // NavigationBar button placed below
+                HStack{
+                    // Save button begin
+                    Button(action: {
+                        let entries = self.diaryModelController.diaryEntries
+                        let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
+                        if index != nil{
+                            // Create a new entry in the array if it is truly a new diary entry
+                            self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
+                            dismiss()
+                        }
+                    }) {
+                        Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                     }
-                    
-                }) {
-                    Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                 }
-            })
-            
+            )
         }// Outer VStack
     } // NavigationStack end
 }

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct UpdateEntry: View {
+    // EnvironmentObjects are for sharing a State object across multiple classes
     @EnvironmentObject var diaryModelController : DiaryModelController
+    // Diary Entry and a copy so it can be reverted if needed
     @State var diaryEntry: DiaryModel
     @State var originalEntry: DiaryModel
     @Environment(\.dismiss) var dismiss
@@ -42,8 +44,9 @@ struct UpdateEntry: View {
                     .background(Color("headerColour"))
                     .offset(y: 40)
                     .cornerRadius(15)
-                //  This is used to ignore the safe area on top of screen
+                    //  This is used to ignore the safe area on top of screen
                     .ignoresSafeArea(edges: .top)
+                
                 // TextEditor VStack begin
                 VStack {
                     // Look into putting underlines on each line
@@ -57,34 +60,35 @@ struct UpdateEntry: View {
                 .offset(y: -100)
             }.background(Color("backgroundColour"))
             .navigationBarItems(trailing:
-            HStack{
-                // Save button begin
-                Button(action: {
-                    let entries = self.diaryModelController.diaryEntries
-                    let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
-                    if index != nil{
-                        if entries[index!] == diaryEntry {
-                            // print("First")
-                            dismiss()
+                // HStack containing the buttons
+                HStack{
+                    // Save button begin
+                    Button(action: {
+                        let entries = self.diaryModelController.diaryEntries
+                        let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
+                        if index != nil{
+                            if entries[index!] == diaryEntry {
+                                // no need to update if the elements are still the same
+                                dismiss()
+                            }
+                            else{
+                                // otherwise update changes made
+                                self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
+                                dismiss()
+                            }
                         }
-                        else{
-                            // print("boi")
-                            self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
-                            dismiss()
-                        }
+                    }) {
+                        Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                     }
-                }) {
-                    Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
-                }
-                Button(action: {
-                  // Revert text
-                    diaryEntry.title = originalEntry.title
-                    diaryEntry.content = originalEntry.content
-                    diaryEntry.date = originalEntry.date
-                }) {
-                    Text("Revert").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
-                }
-            })
+                    Button(action: {
+                        // Revert text and dates to their original state
+                        diaryEntry.title = originalEntry.title
+                        diaryEntry.content = originalEntry.content
+                        diaryEntry.date = originalEntry.date
+                    }) {
+                        Text("Revert").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                    }
+                })
             
         }.navigationBarBackButtonHidden(true)// Outer VStack
     }

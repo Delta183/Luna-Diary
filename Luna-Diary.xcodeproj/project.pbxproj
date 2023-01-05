@@ -31,6 +31,7 @@
 		98DDB1EE294AC14B00D933D4 /* Holla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1ED294AC14B00D933D4 /* Holla.ttf */; };
 		98DDB1F4294AC80B00D933D4 /* MADEWaffleSlab.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1F3294AC80B00D933D4 /* MADEWaffleSlab.ttf */; };
 		98DDB1F6294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1F5294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf */; };
+		98DFEF5729674784006F9BE4 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DFEF5629674784006F9BE4 /* HeaderView.swift */; };
 		98E3F2B129427B3E00FFCFA1 /* Luna_DiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */; };
 		98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2B229427B3E00FFCFA1 /* ContentView.swift */; };
 		98E3F2B529427B4100FFCFA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98E3F2B429427B4100FFCFA1 /* Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		98DDB1ED294AC14B00D933D4 /* Holla.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Holla.ttf; sourceTree = "<group>"; };
 		98DDB1F3294AC80B00D933D4 /* MADEWaffleSlab.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MADEWaffleSlab.ttf; sourceTree = "<group>"; };
 		98DDB1F5294AD82200D933D4 /* YanoneKaffeesatz-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Bold.ttf"; sourceTree = "<group>"; };
+		98DFEF5629674784006F9BE4 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		98E3F2AD29427B3E00FFCFA1 /* Luna-Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luna-Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryApp.swift; sourceTree = "<group>"; };
 		98E3F2B229427B3E00FFCFA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				98DB8579295EAEA90048A596 /* FallButton.swift */,
 				98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */,
 				98F8EF3E29629F7E0098EF71 /* SearchCancelButton.swift */,
+				98DFEF5629674784006F9BE4 /* HeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */,
 				98F8EF3829625BA00098EF71 /* datesList.swift in Sources */,
 				9899EC2829668C5A00E02277 /* NotificationsView.swift in Sources */,
+				98DFEF5729674784006F9BE4 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

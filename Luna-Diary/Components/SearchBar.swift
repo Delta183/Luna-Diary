@@ -20,9 +20,11 @@ class TextFieldObserver : ObservableObject {
 }
 
 struct SearchBar: View {
+    // Binding string for the search
     @Binding var text: String
+    // Instantiate the textObserver object with a given delay
     @StateObject var textObserver = TextFieldObserver(delay: 1)
-
+    // Boolean to monitor the state of editing
     @State private var isEditing = false
  
     var body: some View {
@@ -32,16 +34,17 @@ struct SearchBar: View {
                 .padding(.horizontal, 25)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
+                // Overlay for the search bar that allows for the x button to appear
                 .overlay(
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.gray)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 8)
-                        // Prompts the x button
+                        // Prompts the x button for clearing text but stat in the typing interface
                         if isEditing {
                             Button(action: {
-                                self.text = ""
+                                textObserver.searchText = ""
                                 
                             }) {
                                 Image(systemName: "multiply.circle.fill")
@@ -52,15 +55,16 @@ struct SearchBar: View {
                     }
                 )
                 .padding(.horizontal, 10)
+                // On tap of the searchbar, the editing mode begins, thus toggle the boolean
                 .onTapGesture {
                     self.isEditing = true
                 }
-                // Prompts the Cancel Button
+                // Prompts the Cancel Button for clearing text and leaving the typing interface
                 if isEditing {
                     Button(action: {
                         self.isEditing = false
-                        self.text = ""
-     
+                        // perhaps this needs to be the debouncedText?
+                        textObserver.searchText = ""
                     }) {
                         Text("Cancel")
                     }
@@ -69,6 +73,7 @@ struct SearchBar: View {
                     .padding(.trailing, 10)
                     .transition(.move(edge: .trailing))
                 }
+        // The text that comes in from the debouncer will go to the actual search for text
         }.onReceive(textObserver.$debouncedText) { (val) in
             text = val
         } // End of HStack

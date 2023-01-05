@@ -24,6 +24,7 @@ struct ReviewEntry: View {
             VStack {
                 // header VStack
                 VStack{
+                    // HStack displaying the date in full
                     HStack {
                         Text(diaryEntry.date, style: .date)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
@@ -51,8 +52,9 @@ struct ReviewEntry: View {
                     .background(Color("headerColour"))
                     .offset(y: 40)
                     .cornerRadius(15)
-                //  This is used to ignore the safe area on top of screen
+                    //  This is used to ignore the safe area on top of screen
                     .ignoresSafeArea(edges: .top)
+                
                 // TextEditor VStack begin
                 VStack {
                     // Look into putting underlines on each line
@@ -82,15 +84,15 @@ struct ReviewEntry: View {
                     Button(action: {                       
                         confirmationShown.toggle()
                         // dismiss()
-                        }) {
+                        }){
                             Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
-                    }.confirmationDialog("Are you sure?",
+                          }.confirmationDialog("Are you sure?",
                                           isPresented: $confirmationShown) {
                                           Button("Confirm Delete", role: .destructive) {
                                               diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
                                               dismiss()
-                                           }
-                                         }// delete button end
+                                          }
+                          }// delete button end
                 }// Hstack end for nav buttons
                )
         }// Outer VStack

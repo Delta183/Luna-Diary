@@ -18,32 +18,7 @@ struct ContentView: View {
             let entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
             VStack {
                 // header begins
-                HStack {
-                    Image(systemName: "square.and.pencil")
-                        .resizable()
-                        .frame(width: 28.0, height: 28.0)
-                        .padding(.leading, 12.0)
-                        .foregroundColor(Color("headerItemColour"))
-                    Text("(username)'s Journal")
-                        .font(Font.custom("MADEWaffleSlab", size: 16))
-                        .foregroundColor(Color("headerItemColour"))
-                    Spacer()
-                    Button(action: {
-                        print("button pressed")
-                    }) {
-                        Image(systemName: "ellipsis.circle")
-                            .resizable()
-                            .frame(width: 28.0, height: 28.0)
-                            .padding(.trailing, 12.0)
-                            .foregroundColor(Color("headerItemColour"))
-                    }
-                }.frame(width: UIScreen.main.bounds.width, height: 150)
-                .offset(y:40)
-                .background(Color("headerColour"))
-                .cornerRadius(15)
-                //  This is used to ignore the safe area on top of screen
-                .ignoresSafeArea(edges: .top)
-                // header end
+                HeaderView()
                 // Today Header below
                 if(!entries.isEmpty){
                     TodayHeader().offset(y:-60)
@@ -73,6 +48,7 @@ struct ContentView: View {
                     }
                   
                 }.offset(y:-50)
+            
                 // Below is the button and text prompt for new entries
                 VStack {
                         Text("Make a new entry today:")
