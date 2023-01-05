@@ -40,7 +40,7 @@ struct TabMainView: View {
             SearchView().tabItem {
                 Label("Search", systemImage: "magnifyingglass")
             }.tag(4)
-            Text("Settings").tabItem {
+            SettingsView().tabItem {
                                 Image(systemName: "gear")
                                 Text("Settings")
             }.tag(5)

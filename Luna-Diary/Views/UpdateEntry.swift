@@ -30,7 +30,6 @@ struct UpdateEntry: View {
                     }.offset(y: 10)
                     .padding(.leading, 6.0)
                     // This is how you pass information to objects
-                    // Also formatting the passed date for only day, month and year
                     TextEditor(text: $diaryEntry.title)
                         .font(Font.custom("MADEWaffleSlab", size: 20))
                         .foregroundColor(Color("headerItemColour"))
@@ -57,8 +56,6 @@ struct UpdateEntry: View {
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
             }.background(Color("backgroundColour"))
-            // .navigationBarBackButtonHidden(true)
-            // NavigationBar button placed below
             .navigationBarItems(trailing:
             HStack{
                 // Save button begin
@@ -90,7 +87,7 @@ struct UpdateEntry: View {
             })
             
         }.navigationBarBackButtonHidden(true)// Outer VStack
-    } // NavigationStack end
+    }
 }
 
 struct UpdateEntry_Previews: PreviewProvider {

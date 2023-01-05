@@ -18,6 +18,9 @@
 		987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE2294621EA00C807F2 /* TabMainView.swift */; };
 		987D8DE52946313900C807F2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D8DE42946313900C807F2 /* SearchBar.swift */; };
 		9899EC2329665AAB00E02277 /* UpdateEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9899EC2229665AAB00E02277 /* UpdateEntry.swift */; };
+		9899EC252966869C00E02277 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9899EC242966869C00E02277 /* SettingsView.swift */; };
+		9899EC2829668C5A00E02277 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9899EC2729668C5A00E02277 /* NotificationsView.swift */; };
+		9899EC2A29668C7300E02277 /* ColourPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9899EC2929668C7300E02277 /* ColourPaletteView.swift */; };
 		98B40B0D294BBEC400463C68 /* NoEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0C294BBEC400463C68 /* NoEntriesView.swift */; };
 		98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0E294BBF2500463C68 /* EntryRow.swift */; };
 		98D70D2A2952503600410D33 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D70D292952503600410D33 /* TodayHeader.swift */; };
@@ -70,6 +73,9 @@
 		987D8DE2294621EA00C807F2 /* TabMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainView.swift; sourceTree = "<group>"; };
 		987D8DE42946313900C807F2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		9899EC2229665AAB00E02277 /* UpdateEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEntry.swift; sourceTree = "<group>"; };
+		9899EC242966869C00E02277 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9899EC2729668C5A00E02277 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		9899EC2929668C7300E02277 /* ColourPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourPaletteView.swift; sourceTree = "<group>"; };
 		98B40B0C294BBEC400463C68 /* NoEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEntriesView.swift; sourceTree = "<group>"; };
 		98B40B0E294BBF2500463C68 /* EntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRow.swift; sourceTree = "<group>"; };
 		98D70D292952503600410D33 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		987D8DE6294636BA00C807F2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9899EC2629668AC700E02277 /* SettingViews */,
 				98E3F2B029427B3E00FFCFA1 /* Luna_DiaryApp.swift */,
 				98E3F2B229427B3E00FFCFA1 /* ContentView.swift */,
 				9805468D2944DFCF006301CF /* CalendarView.swift */,
@@ -152,8 +159,18 @@
 				9808BF322946C3380050F8D1 /* EntryView.swift */,
 				981D3829294C237200B30715 /* ReviewEntry.swift */,
 				9899EC2229665AAB00E02277 /* UpdateEntry.swift */,
+				9899EC242966869C00E02277 /* SettingsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9899EC2629668AC700E02277 /* SettingViews */ = {
+			isa = PBXGroup;
+			children = (
+				9899EC2729668C5A00E02277 /* NotificationsView.swift */,
+				9899EC2929668C7300E02277 /* ColourPaletteView.swift */,
+			);
+			path = SettingViews;
 			sourceTree = "<group>";
 		};
 		98B40B0B294BBE4300463C68 /* Components */ = {
@@ -388,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				985CFA9E29513BAF001FB400 /* DiaryModelController.swift in Sources */,
+				9899EC252966869C00E02277 /* SettingsView.swift in Sources */,
 				98E3F2B329427B3E00FFCFA1 /* ContentView.swift in Sources */,
 				987D8DE3294621EA00C807F2 /* TabMainView.swift in Sources */,
 				981D382A294C237300B30715 /* ReviewEntry.swift in Sources */,
@@ -403,12 +421,14 @@
 				98B40B0D294BBEC400463C68 /* NoEntriesView.swift in Sources */,
 				98F8EF3F29629F7E0098EF71 /* SearchCancelButton.swift in Sources */,
 				9899EC2329665AAB00E02277 /* UpdateEntry.swift in Sources */,
+				9899EC2A29668C7300E02277 /* ColourPaletteView.swift in Sources */,
 				9835735A2944F54700038530 /* CurrentDayView.swift in Sources */,
 				9808BF332946C3380050F8D1 /* EntryView.swift in Sources */,
 				98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */,
 				985CFA9B295137E1001FB400 /* DiaryModel.swift in Sources */,
 				98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */,
 				98F8EF3829625BA00098EF71 /* datesList.swift in Sources */,
+				9899EC2829668C5A00E02277 /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
