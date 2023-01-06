@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 
 // Structures can be used to create classes, a style for a button in this case
-struct FallButton: ButtonStyle {
+struct ThemeButton: ButtonStyle {
+    @EnvironmentObject var csController: ColourSchemeController
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(15)
-            .background(Color("headerItemColour"))
-            .foregroundColor(Color("backgroundColour"))
+            .background(Color(hex: csController.headerItemColour))
+            .foregroundColor(Color(hex: csController.backgroundColour))
             .clipShape(Capsule())
     }
 }

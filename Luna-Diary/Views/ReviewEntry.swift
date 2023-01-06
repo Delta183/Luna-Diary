@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReviewEntry: View {
+    @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     @State private var readyToNavigate : Bool = false
@@ -22,17 +23,20 @@ struct ReviewEntry: View {
         
         NavigationStack{
             VStack {
+                Color(hex: csController.headerColour)
+                    .ignoresSafeArea(edges: .top)
+                    .frame(height:3)
                 // header VStack
                 VStack{
                     // HStack displaying the date in full
                     HStack {
                         Text(diaryEntry.date, style: .date)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color("entryTextColour"))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                             .multilineTextAlignment(.leading)
                         Text(diaryEntry.date, style: .time)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color("entryTextColour"))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                             .multilineTextAlignment(.leading)
                         Spacer()
                     }
@@ -43,13 +47,13 @@ struct ReviewEntry: View {
                         Text(diaryEntry.title)
                             .font(Font.custom("MADEWaffleSlab", size: 20))
                             .fontWeight(.bold)
-                            .foregroundColor(Color("headerItemColour"))
+                            .foregroundColor(Color(hex: csController.headerItemColour))
                             .multilineTextAlignment(.leading)
                         Spacer()
                         // currentDateObject.date
                     }.padding(.leading, 6.0)
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
-                    .background(Color("headerColour"))
+                    .background(Color(hex: csController.headerColour))
                     .offset(y: 40)
                     .cornerRadius(15)
                     //  This is used to ignore the safe area on top of screen
@@ -59,13 +63,13 @@ struct ReviewEntry: View {
                 VStack {
                     // Look into putting underlines on each line
                     Text(diaryEntry.content)
-                        .foregroundColor(Color("entryTextColour"))
+                        .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                         .lineSpacing(2)
                 }.padding(.horizontal, 2)
                 .offset( y:-90)
                 Spacer()
-            }.background(Color("backgroundColour"))
+            }.background(Color(hex: csController.backgroundColour))
             // NavigationBar button placed below
             .navigationBarItems(trailing:
                 HStack {
@@ -75,7 +79,9 @@ struct ReviewEntry: View {
                             // print("Edit button pressed...")
                         readyToNavigate.toggle()
                         }) {
-                            Text("Edit").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                            Text("Edit")
+                                .foregroundColor(.white)
+                                .font(Font.custom("MADEWaffleSlab", size: 24))
                         }.navigationDestination(isPresented: $readyToNavigate){
                             UpdateEntry(diaryEntry: diaryEntry, originalEntry: diaryEntry)
                         }

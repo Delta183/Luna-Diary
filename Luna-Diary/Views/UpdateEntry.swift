@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UpdateEntry: View {
+    @EnvironmentObject var csController: ColourSchemeController
     // EnvironmentObjects are for sharing a State object across multiple classes
     @EnvironmentObject var diaryModelController : DiaryModelController
     // Diary Entry and a copy so it can be reverted if needed
@@ -17,12 +18,16 @@ struct UpdateEntry: View {
   
     var body: some View {
         NavigationStack{
+            
             VStack {
+                Color(hex: csController.headerColour)
+                    .ignoresSafeArea(edges: .top)
+                    .frame(height:3)
                 // header VStack
                 VStack{
                     HStack {
                         Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color("entryTextColour"))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                         DatePicker(
                                 "",
                                 selection: $diaryEntry.date,
@@ -34,14 +39,14 @@ struct UpdateEntry: View {
                     // This is how you pass information to objects
                     TextEditor(text: $diaryEntry.title)
                         .font(Font.custom("MADEWaffleSlab", size: 20))
-                        .foregroundColor(Color("headerItemColour"))
+                        .foregroundColor(Color(hex: csController.headerItemColour))
                         .frame(height: 40.0)
                         .multilineTextAlignment(.leading)
                         .offset(y:-10)
                         .scrollContentBackground(.hidden)
-                        .background(Color("headerColour"))
+                        .background(Color(hex: csController.headerColour))
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
-                    .background(Color("headerColour"))
+                    .background(Color(hex: csController.headerColour))
                     .offset(y: 40)
                     .cornerRadius(15)
                     //  This is used to ignore the safe area on top of screen
@@ -54,11 +59,11 @@ struct UpdateEntry: View {
                         .padding(.horizontal, 2.0)
                         // This must be done to put custom background
                         .scrollContentBackground(.hidden)
-                        .foregroundColor(Color("entryTextColour"))
+                        .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
-            }.background(Color("backgroundColour"))
+            }.background(Color(hex: csController.backgroundColour))
             .navigationBarItems(trailing:
                 // HStack containing the buttons
                 HStack{

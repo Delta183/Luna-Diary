@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CurrentDayView: View {
+    @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
     // Boolean used for navigation to other pages on click of custom buttons lol
     @State private var readyToNavigate : Bool = false
@@ -28,10 +29,10 @@ struct CurrentDayView: View {
                 VStack {
                     Text("On this day...")
                         .font(Font.custom("Holla", size: 72))
-                    .foregroundColor(Color("entryTextColour"))
+                    .foregroundColor(Color(hex: csController.entryTextColour))
                     Text(currentDate, style: .date)
                         .font(Font.custom("Poppins-Light", size: 18))
-                        .foregroundColor(Color("headerItemColour"))
+                        .foregroundColor(Color(hex: csController.headerItemColour))
                 }.offset(y:-70)
                 // Below is the ScrollView displaying all entires if applicable
                 VStack {
@@ -54,10 +55,10 @@ struct CurrentDayView: View {
                         }
                     }.padding(.top, -20) // ScrollView End
                 }.offset(y:-50) // VStack end for ScrollView
-                Text("That's all, folks!").font(Font.custom("Holla", size: 36)).foregroundColor(Color("entryTextColour"))
+                Text("That's all, folks!").font(Font.custom("Holla", size: 36)).foregroundColor(Color(hex: csController.entryTextColour))
                 Spacer()
-            }.background(Color("backgroundColour"))
-        }.accentColor(Color("headerItemColour"))// End of NavigationStack
+            }.background(Color(hex: csController.backgroundColour))
+        }.accentColor(Color(hex: csController.headerItemColour))// End of NavigationStack
     }
 
     // This function is to subvert the issues with changes in Views when it came to incrementing a variable
@@ -67,10 +68,10 @@ struct CurrentDayView: View {
         let date2Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date2)
         let numOfYearDiff = currDateComponents.year! - date2Components.year!
         if numOfYearDiff <= 1 {
-            return Text("\(numOfYearDiff) year ago").foregroundColor(Color("headerItemColour"))
+            return Text("\(numOfYearDiff) year ago").foregroundColor(Color(hex: csController.headerItemColour))
         }
         else{
-            return Text("\(numOfYearDiff) years ago").foregroundColor(Color("headerItemColour"))
+            return Text("\(numOfYearDiff) years ago").foregroundColor(Color(hex: csController.headerItemColour))
         }
     }
 }

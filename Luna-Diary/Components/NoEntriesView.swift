@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct NoEntriesView: View{
+    @EnvironmentObject var csController: ColourSchemeController
+
     var body: some View{
         Image("peng1")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 300.0, height: 300.0)
         Text("No Entries... Yet.")
-            .font(Font.custom("Holla", size: 48))            .fontWeight(.bold)
-            .foregroundColor(Color("headerItemColour"))
+            .font(Font.custom("Holla", size: 48))
+            .fontWeight(.bold)
+            .foregroundColor(Color(hex: csController.headerItemColour))
     }
 }
 struct NoEntriesView_Previews: PreviewProvider {

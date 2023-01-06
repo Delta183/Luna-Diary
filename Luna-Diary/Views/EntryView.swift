@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EntryView: View {
-    
+    @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     @Environment(\.dismiss) var dismiss
@@ -16,11 +16,13 @@ struct EntryView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                // header VStack
                 VStack{
+                    Color(hex: csController.headerColour)
+                        .ignoresSafeArea(edges: .top)
+                        .frame(height:3)
                     HStack {
                         Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color("entryTextColour"))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                         DatePicker(
                             "",
                             selection: $diaryEntry.date,
@@ -34,14 +36,14 @@ struct EntryView: View {
                     // Also formatting the passed date for only day, month and year
                     TextEditor(text: $diaryEntry.title)
                         .font(Font.custom("MADEWaffleSlab", size: 20))
-                        .foregroundColor(Color("headerItemColour"))
+                        .foregroundColor(Color(hex: csController.headerItemColour))
                         .frame(height: 40.0)
                         .multilineTextAlignment(.leading)
                         .offset(y:-10)
                         .scrollContentBackground(.hidden)
-                        .background(Color("headerColour"))
+                        .background(Color(hex: csController.headerColour))
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
-                    .background(Color("headerColour"))
+                    .background(Color(hex: csController.headerColour))
                     .offset(y: 40)
                     .cornerRadius(15)
                     .ignoresSafeArea(edges: .top) //  This is used to ignore the safe area on top of screen
@@ -53,23 +55,18 @@ struct EntryView: View {
                         .padding(.horizontal, 2.0)
                         // This must be done to put custom background
                         .scrollContentBackground(.hidden)
-                        .foregroundColor(Color("entryTextColour"))
+                        .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
-            }.background(Color("backgroundColour"))
+            }.background(Color(hex: csController.backgroundColour))
             .navigationBarItems(trailing:
                 // NavigationBar button placed below
                 HStack{
                     // Save button begin
                     Button(action: {
-                        let entries = self.diaryModelController.diaryEntries
-                        let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
-                        if index != nil{
-                            // Create a new entry in the array if it is truly a new diary entry
-                            self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
-                            dismiss()
-                        }
+                        self.diaryModelController.createDiaryEntry(title: diaryEntry.title, content: diaryEntry.content, date: diaryEntry.date)
+                        dismiss()
                     }) {
                         Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                     }

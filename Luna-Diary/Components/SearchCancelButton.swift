@@ -10,11 +10,12 @@ import SwiftUI
 
 // Structures can be used to create classes, a style for a button in this case
 struct SearchCancelButton: ButtonStyle {
+    @EnvironmentObject var csController: ColourSchemeController
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(10)
-            .background(Color("entryTextColour"))
-            .foregroundColor(Color("entryRowColour"))
+            .background(Color(hex: csController.entryTextColour))
+            .foregroundColor(Color(hex: csController.entryRowColour))
             .clipShape(Capsule())
     }
 }

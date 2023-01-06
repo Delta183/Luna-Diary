@@ -7,10 +7,9 @@
 
 import SwiftUI
 
+// Identical to Entry Row but includes the date in this instance
 struct EntryRowDate: View {
-    
-    // Something about making this state turned it not active
-    // Perhaps observed object?
+    @EnvironmentObject var csController: ColourSchemeController
     var diaryEntry: DiaryModel
 
     var body: some View {
@@ -21,14 +20,14 @@ struct EntryRowDate: View {
                 HStack {
                     Text(diaryEntry.title)
                             .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
-                            .foregroundColor(Color("entryTextColour"))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                             .lineLimit(1)
                             .padding([.top, .leading], 4.0)
                         .padding(.bottom, 1.0)
                     Spacer()
                     Text(dateString)
                             .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
-                            .foregroundColor(Color("entryTextColour"))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                             .lineLimit(1)
                             .padding(.top, 4.0)
                             .padding(.trailing, 6)
@@ -36,14 +35,14 @@ struct EntryRowDate: View {
                 }
                         
                 Text(diaryEntry.content)
-                        .foregroundColor(Color("entryTextColour"))
+                        .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                         .lineLimit(1)
                         .padding([.leading, .bottom], 4.0)
-                }.background(Color("headerColour"))
-            Color("backgroundColour")
+                }.background(Color(hex: csController.headerColour))
+            Color(hex: csController.backgroundColour)
         }.frame(height: 60)
-        .background(Color("backgroundColour"))
+        .background(Color(hex: csController.backgroundColour))
         
     }
 }

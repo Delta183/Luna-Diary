@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TodayHeader: View {
+    @EnvironmentObject var csController: ColourSchemeController
+
     @State var date = Date()
     // date = Calendar.current.date(byAdding: .day, value: -7, to: Date())
     
@@ -15,10 +17,10 @@ struct TodayHeader: View {
     var body: some View {
         Text("Today")
             .font(Font.custom("Holla", size: 72))
-        .foregroundColor(Color("entryTextColour"))
+        .foregroundColor(Color(hex: csController.entryTextColour))
         Text(date, style: .date)
             .font(Font.custom("Poppins-Light", size: 18))
-            .foregroundColor(Color("headerItemColour"))
+            .foregroundColor(Color(hex: csController.headerItemColour))
     }
 }
 

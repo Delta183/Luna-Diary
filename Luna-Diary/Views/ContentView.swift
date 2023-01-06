@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var readyToNavigate : Bool = false
     let calendar = Calendar.current
@@ -53,7 +54,7 @@ struct ContentView: View {
                 VStack {
                         Text("Make a new entry today:")
                             .font(Font.custom("Poppins-Light", size: 18))
-                            .foregroundColor(Color("headerItemColour"))
+                            .foregroundColor(Color(hex: csController.headerItemColour))
                         Button(action: {
                             readyToNavigate.toggle()
                         }) {
@@ -67,9 +68,11 @@ struct ContentView: View {
                     }
                 // selection stack end
                 Spacer()
-            }.background(Color("backgroundColour"))
+            }.background(Color(hex: csController.backgroundColour))
+            // "#FFE7C3" backgroundColour
         // End of NavigationStack on the line below
-        }.accentColor(Color("headerItemColour"))
+        }.accentColor(Color(hex: csController.headerItemColour))
+        // "#612808" headerItemColour
     }
 }
 

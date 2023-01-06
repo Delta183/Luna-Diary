@@ -7,8 +7,8 @@
 import SwiftUI
 
 struct SearchView: View {
+    @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
-    // @StateObject var debounceObject = DebounceObject()
     @State private var readyToNavigate : Bool = false
     let calendar = Calendar.current
     
@@ -17,10 +17,13 @@ struct SearchView: View {
     var body: some View {
         NavigationStack{
             VStack{
+                Color(hex: csController.backgroundColour)
+                    .ignoresSafeArea(edges: .top)
+                    .frame(height:5)
                 Text("Search for Entries")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(Color("headerItemColour"))
+                    .foregroundColor(Color(hex: csController.headerItemColour))
                     .multilineTextAlignment(.center)
                 SearchBar(text: $searchText)
                 // Display results of search be it successful results or nothing should no results return
@@ -38,13 +41,13 @@ struct SearchView: View {
                 } else {
                     Text("No results found...").font(.headline)
                         .fontWeight(.bold)
-                        .foregroundColor(Color("headerItemColour"))
+                        .foregroundColor(Color(hex: csController.headerItemColour))
                         .multilineTextAlignment(.center)
                 }
                 // Spacer for if there is no entries
                 Spacer()
-            }.background(Color("backgroundColour")) // VStack ends
-        }.accentColor(Color("headerItemColour")) // NavStack ends
+            }.background(Color(hex: csController.backgroundColour)) // VStack ends
+        }.accentColor(Color(hex: csController.headerItemColour)) // NavStack ends
     }// body end
     // The information populating the searchResults array will be entries that have a title or content containing the given word
     var searchResults: [DiaryModel] {

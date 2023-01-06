@@ -11,34 +11,39 @@ import SwiftUI
 // for all the views so to speak and that frame gets
 // replaced each time hence it is alone
 struct TabMainView: View {
-
+    var csController: ColourSchemeController
+    
     init() {
+        self.csController = ColourSchemeController()
         UITabBar.appearance().backgroundColor = UIColor.white
     }
+    
     var body: some View {
         // This is the tab view on the bottom
         TabView { // <- Use selection here
-            ContentView()
+            ContentView().environmentObject(csController)
                 .tabItem {
                     Label("Today", systemImage: "heart")
                 }.tag(0)
-            CalendarView()
+            CalendarView().environmentObject(csController)
                 .tabItem {
                     Label("Entries", systemImage: "calendar")
                 }.tag(1)
-            CurrentDayView()
-                .badge(1)
+            CurrentDayView().environmentObject(csController)
+                // .badge(1)
                 .tabItem {
                     Label("On This Day", systemImage: "clock")
                 }.tag(2)
-            SearchView().tabItem {
-                Label("Search", systemImage: "magnifyingglass")
-            }.tag(3)
-            SettingsView().tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
-            }.tag(4)
-        }
+            SearchView().environmentObject(csController)
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }.tag(3)
+            SettingsView().environmentObject(csController)
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }.tag(4)
+        }.accentColor(Color(hex: csController.entryRowColour))
     }
 }
 
