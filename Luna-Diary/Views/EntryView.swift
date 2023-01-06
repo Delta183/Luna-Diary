@@ -22,7 +22,7 @@ struct EntryView: View {
                         .frame(height:3)
                     HStack {
                         Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color(hex: csController.entryTextColour))
+                            .foregroundColor(Color(hex: csController.headerItemColour))
                         DatePicker(
                             "",
                             selection: $diaryEntry.date,
@@ -30,7 +30,7 @@ struct EntryView: View {
                         ).labelsHidden() // This hides the given text of DatePicker
                         Spacer()
                     }.offset(y: 10) // HStack
-                    .padding(.leading, 6.0)
+                        .padding(.leading, 6.0)
                     
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
@@ -53,12 +53,13 @@ struct EntryView: View {
                     // Look into putting underlines on each line
                     TextEditor(text: $diaryEntry.content)
                         .padding(.horizontal, 2.0)
-                        // This must be done to put custom background
+                    // This must be done to put custom background
                         .scrollContentBackground(.hidden)
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                 }.padding(.horizontal, 4.0)
-                .offset(y: -100)
+                    .offset(y: -100)
+                
             }.background(Color(hex: csController.backgroundColour))
             .navigationBarItems(trailing:
                 // NavigationBar button placed below

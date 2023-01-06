@@ -28,20 +28,20 @@ struct CalendarView: View {
                 Text("Select a Date")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(Color(hex: csController.headerItemColour))
+                    .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
                 
                 VStack {
                     Divider()
                         .frame(height: 2.0)
-                        .background(Color(hex: csController.headerItemColour))
+                        .background(Color(hex: csController.entryTextColour))
                     DatePicker(
                         "Start Date",
                         selection: $date,
                         displayedComponents: [.date]
                     ).datePickerStyle(.graphical)
                     .frame(width: 320)
-                    .accentColor(Color(hex: csController.headerItemColour))
+                    .accentColor(Color(hex: csController.entryTextColour))
                     .onChange(of: date, perform: { value in
                         // On change of the date, update the filter and in turn fetch accurate entries from that date
                         entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}

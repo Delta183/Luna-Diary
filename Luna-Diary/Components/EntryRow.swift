@@ -30,7 +30,7 @@ struct EntryRow: View {
                         .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
                         .lineLimit(1)
                         .padding([.leading, .bottom], 4.0)
-                }.background(Color(hex: csController.headerColour))
+                }.background(Color(hex: csController.entryRowColour))
             Color(hex: csController.backgroundColour)
         }.frame(height: 60)
         .background(Color(hex: csController.backgroundColour))

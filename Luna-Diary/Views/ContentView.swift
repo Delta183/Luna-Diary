@@ -54,11 +54,14 @@ struct ContentView: View {
                 VStack {
                         Text("Make a new entry today:")
                             .font(Font.custom("Poppins-Light", size: 18))
-                            .foregroundColor(Color(hex: csController.headerItemColour))
+                            .foregroundColor(Color(hex: csController.entryTextColour))
                         Button(action: {
                             readyToNavigate.toggle()
                         }) {
+                            // The rendering mode makes it so that the custom immage color can change
                             Image("newEntryIcon")
+                                .renderingMode(.template)
+                                .foregroundColor(Color(hex: csController.headerColour))
                         }
                     }.offset(y:-60)
                     .navigationDestination(isPresented: $readyToNavigate) {

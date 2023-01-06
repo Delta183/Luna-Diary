@@ -43,7 +43,7 @@ struct TabMainView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }.tag(4)
-        }.accentColor(Color(hex: csController.entryRowColour))
+        }.accentColor(Color(hex: csController.headerItemColour))
     }
 }
 

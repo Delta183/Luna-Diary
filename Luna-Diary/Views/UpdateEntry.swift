@@ -20,14 +20,14 @@ struct UpdateEntry: View {
         NavigationStack{
             
             VStack {
-                Color(hex: csController.headerColour)
-                    .ignoresSafeArea(edges: .top)
-                    .frame(height:3)
                 // header VStack
                 VStack{
+                    Color(hex: csController.headerColour)
+                        .ignoresSafeArea(edges: .top)
+                        .frame(height:3)
                     HStack {
                         Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color(hex: csController.entryTextColour))
+                            .foregroundColor(Color(hex: csController.headerItemColour))
                         DatePicker(
                                 "",
                                 selection: $diaryEntry.date,

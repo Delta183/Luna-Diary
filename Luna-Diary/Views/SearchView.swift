@@ -23,7 +23,7 @@ struct SearchView: View {
                 Text("Search for Entries")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(Color(hex: csController.headerItemColour))
+                    .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
                 SearchBar(text: $searchText)
                 // Display results of search be it successful results or nothing should no results return
@@ -41,7 +41,7 @@ struct SearchView: View {
                 } else {
                     Text("No results found...").font(.headline)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(hex: csController.headerItemColour))
+                        .foregroundColor(Color(hex: csController.entryTextColour))
                         .multilineTextAlignment(.center)
                 }
                 // Spacer for if there is no entries

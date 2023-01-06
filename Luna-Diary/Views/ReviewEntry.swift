@@ -23,20 +23,21 @@ struct ReviewEntry: View {
         
         NavigationStack{
             VStack {
-                Color(hex: csController.headerColour)
-                    .ignoresSafeArea(edges: .top)
-                    .frame(height:3)
+               
                 // header VStack
                 VStack{
+                    Color(hex: csController.headerColour)
+                        .ignoresSafeArea(edges: .top)
+                        .frame(height:30)
                     // HStack displaying the date in full
                     HStack {
                         Text(diaryEntry.date, style: .date)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color(hex: csController.entryTextColour))
+                            .foregroundColor(Color(hex: csController.headerItemColour))
                             .multilineTextAlignment(.leading)
                         Text(diaryEntry.date, style: .time)
                             .font(Font.custom("MADEWaffleSlab", size: 16))
-                            .foregroundColor(Color(hex: csController.entryTextColour))
+                            .foregroundColor(Color(hex: csController.headerItemColour))
                             .multilineTextAlignment(.leading)
                         Spacer()
                     }
@@ -44,11 +45,13 @@ struct ReviewEntry: View {
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
                     HStack {
-                        Text(diaryEntry.title)
-                            .font(Font.custom("MADEWaffleSlab", size: 20))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(hex: csController.headerItemColour))
-                            .multilineTextAlignment(.leading)
+                        ScrollView{
+                            Text(diaryEntry.title)
+                                .font(Font.custom("MADEWaffleSlab", size: 20))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(hex: csController.headerItemColour))
+                                .multilineTextAlignment(.leading)
+                        }.offset(y:-15)
                         Spacer()
                         // currentDateObject.date
                     }.padding(.leading, 6.0)

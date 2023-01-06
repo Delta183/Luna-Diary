@@ -16,26 +16,26 @@ struct SettingsView: View {
             VStack{
                 Color(hex: csController.backgroundColour)
                     .ignoresSafeArea(edges: .top)
-                    .frame(height:5)
-                Text("Settings:")
+                    .frame(height:3)
+                Text("Settings")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(Color(hex: csController.headerItemColour))
+                    .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
                     .offset(y:20)
                         // List of settings below
                         List {
-                            Text("Notification Settings").listRowBackground(Color(hex: csController.entryRowColour))
+                            Text("Notification Settings").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
                             NavigationLink(destination: ColourPaletteView()){
-                                Text("Change Colour Scheme")
+                                Text("Change Colour Scheme").foregroundColor(Color(hex: csController.entryTextColour))
                             }.listRowBackground(Color(hex: csController.entryRowColour))
-                            Text("Change Name").listRowBackground(Color(hex: csController.entryRowColour))
-                            Text("Delete All Entries").listRowBackground(Color(hex: csController.entryRowColour))
+                            Text("Change Name").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
+                            Text("Delete All Entries").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
                         }.listStyle(.grouped)
                         .scrollContentBackground(Visibility.hidden)
                         .background(Color(hex: csController.backgroundColour))
                         Spacer()
-                }.background(Color(hex: csController.backgroundColour)).accentColor(Color(hex: csController.headerItemColour))
+                }.background(Color(hex: csController.backgroundColour))
         }// body end
     }// NavStack ends
 }

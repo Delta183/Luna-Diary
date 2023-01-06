@@ -14,7 +14,7 @@ struct ThemeButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(15)
-            .background(Color(hex: csController.headerItemColour))
+            .background(Color(hex: csController.entryTextColour))
             .foregroundColor(Color(hex: csController.backgroundColour))
             .clipShape(Capsule())
     }

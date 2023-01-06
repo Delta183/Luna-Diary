@@ -20,7 +20,7 @@ struct TodayHeader: View {
         .foregroundColor(Color(hex: csController.entryTextColour))
         Text(date, style: .date)
             .font(Font.custom("Poppins-Light", size: 18))
-            .foregroundColor(Color(hex: csController.headerItemColour))
+            .foregroundColor(Color(hex: csController.entryTextColour))
     }
 }
 
