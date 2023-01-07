@@ -12,6 +12,7 @@ import SwiftUI
 // replaced each time hence it is alone
 struct TabMainView: View {
     var csController: ColourSchemeController
+
     
     init() {
         self.csController = ColourSchemeController()
@@ -30,7 +31,7 @@ struct TabMainView: View {
                     Label("Entries", systemImage: "calendar")
                 }.tag(1)
             CurrentDayView().environmentObject(csController)
-                // .badge(1)
+            // .badge(1)
                 .tabItem {
                     Label("On This Day", systemImage: "clock")
                 }.tag(2)

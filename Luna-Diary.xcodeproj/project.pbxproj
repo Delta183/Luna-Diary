@@ -41,6 +41,8 @@
 		98E3F2CC29427B4200FFCFA1 /* Luna_DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2CB29427B4200FFCFA1 /* Luna_DiaryUITests.swift */; };
 		98E3F2CE29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */; };
 		98F1224829684D0500E4F4D1 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F1224729684D0500E4F4D1 /* HelperExtensions.swift */; };
+		98F1224A2969320200E4F4D1 /* NameChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F122492969320200E4F4D1 /* NameChangeView.swift */; };
+		98F1224C29693D2400E4F4D1 /* ReviewAllEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F1224B29693D2300E4F4D1 /* ReviewAllEntriesView.swift */; };
 		98F8EF3829625BA00098EF71 /* datesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3729625BA00098EF71 /* datesList.swift */; };
 		98F8EF3A29626F8D0098EF71 /* EntryRowDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */; };
 		98F8EF3D2962720D0098EF71 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */; };
@@ -103,6 +105,8 @@
 		98E3F2CB29427B4200FFCFA1 /* Luna_DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryUITests.swift; sourceTree = "<group>"; };
 		98E3F2CD29427B4200FFCFA1 /* Luna_DiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luna_DiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		98F1224729684D0500E4F4D1 /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
+		98F122492969320200E4F4D1 /* NameChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChangeView.swift; sourceTree = "<group>"; };
+		98F1224B29693D2300E4F4D1 /* ReviewAllEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAllEntriesView.swift; sourceTree = "<group>"; };
 		98F8EF3729625BA00098EF71 /* datesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = datesList.swift; sourceTree = "<group>"; };
 		98F8EF3929626F8D0098EF71 /* EntryRowDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRowDate.swift; sourceTree = "<group>"; };
 		98F8EF3C2962720D0098EF71 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				981D3829294C237200B30715 /* ReviewEntry.swift */,
 				9899EC2229665AAB00E02277 /* UpdateEntry.swift */,
 				9899EC242966869C00E02277 /* SettingsView.swift */,
+				98F1224B29693D2300E4F4D1 /* ReviewAllEntriesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			children = (
 				9899EC2729668C5A00E02277 /* NotificationsView.swift */,
 				9899EC2929668C7300E02277 /* ColourPaletteView.swift */,
+				98F122492969320200E4F4D1 /* NameChangeView.swift */,
 			);
 			path = SettingViews;
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				9805468E2944DFCF006301CF /* CalendarView.swift in Sources */,
 				98DB857A295EAEA90048A596 /* ThemeButton.swift in Sources */,
 				9805468C29438901006301CF /* jinxImage.swift in Sources */,
+				98F1224C29693D2400E4F4D1 /* ReviewAllEntriesView.swift in Sources */,
 				98DFEF5929679DED006F9BE4 /* ColourSchemeController.swift in Sources */,
 				98F8EF3A29626F8D0098EF71 /* EntryRowDate.swift in Sources */,
 				987D8DE52946313900C807F2 /* SearchBar.swift in Sources */,
@@ -433,6 +440,7 @@
 				9899EC2329665AAB00E02277 /* UpdateEntry.swift in Sources */,
 				9899EC2A29668C7300E02277 /* ColourPaletteView.swift in Sources */,
 				9835735A2944F54700038530 /* CurrentDayView.swift in Sources */,
+				98F1224A2969320200E4F4D1 /* NameChangeView.swift in Sources */,
 				9808BF332946C3380050F8D1 /* EntryView.swift in Sources */,
 				98F1224829684D0500E4F4D1 /* HelperExtensions.swift in Sources */,
 				98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */,

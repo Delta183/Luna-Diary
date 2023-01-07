@@ -13,7 +13,9 @@ struct CalendarView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var date = Date()
     private let calendar = Calendar.current
-    @State private var readyToNavigate : Bool = false
+    @State private var navigateEntry : Bool = false
+    @State private var navigateReview : Bool = false
+
 
     var body: some View {
         NavigationStack {
@@ -41,7 +43,7 @@ struct CalendarView: View {
                         displayedComponents: [.date]
                     ).datePickerStyle(.graphical)
                     .frame(width: 320)
-                    .accentColor(Color(hex: csController.entryTextColour))
+                    .accentColor(Color(hex: csController.headerItemColour))
                     .onChange(of: date, perform: { value in
                         // On change of the date, update the filter and in turn fetch accurate entries from that date
                         entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
@@ -53,23 +55,25 @@ struct CalendarView: View {
                 
                 HStack {
                     Button("Make an Entry") {
-                        readyToNavigate.toggle()
+                        navigateEntry.toggle()
                     }.buttonStyle(ThemeButton())
-                    .navigationDestination(isPresented: $readyToNavigate) {
+                    .navigationDestination(isPresented: $navigateEntry) {
                         // This will be subject to change 
                         EntryView(diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter Text here...", date: date))
                     }
-                    Button("Review Entries") {
-                        print("Button pressed 3!")
+                    Button("Review All Entries") {
+                        navigateReview.toggle()
+                    }.buttonStyle(ThemeButton())
+                    .navigationDestination(isPresented: $navigateReview) {
+                        ReviewAllEntriesView()
                     }
-                    .buttonStyle(ThemeButton())
                     
                 }.padding(.top, 6.0) // Buttons HStack
                 // Below is the entries preview if applicable
                 Text("There are \(entries.count) entries for that day")
                     .font(.subheadline)
                     .fontWeight(.bold)
-                    .foregroundColor(Color(hex: csController.headerItemColour))
+                    .foregroundColor(Color(hex: csController.entryTextColour))
                 VStack {
                     // Present entries if any otherwise put a spacer
                     if !entries.isEmpty {
@@ -91,7 +95,7 @@ struct CalendarView: View {
                 // offset the stack by a bit so that the title isn't as high up
             }.background(Color(hex: csController.backgroundColour))
                 
-        }.accentColor(Color(hex: csController.headerItemColour))
+        }.accentColor(Color(hex: csController.entryTextColour))
     }
 }
 

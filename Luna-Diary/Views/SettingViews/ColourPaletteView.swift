@@ -52,6 +52,7 @@ struct ColourPaletteView: View {
         let selectedTheme = UserDefaults.standard.string(forKey: "currTheme") ?? "Fall Theme"
         return Text("Current Theme: \(selectedTheme)")
     }
+    
     func changeColourScheme(){
         // Switch in Swift doesn't have fallthrough
         switch selection{

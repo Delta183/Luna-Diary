@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
+    @State private var confirmationShown = false // Unused
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack{
@@ -25,18 +27,34 @@ struct SettingsView: View {
                     .offset(y:20)
                         // List of settings below
                         List {
-                            Text("Notification Settings").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
+                            // Text("Notification Settings").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
+                            // Change Colour Scheme
                             NavigationLink(destination: ColourPaletteView()){
                                 Text("Change Colour Scheme").foregroundColor(Color(hex: csController.entryTextColour))
                             }.listRowBackground(Color(hex: csController.entryRowColour))
-                            Text("Change Name").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
-                            Text("Delete All Entries").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
+                            
+                            // Change Name
+                            NavigationLink(destination: NameChangeView()){
+                                Text("Change Name").foregroundColor(Color(hex: csController.entryTextColour))
+                            }.listRowBackground(Color(hex: csController.entryRowColour))
+                           
+                            // Delete All Entries
+                            Text("Delete All Entries").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour)).onTapGesture {
+                                confirmationShown.toggle()
+                            }.confirmationDialog("Are you sure you want to delete all entries?",
+                                                 isPresented: $confirmationShown) {
+                                                 Button("Delete all Entries", role: .destructive) {
+                                                    // Delete all elements in the array
+                                                    diaryModelController.diaryEntries.removeAll()
+                                                    dismiss()
+                                                 }
+                                 }// delete button end
                         }.listStyle(.grouped)
                         .scrollContentBackground(Visibility.hidden)
                         .background(Color(hex: csController.backgroundColour))
                         Spacer()
                 }.background(Color(hex: csController.backgroundColour))
-        }// body end
+        }.accentColor(Color(hex: csController.entryTextColour))
     }// NavStack ends
 }
 

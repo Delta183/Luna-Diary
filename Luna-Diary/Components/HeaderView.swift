@@ -11,15 +11,25 @@ import SwiftUI
 struct HeaderView: View {
     @EnvironmentObject var csController: ColourSchemeController
     var body: some View {
+        // var userName = UserDefaults.standard.string(forKey: "name")
         HStack {
             Image(systemName: "square.and.pencil")
                 .resizable()
                 .frame(width: 28.0, height: 28.0)
                 .padding(.leading, 12.0)
                 .foregroundColor(Color(hex: csController.headerItemColour))
-            Text("(username)'s Journal")
-                .font(Font.custom("MADEWaffleSlab", size: 16))
-                .foregroundColor(Color(hex: csController.headerItemColour))
+            //
+            if UserDefaults.standard.string(forKey: "userName") == nil{
+                Text("Your Journal")
+                    .font(Font.custom("MADEWaffleSlab", size: 16))
+                    .foregroundColor(Color(hex: csController.headerItemColour))
+            }
+            else{
+                Text("\(UserDefaults.standard.string(forKey: "userName")!)'s Journal")
+                    .font(Font.custom("MADEWaffleSlab", size: 16))
+                    .foregroundColor(Color(hex: csController.headerItemColour))
+            }
+            
             Spacer()
             Button(action: {
                 print("button pressed")
