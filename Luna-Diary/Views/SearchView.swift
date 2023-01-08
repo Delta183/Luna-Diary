@@ -21,8 +21,7 @@ struct SearchView: View {
                     .ignoresSafeArea(edges: .top)
                     .frame(height:5)
                 Text("Search for Entries")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Holla", fixedSize: 56))
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
                 SearchBar(text: $searchText)
@@ -39,7 +38,7 @@ struct SearchView: View {
                             }
                         }
                 } else {
-                    Text("No results found...").font(.headline)
+                    Text("No results found...").font(Font.custom("San Francisco" , fixedSize: 20).bold())
                         .fontWeight(.bold)
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .multilineTextAlignment(.center)

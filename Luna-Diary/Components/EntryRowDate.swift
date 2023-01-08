@@ -19,14 +19,14 @@ struct EntryRowDate: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(diaryEntry.title)
-                            .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
+                            .font(Font.custom("YanoneKaffeesatz-Bold", fixedSize: 20))
                             .foregroundColor(Color(hex: csController.entryTextColour))
                             .lineLimit(1)
                             .padding([.top, .leading], 4.0)
                         .padding(.bottom, 1.0)
                     Spacer()
                     Text(dateString)
-                            .font(Font.custom("YanoneKaffeesatz-Bold", size: 20))
+                            .font(Font.custom("YanoneKaffeesatz-Bold", fixedSize: 20))
                             .foregroundColor(Color(hex: csController.entryTextColour))
                             .lineLimit(1)
                             .padding(.top, 4.0)
@@ -36,7 +36,7 @@ struct EntryRowDate: View {
                         
                 Text(diaryEntry.content)
                         .foregroundColor(Color(hex: csController.entryTextColour))
-                        .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
+                        .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                         .lineLimit(1)
                         .padding([.leading, .bottom], 4.0)
                 }.background(Color(hex: csController.headerColour))

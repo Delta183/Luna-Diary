@@ -31,6 +31,7 @@ struct SearchBar: View {
         HStack {
             TextField("Search ...", text: $textObserver.searchText)
                 .padding(7)
+                .font(Font.custom("San Francisco" , fixedSize: 20))
                 .padding(.horizontal, 25)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
@@ -68,14 +69,20 @@ struct SearchBar: View {
                     }) {
                         Text("Cancel")
                     }
-                    .font(Font.custom("MADEWaffleSlab", size: 14))
+                    .font(Font.custom("MADEWaffleSlab", fixedSize: 14))
                     .buttonStyle(SearchCancelButton())
                     .padding(.trailing, 10)
                     .transition(.move(edge: .trailing))
                 }
         // The text that comes in from the debouncer will go to the actual search for text
         }.onReceive(textObserver.$debouncedText) { (val) in
-            text = val
+            // Ensure single character searches don't fire
+            if val.count > 1{
+                text = val
+            }
+            else{
+                text = ""
+            }
         } // End of HStack
     }
 }

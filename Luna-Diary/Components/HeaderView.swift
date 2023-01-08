@@ -18,20 +18,22 @@ struct HeaderView: View {
                 .frame(width: 28.0, height: 28.0)
                 .padding(.leading, 12.0)
                 .foregroundColor(Color(hex: csController.headerItemColour))
-            //
+            // Base case for initial launch
             if UserDefaults.standard.string(forKey: "userName") == nil{
                 Text("Your Journal")
-                    .font(Font.custom("MADEWaffleSlab", size: 16))
+                    .font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                     .foregroundColor(Color(hex: csController.headerItemColour))
             }
+            // Subsequent runs after setting a name 
             else{
                 Text("\(UserDefaults.standard.string(forKey: "userName")!)'s Journal")
-                    .font(Font.custom("MADEWaffleSlab", size: 16))
+                    .font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                     .foregroundColor(Color(hex: csController.headerItemColour))
             }
             
             Spacer()
             Button(action: {
+                // To be implemented: Extra settings
                 print("button pressed")
             }) {
                 Image(systemName: "ellipsis.circle")

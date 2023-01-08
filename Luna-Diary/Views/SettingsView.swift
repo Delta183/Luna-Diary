@@ -20,32 +20,33 @@ struct SettingsView: View {
                     .ignoresSafeArea(edges: .top)
                     .frame(height:3)
                 Text("Settings")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Holla", fixedSize: 56))
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
-                    .offset(y:20)
+                    .frame(height: 60)
                         // List of settings below
                         List {
                             // Text("Notification Settings").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour))
                             // Change Colour Scheme
                             NavigationLink(destination: ColourPaletteView()){
-                                Text("Change Colour Scheme").foregroundColor(Color(hex: csController.entryTextColour))
+                                Text("Change Colour Scheme").foregroundColor(Color(hex: csController.entryTextColour))                        .font(Font.custom("San Francisco" , fixedSize: 16).bold())
+
                             }.listRowBackground(Color(hex: csController.entryRowColour))
                             
                             // Change Name
                             NavigationLink(destination: NameChangeView()){
-                                Text("Change Name").foregroundColor(Color(hex: csController.entryTextColour))
+                                Text("Change Name").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
                             }.listRowBackground(Color(hex: csController.entryRowColour))
                            
                             // Delete All Entries
-                            Text("Delete All Entries").listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour)).onTapGesture {
+                            Text("Delete All Entries").font(Font.custom("San Francisco" , fixedSize: 16).bold())
+                                .listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour)).onTapGesture {
                                 confirmationShown.toggle()
                             }.confirmationDialog("Are you sure you want to delete all entries?",
                                                  isPresented: $confirmationShown) {
                                                  Button("Delete all Entries", role: .destructive) {
                                                     // Delete all elements in the array
-                                                    diaryModelController.diaryEntries.removeAll()
+                                                    diaryModelController.deleteAllEntries()
                                                     dismiss()
                                                  }
                                  }// delete button end

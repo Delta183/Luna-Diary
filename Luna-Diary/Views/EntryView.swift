@@ -21,13 +21,15 @@ struct EntryView: View {
                         .ignoresSafeArea(edges: .top)
                         .frame(height:3)
                     HStack {
-                        Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
+                        Text("On:").font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                             .foregroundColor(Color(hex: csController.headerItemColour))
+                        // Date Pickers are not good displaying in a large font.
                         DatePicker(
                             "",
                             selection: $diaryEntry.date,
                             displayedComponents: [.date, .hourAndMinute]
                         ).labelsHidden() // This hides the given text of DatePicker
+                        // .frame(width: 200, height: 100)
                         Spacer()
                     }.offset(y: 10) // HStack
                         .padding(.leading, 6.0)
@@ -35,7 +37,7 @@ struct EntryView: View {
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
                     TextEditor(text: $diaryEntry.title)
-                        .font(Font.custom("MADEWaffleSlab", size: 20))
+                        .font(Font.custom("MADEWaffleSlab", fixedSize: 20))
                         .foregroundColor(Color(hex: csController.headerItemColour))
                         .frame(height: 40.0)
                         .multilineTextAlignment(.leading)
@@ -56,7 +58,7 @@ struct EntryView: View {
                     // This must be done to put custom background
                         .scrollContentBackground(.hidden)
                         .foregroundColor(Color(hex: csController.entryTextColour))
-                        .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
+                        .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                 }.padding(.horizontal, 4.0)
                     .offset(y: -100)
                 

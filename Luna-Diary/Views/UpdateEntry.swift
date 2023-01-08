@@ -26,7 +26,7 @@ struct UpdateEntry: View {
                         .ignoresSafeArea(edges: .top)
                         .frame(height:3)
                     HStack {
-                        Text("On:").font(Font.custom("MADEWaffleSlab", size: 16))
+                        Text("On:").font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                             .foregroundColor(Color(hex: csController.headerItemColour))
                         DatePicker(
                                 "",
@@ -38,7 +38,7 @@ struct UpdateEntry: View {
                     .padding(.leading, 6.0)
                     // This is how you pass information to objects
                     TextEditor(text: $diaryEntry.title)
-                        .font(Font.custom("MADEWaffleSlab", size: 20))
+                        .font(Font.custom("MADEWaffleSlab", fixedSize: 20))
                         .foregroundColor(Color(hex: csController.headerItemColour))
                         .frame(height: 40.0)
                         .multilineTextAlignment(.leading)
@@ -60,7 +60,7 @@ struct UpdateEntry: View {
                         // This must be done to put custom background
                         .scrollContentBackground(.hidden)
                         .foregroundColor(Color(hex: csController.entryTextColour))
-                        .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
+                        .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
             }.background(Color(hex: csController.backgroundColour))

@@ -28,10 +28,10 @@ struct CalendarView: View {
                     .ignoresSafeArea(edges: .top)
                     .frame(height:5)
                 Text("Select a Date")
-                    .font(.title)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Holla", fixedSize: 72))
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
+                    .frame(height: 73)
                 
                 VStack {
                     Divider()
@@ -57,6 +57,8 @@ struct CalendarView: View {
                     Button("Make an Entry") {
                         navigateEntry.toggle()
                     }.buttonStyle(ThemeButton())
+                        .font(.system(size: 16))
+
                     .navigationDestination(isPresented: $navigateEntry) {
                         // This will be subject to change 
                         EntryView(diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter Text here...", date: date))
@@ -64,6 +66,7 @@ struct CalendarView: View {
                     Button("Review All Entries") {
                         navigateReview.toggle()
                     }.buttonStyle(ThemeButton())
+                        .font(.system(size: 16))
                     .navigationDestination(isPresented: $navigateReview) {
                         ReviewAllEntriesView()
                     }
@@ -71,9 +74,10 @@ struct CalendarView: View {
                 }.padding(.top, 6.0) // Buttons HStack
                 // Below is the entries preview if applicable
                 Text("There are \(entries.count) entries for that day")
-                    .font(.subheadline)
+                    .font(.system(size: 15))
                     .fontWeight(.bold)
                     .foregroundColor(Color(hex: csController.entryTextColour))
+                    .frame(height: 16)
                 VStack {
                     // Present entries if any otherwise put a spacer
                     if !entries.isEmpty {

@@ -21,13 +21,13 @@ struct ColourPaletteView: View {
                     .ignoresSafeArea(edges: .top)
                     .frame(height:3)
                 Text("Select a theme:")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(Font.custom("Holla", fixedSize: 56))
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
                 List(colourPalettes, id: \.self, selection: $selection){ theme in
                     Text(theme).foregroundColor(Color(hex: csController.entryTextColour)).listRowBackground(Color(hex: csController.entryRowColour))
-                        }.listStyle(.grouped)
+                        }.font(Font.custom("San Francisco" , fixedSize: 16).bold())
+                        .listStyle(.grouped)
                         .scrollContentBackground(Visibility.hidden)
                         .background(Color(hex: csController.backgroundColour))
                         .onChange(of: selection){_ in
@@ -39,9 +39,9 @@ struct ColourPaletteView: View {
                         
                 // Currently Selected: Winter Theme
                 // Please reset the app for the new theme to take effect
-                Text("You have selected: \(selection ?? "N/A")").foregroundColor(Color(hex: csController.entryTextColour))
-                selectedThemeText().foregroundColor(Color(hex: csController.entryTextColour))
-                Text("Please reset the app for the changes to take effect").foregroundColor(Color(hex: csController.entryTextColour))
+                Text("You have selected: \(selection ?? "N/A")").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
+                selectedThemeText().foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
+                Text("Please reset the app for the changes to take effect").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
                 Spacer()
                    
                 }.background(Color(hex: csController.backgroundColour))

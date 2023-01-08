@@ -53,7 +53,7 @@ struct ContentView: View {
                 // Below is the button and text prompt for new entries
                 VStack {
                         Text("Make a new entry today:")
-                            .font(Font.custom("Poppins-Light", size: 18))
+                            .font(Font.custom("Poppins-Light", fixedSize: 18))
                             .foregroundColor(Color(hex: csController.entryTextColour))
                         Button(action: {
                             readyToNavigate.toggle()
@@ -74,7 +74,7 @@ struct ContentView: View {
             }.background(Color(hex: csController.backgroundColour))
             // "#FFE7C3" backgroundColour
         // End of NavigationStack on the line below
-        }.accentColor(Color(hex: csController.headerItemColour))
+        }.accentColor(Color(hex: csController.headerItemColour)) // This works as a heirarchy given the stack nature, this will affect subviews
         // "#612808" headerItemColour
     }
 }

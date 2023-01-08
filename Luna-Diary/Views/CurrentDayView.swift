@@ -28,10 +28,10 @@ struct CurrentDayView: View {
                 // On this day and Date
                 VStack {
                     Text("On this day...")
-                        .font(Font.custom("Holla", size: 72))
+                        .font(Font.custom("Holla", fixedSize: 72))
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     Text(currentDate, style: .date)
-                        .font(Font.custom("Poppins-Light", size: 18))
+                        .font(Font.custom("Poppins-Light", fixedSize: 18))
                         .foregroundColor(Color(hex: csController.headerItemColour))
                 }.offset(y:-70)
                 // Below is the ScrollView displaying all entires if applicable
@@ -55,7 +55,7 @@ struct CurrentDayView: View {
                         }
                     }.padding(.top, -20) // ScrollView End
                 }.offset(y:-50) // VStack end for ScrollView
-                Text("That's all, folks!").font(Font.custom("Holla", size: 36)).foregroundColor(Color(hex: csController.entryTextColour))
+                Text("That's all, folks!").font(Font.custom("Holla", fixedSize: 36)).foregroundColor(Color(hex: csController.entryTextColour))
                 Spacer()
             }.background(Color(hex: csController.backgroundColour))
         }.accentColor(Color(hex: csController.headerItemColour))// End of NavigationStack

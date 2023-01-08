@@ -40,6 +40,13 @@ class DiaryModelController: ObservableObject {
         print("Diary Entry Deleted!")
     }
     
+    func deleteAllEntries(){
+        // Ensure the array is not empty prior to deletion of all entries
+        guard !diaryEntries.isEmpty else {return}
+        diaryEntries.removeAll()
+        saveToPersistentStore()
+    }
+    
     // Still subject to change if the next run doesn't work
     func updateDiaryEntry(diaryEntry: DiaryModel, index: Int) {
             var updatedDiaryEntry = diaryEntries[index]

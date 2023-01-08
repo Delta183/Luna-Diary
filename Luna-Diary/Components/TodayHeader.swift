@@ -16,10 +16,10 @@ struct TodayHeader: View {
     
     var body: some View {
         Text("Today")
-            .font(Font.custom("Holla", size: 72))
+            .font(Font.custom("Holla", fixedSize: 72))
         .foregroundColor(Color(hex: csController.entryTextColour))
         Text(date, style: .date)
-            .font(Font.custom("Poppins-Light", size: 18))
+            .font(Font.custom("Poppins-Light", fixedSize: 18))
             .foregroundColor(Color(hex: csController.entryTextColour))
     }
 }

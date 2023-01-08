@@ -32,11 +32,11 @@ struct ReviewEntry: View {
                     // HStack displaying the date in full
                     HStack {
                         Text(diaryEntry.date, style: .date)
-                            .font(Font.custom("MADEWaffleSlab", size: 16))
+                            .font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                             .foregroundColor(Color(hex: csController.headerItemColour))
                             .multilineTextAlignment(.leading)
                         Text(diaryEntry.date, style: .time)
-                            .font(Font.custom("MADEWaffleSlab", size: 16))
+                            .font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                             .foregroundColor(Color(hex: csController.headerItemColour))
                             .multilineTextAlignment(.leading)
                         Spacer()
@@ -47,7 +47,7 @@ struct ReviewEntry: View {
                     HStack {
                         ScrollView{
                             Text(diaryEntry.title)
-                                .font(Font.custom("MADEWaffleSlab", size: 20))
+                                .font(Font.custom("MADEWaffleSlab", fixedSize: 20))
                                 .fontWeight(.bold)
                                 .foregroundColor(Color(hex: csController.headerItemColour))
                                 .multilineTextAlignment(.leading)
@@ -67,7 +67,7 @@ struct ReviewEntry: View {
                     // Look into putting underlines on each line
                     Text(diaryEntry.content)
                         .foregroundColor(Color(hex: csController.entryTextColour))
-                        .font(Font.custom("YanoneKaffeesatz-Light", size: 20))
+                        .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                         .lineSpacing(2)
                 }.padding(.horizontal, 2)
                 .offset( y:-90)
@@ -84,7 +84,7 @@ struct ReviewEntry: View {
                         }) {
                             Text("Edit")
                                 .foregroundColor(.white)
-                                .font(Font.custom("MADEWaffleSlab", size: 24))
+                                .font(Font.custom("MADEWaffleSlab", fixedSize: 24))
                         }.navigationDestination(isPresented: $readyToNavigate){
                             UpdateEntry(diaryEntry: diaryEntry, originalEntry: diaryEntry)
                         }
@@ -94,7 +94,7 @@ struct ReviewEntry: View {
                         confirmationShown.toggle()
                         // dismiss()
                         }){
-                            Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                            Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", fixedSize: 24))
                           }.confirmationDialog("Are you sure?",
                                           isPresented: $confirmationShown) {
                                           Button("Confirm Delete", role: .destructive) {
