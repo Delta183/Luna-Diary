@@ -10,11 +10,11 @@ import Combine
 import SwiftUI
 
 class ColourSchemeController: ObservableObject{
-    var backgroundColour : String
-    var entryRowColour: String
-    var entryTextColour: String
-    var headerColour: String
-    var headerItemColour: String
+    @Published var backgroundColour : String
+    @Published var entryRowColour: String
+    @Published var entryTextColour: String
+    @Published var headerColour: String
+    @Published var headerItemColour: String
     
     init() {
         // If this is nil, that means it is the first launch

@@ -40,8 +40,6 @@ struct ColourPaletteView: View {
                 // Currently Selected: Winter Theme
                 // Please reset the app for the new theme to take effect
                 Text("You have selected: \(selection ?? "N/A")").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
-                selectedThemeText().foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
-                Text("Please reset the app for the changes to take effect").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
                 Spacer()
                    
                 }.background(Color(hex: csController.backgroundColour))
