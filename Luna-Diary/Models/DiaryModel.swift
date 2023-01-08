@@ -13,11 +13,13 @@ struct DiaryModel: Identifiable, Equatable, Codable, Hashable{
     var id = UUID()
     var title: String
     var content: String
-    var date: Date
+    var date: Date // creation date
+    var modifiedDate: Date? // last date of change, defaults to nil (or creation date if we mark as non-nil)
     
     init(title: String?, content: String?, date: Date) {
         self.title = title!
         self.content = content!
         self.date = date
+        self.modifiedDate = nil
     }
 }

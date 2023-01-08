@@ -72,15 +72,8 @@ struct UpdateEntry: View {
                         let entries = self.diaryModelController.diaryEntries
                         let index = entries.firstIndex(where: {$0.id == diaryEntry.id})
                         if index != nil{
-                            if entries[index!] == diaryEntry {
-                                // no need to update if the elements are still the same
-                                dismiss()
-                            }
-                            else{
-                                // otherwise update changes made
-                                self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
-                                dismiss()
-                            }
+                            self.diaryModelController.updateDiaryEntry(diaryEntry: diaryEntry, index: index!)
+                            dismiss()
                         }
                     }) {
                         Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))

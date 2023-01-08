@@ -12,11 +12,20 @@ struct ContentView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var readyToNavigate : Bool = false
     let calendar = Calendar.current
+    
     // SwiftUI requires the returning of views always, hence not being able to code as usual
     var body: some View {
         NavigationStack{
             // Fetch the entries of today
             let entries = self.diaryModelController.diaryEntries.filter({calendar.isDateInToday($0.date as Date)})
+//            List(entries) { entry in
+//                NavigationLink(value: entry) {
+//                    EntryRow(diaryEntry: entry)
+//                }
+//                .isDetailLink(false)
+//            }.navigationDestination(for: DiaryModel.self) { entry in
+//                ReviewEntry(diaryEntry: entry)
+//            }
             VStack {
                 // header begins
                 HeaderView()
@@ -27,8 +36,10 @@ struct ContentView: View {
                 else{
                     TodayHeader().offset(y:-30)
                 }
-                
-                // Entries/No Entries Screen
+//                    .navigationDestination(for: DiaryModel.self) { diaryEntry in
+//                        ReviewEntry(diaryEntry: diaryEntry)
+//                    }
+//                 Entries/No Entries Screen
                 VStack {
                     // if today's entries are filled
                     if !entries.isEmpty {
@@ -38,18 +49,18 @@ struct ContentView: View {
                                 ForEach(entries, id: \.self) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
-                                    }.id(diaryEntry) // important
+                                    }
                                 }
                             }
                         }.padding(.top, -20)
-                        
                     }
                     else{
                         NoEntriesView()
                     }
-                  
+
                 }.offset(y:-50)
-            
+
+
                 // Below is the button and text prompt for new entries
                 VStack {
                         Text("Make a new entry today:")
@@ -72,6 +83,7 @@ struct ContentView: View {
                 // selection stack end
                 Spacer()
             }.background(Color(hex: csController.backgroundColour))
+                
             // "#FFE7C3" backgroundColour
         // End of NavigationStack on the line below
         }.accentColor(Color(hex: csController.headerItemColour)) // This works as a heirarchy given the stack nature, this will affect subviews

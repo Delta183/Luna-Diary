@@ -49,13 +49,16 @@ class DiaryModelController: ObservableObject {
     
     // Still subject to change if the next run doesn't work
     func updateDiaryEntry(diaryEntry: DiaryModel, index: Int) {
-            var updatedDiaryEntry = diaryEntries[index]
-            updatedDiaryEntry.title = diaryEntry.title
-            updatedDiaryEntry.content = diaryEntry.content
-            updatedDiaryEntry.date = diaryEntry.date
-            diaryEntries[index] = updatedDiaryEntry
-            saveToPersistentStore()
-            print("Diary Entry Updated!")
+        var updatedDiaryEntry = diaryEntries[index]
+        updatedDiaryEntry.title = diaryEntry.title
+        updatedDiaryEntry.content = diaryEntry.content
+        updatedDiaryEntry.date = diaryEntry.date
+        // for modifications of an entry, some element needs to be modified otherwise it nulls the navigation link
+        // therefore, update the entry with the last date it was modified to maintain a change
+        updatedDiaryEntry.modifiedDate = Date()
+        diaryEntries[index] = updatedDiaryEntry
+        saveToPersistentStore()
+        print("Diary Entry Updated!")
     }
     
     // MARK: Save, Load from Persistent
