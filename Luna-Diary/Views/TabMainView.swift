@@ -12,34 +12,35 @@ import SwiftUI
 // replaced each time hence it is alone
 struct TabMainView: View {
     var csController: ColourSchemeController
-
+    var userNameController: UserNameController
     
     init() {
         self.csController = ColourSchemeController()
+        self.userNameController = UserNameController()
         UITabBar.appearance().backgroundColor = UIColor.white
     }
     
     var body: some View {
         // This is the tab view on the bottom
         TabView { // <- Use selection here
-            ContentView().environmentObject(csController)
+            ContentView().environmentObject(csController).environmentObject(userNameController)
                 .tabItem {
                     Label("Today", systemImage: "heart")
                 }.tag(0)
-            CalendarView().environmentObject(csController)
+            CalendarView().environmentObject(csController).environmentObject(userNameController)
                 .tabItem {
                     Label("Entries", systemImage: "calendar")
                 }.tag(1)
-            CurrentDayView().environmentObject(csController)
+            CurrentDayView().environmentObject(csController).environmentObject(userNameController)
             // .badge(1)
                 .tabItem {
                     Label("On This Day", systemImage: "clock")
                 }.tag(2)
-            SearchView().environmentObject(csController)
+            SearchView().environmentObject(csController).environmentObject(userNameController)
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }.tag(3)
-            SettingsView().environmentObject(csController)
+            SettingsView().environmentObject(csController).environmentObject(userNameController)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")

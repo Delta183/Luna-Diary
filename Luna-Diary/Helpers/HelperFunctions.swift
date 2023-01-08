@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Returns a list of Dates corresponding to the day but of the last n years
 func generateLastDays(date: Date, limit: Int) -> [Date]{
     var listOfDates : [Date] = []
     var negatedNumber = 0
@@ -20,6 +21,7 @@ func generateLastDays(date: Date, limit: Int) -> [Date]{
     return listOfDates
 }
 
+// Formatter for Date object to return a string in DD/MM/YY format
 func getShortStringFromDate(date: Date) -> String{
     let formatter1 = DateFormatter()
     formatter1.dateStyle = .short

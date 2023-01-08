@@ -9,6 +9,7 @@ import SwiftUI
 
 // This is a view that displays on the top of the screen as a sort of custom header
 struct HeaderView: View {
+    @EnvironmentObject var userNameController: UserNameController
     @EnvironmentObject var csController: ColourSchemeController
     var body: some View {
         // var userName = UserDefaults.standard.string(forKey: "name")
@@ -19,14 +20,14 @@ struct HeaderView: View {
                 .padding(.leading, 12.0)
                 .foregroundColor(Color(hex: csController.headerItemColour))
             // Base case for initial launch
-            if UserDefaults.standard.string(forKey: "userName") == nil{
+            if userNameController.userName == ""{
                 Text("Your Journal")
                     .font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                     .foregroundColor(Color(hex: csController.headerItemColour))
             }
             // Subsequent runs after setting a name 
             else{
-                Text("\(UserDefaults.standard.string(forKey: "userName")!)'s Journal")
+                Text("\(userNameController.userName)'s Journal")
                     .font(Font.custom("MADEWaffleSlab", fixedSize: 16))
                     .foregroundColor(Color(hex: csController.headerItemColour))
             }

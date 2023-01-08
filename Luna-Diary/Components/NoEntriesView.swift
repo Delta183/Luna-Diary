@@ -16,8 +16,7 @@ struct NoEntriesView: View{
             .aspectRatio(contentMode: .fill)
             .frame(width: 300.0, height: 300.0)
         Text("No Entries... Yet.")
-            .font(Font.custom("Holla", fixedSize: 48))
-            .fontWeight(.bold)
+            .font(Font.custom("Holla", fixedSize: 48).bold())
             .foregroundColor(Color(hex: csController.headerItemColour))
     }
 }

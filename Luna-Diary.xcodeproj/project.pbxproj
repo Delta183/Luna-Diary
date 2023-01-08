@@ -24,6 +24,7 @@
 		98B40B0D294BBEC400463C68 /* NoEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0C294BBEC400463C68 /* NoEntriesView.swift */; };
 		98B40B0F294BBF2500463C68 /* EntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B40B0E294BBF2500463C68 /* EntryRow.swift */; };
 		98D70D2A2952503600410D33 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D70D292952503600410D33 /* TodayHeader.swift */; };
+		98D87FA3296A6321006F7C09 /* UserNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D87FA2296A6321006F7C09 /* UserNameController.swift */; };
 		98DB8576295B8C000048A596 /* DummyDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */; };
 		98DB857A295EAEA90048A596 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DB8579295EAEA90048A596 /* ThemeButton.swift */; };
 		98DDB1E5294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */; };
@@ -84,6 +85,7 @@
 		98B40B0C294BBEC400463C68 /* NoEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEntriesView.swift; sourceTree = "<group>"; };
 		98B40B0E294BBF2500463C68 /* EntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryRow.swift; sourceTree = "<group>"; };
 		98D70D292952503600410D33 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
+		98D87FA2296A6321006F7C09 /* UserNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameController.swift; sourceTree = "<group>"; };
 		98DB8575295B8C000048A596 /* DummyDiaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDiaryEntry.swift; sourceTree = "<group>"; };
 		98DB8579295EAEA90048A596 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		98DDB1E4294ABA3B00D933D4 /* YanoneKaffeesatz-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-Light.ttf"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				985CFA9D29513BAF001FB400 /* DiaryModelController.swift */,
 				98DFEF5829679DED006F9BE4 /* ColourSchemeController.swift */,
+				98D87FA2296A6321006F7C09 /* UserNameController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				98F8EF3F29629F7E0098EF71 /* SearchCancelButton.swift in Sources */,
 				9899EC2329665AAB00E02277 /* UpdateEntry.swift in Sources */,
 				9899EC2A29668C7300E02277 /* ColourPaletteView.swift in Sources */,
+				98D87FA3296A6321006F7C09 /* UserNameController.swift in Sources */,
 				9835735A2944F54700038530 /* CurrentDayView.swift in Sources */,
 				98F1224A2969320200E4F4D1 /* NameChangeView.swift in Sources */,
 				9808BF332946C3380050F8D1 /* EntryView.swift in Sources */,

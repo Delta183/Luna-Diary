@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// Extenstion to the color class to allow creation of colors from hex code
 extension Color {
     init?(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)

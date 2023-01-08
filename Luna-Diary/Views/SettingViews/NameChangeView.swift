@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct NameChangeView: View {
+    @EnvironmentObject var userNameController: UserNameController
     @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var name: String = ""
-    @State private var buttonPressed: Bool = false
+    @State private var showingAlert = false
+
 
     var body: some View {
         NavigationStack{
@@ -30,15 +32,13 @@ struct NameChangeView: View {
                     .background(Color(hex: csController.headerColour))
                 Button("Save Name") {
                     // Set the name to the userDefaults
-                    UserDefaults.standard.set(name, forKey: "userName")
-                    buttonPressed.toggle()
+                    userNameController.changeName(name: name)
+                    showingAlert.toggle()
                 }.buttonStyle(ThemeButton())
                     .font(Font.custom("San Francisco" , fixedSize: 16))
-                if buttonPressed {
-                    Text("New Name Saved!").font(Font.custom("San Francisco" , fixedSize: 20).bold())
-                        .foregroundColor(Color(hex: csController.entryTextColour))
-                        .multilineTextAlignment(.center)
-                }
+                    .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("New name successfully saved!"), dismissButton: .default(Text("OK")))
+                        }
                 Spacer()
             }.background(Color(hex: csController.backgroundColour))
         }
