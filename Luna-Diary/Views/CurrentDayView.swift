@@ -16,8 +16,9 @@ struct CurrentDayView: View {
     // instantiation of Calendar object such that comparisons of date can be made
     let calendar = Calendar.current
     // let yearLimit = 10
+    // This variable is used purely to increment a variable in the View during execution which is surprisingly hard to do nor ally
     @State var currentYearCount = 0
-    // Identifiable and Codable Struct containing an array of Date Objects
+    // Identifiable and Codable Struct containing an array of Date Objects generated from the generator function for the last n years
     var previousDates = datesList()
     // SwiftUI requires the returning of views always, hence not being able to code as usual
     var body: some View {
@@ -66,6 +67,7 @@ struct CurrentDayView: View {
         // Fetch the components of both date objects such that mathematical operations can be completed
         let currDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.currentDate)
         let date2Components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date2)
+        // Subtract the current date's year by the year of the provided other date (of diary entry)
         let numOfYearDiff = currDateComponents.year! - date2Components.year!
         if numOfYearDiff <= 1 {
             return Text("\(numOfYearDiff) year ago").foregroundColor(Color(hex: csController.headerItemColour))

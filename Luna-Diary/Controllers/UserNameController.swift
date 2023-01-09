@@ -7,6 +7,7 @@
 
 import Foundation
 
+// This class is responsible simply for controlling the userName on the Headers
 class UserNameController: ObservableObject{
     @Published var userName: String
     
@@ -20,6 +21,7 @@ class UserNameController: ObservableObject{
         }
     }
     
+    // This function resets the given name and then changing the Published variable
     func changeName(name: String){
         UserDefaults.standard.set(name, forKey: "userName")
         self.userName = name

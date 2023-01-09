@@ -13,7 +13,7 @@ struct Luna_DiaryApp: App {
     var body: some Scene {
         WindowGroup {
             
-            // .enviromentObject instantiates the controller for all the classes to use
+            // .enviromentObject instantiates the controller for all the subclasses to use and the same applies to their subclasses
             TabMainView().environmentObject(DiaryModelController())
         }
     }

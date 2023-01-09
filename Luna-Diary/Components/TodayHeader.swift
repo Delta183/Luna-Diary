@@ -9,10 +9,8 @@ import SwiftUI
 
 struct TodayHeader: View {
     @EnvironmentObject var csController: ColourSchemeController
-
+    // Date() gets the current date in a Date object
     @State var date = Date()
-    // date = Calendar.current.date(byAdding: .day, value: -7, to: Date())
-    
     
     var body: some View {
         Text("Today")

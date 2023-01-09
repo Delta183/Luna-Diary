@@ -12,6 +12,7 @@ struct ColourPaletteView: View {
     @EnvironmentObject var csController: ColourSchemeController
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var selection: String?
+    // Colour palettes can afford to be hardcoded for the themes since it will be finite
     let colourPalettes = ["Fall Theme", "Winter Theme", "Summer Theme", "Lemon Lime Theme", "Grape Theme",
                           "Chocolate Mint Theme", "Light Theme", "Dark Theme"]
     var body: some View {
@@ -24,21 +25,20 @@ struct ColourPaletteView: View {
                     .font(Font.custom("Holla", fixedSize: 56))
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
+                // display all the options for colour themes
                 List(colourPalettes, id: \.self, selection: $selection){ theme in
                     Text(theme).foregroundColor(Color(hex: csController.entryTextColour)).listRowBackground(Color(hex: csController.entryRowColour))
                         }.font(Font.custom("San Francisco" , fixedSize: 16).bold())
                         .listStyle(.grouped)
                         .scrollContentBackground(Visibility.hidden)
                         .background(Color(hex: csController.backgroundColour))
+                        // onChange will see the list selection and change the colours to the chosen colours in the UserDefaults
                         .onChange(of: selection){_ in
                             // Update the string that tracks the current theme
                             UserDefaults.standard.set(selection, forKey: "currTheme")
                             // otherwise change the colour variables to the new hex values
                             changeColourScheme()
                         }
-                        
-                // Currently Selected: Winter Theme
-                // Please reset the app for the new theme to take effect
                 Text("You have selected: \(selection ?? "N/A")").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
                 Spacer()
                    
@@ -51,10 +51,10 @@ struct ColourPaletteView: View {
         return Text("Current Theme: \(selectedTheme)")
     }
     
+    // This function is responsible for setting the colours given certain hexadecimal values and update the 5 categorical colours with them
     func changeColourScheme(){
         // Switch in Swift doesn't have fallthrough
         switch selection{
-            
         case "Winter Theme":
             csController.setNewColours(backgroundColour: "#C0F0F7", entryRowColour: "#76D3F0", entryTextColour: "#137087", headerColour: "#89C7F2", headerItemColour: "#2E266D")
             

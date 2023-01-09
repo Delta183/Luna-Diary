@@ -31,7 +31,7 @@ struct NameChangeView: View {
                     .scrollContentBackground(.hidden)
                     .background(Color(hex: csController.headerColour))
                 Button("Save Name") {
-                    // Set the name to the userDefaults
+                    // Set the name to the userDefaults which will be what the header pulls from
                     userNameController.changeName(name: name)
                     showingAlert.toggle()
                 }.buttonStyle(ThemeButton())

@@ -10,6 +10,7 @@ import Combine
 import SwiftUI
 
 class ColourSchemeController: ObservableObject{
+    // Published variables representing 5 different colours consistently used throughout the entire app's interface
     @Published var backgroundColour : String
     @Published var entryRowColour: String
     @Published var entryTextColour: String
@@ -24,7 +25,7 @@ class ColourSchemeController: ObservableObject{
             self.entryTextColour = "#8C4F2D"
             self.headerColour = "#F1C596"
             self.headerItemColour = "#612808"
-        // Otherwise call the value from UserDefaults
+        // Otherwise call the value from UserDefaults and we're doing this because calling from assets is not pracitical as assets are immutable
         } else {
             self.backgroundColour = UserDefaults.standard.string(forKey: "backgroundColour")!
             self.entryRowColour = UserDefaults.standard.string(forKey: "entryRowColour")!
@@ -35,7 +36,7 @@ class ColourSchemeController: ObservableObject{
        
     }
     
-    // Setting new colours take in the hex values
+    // Setting new colours take in the hex values and assigns them to the UserDefaults spots for the colours
     func setNewColours(backgroundColour: String, entryRowColour: String, entryTextColour: String, headerColour: String, headerItemColour: String){
         UserDefaults.standard.set(backgroundColour, forKey: "backgroundColour")
         UserDefaults.standard.set(entryRowColour, forKey: "entryRowColour")
@@ -44,6 +45,7 @@ class ColourSchemeController: ObservableObject{
         UserDefaults.standard.set(headerItemColour, forKey: "headerItemColour")
     }
     
+    // This function is called on completion of a colour change to ensure a change of the published variables
     func fetchColours(){
         self.backgroundColour = UserDefaults.standard.string(forKey: "backgroundColour")!
         self.entryRowColour = UserDefaults.standard.string(forKey: "entryRowColour")!

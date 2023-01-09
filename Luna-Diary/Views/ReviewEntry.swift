@@ -76,19 +76,18 @@ struct ReviewEntry: View {
             // NavigationBar button placed below
             .navigationBarItems(trailing:
                 HStack {
-                    // Edit Button
+                    // Edit Button begin
                     Button(action: {
-                            // Action for the navbar button here
-                            // print("Edit button pressed...")
+                        // function of button
                         readyToNavigate.toggle()
                         }) {
+                            // appearance of button
                             Text("Edit")
                                 .foregroundColor(.white)
                                 .font(Font.custom("MADEWaffleSlab", fixedSize: 24))
                         }.navigationDestination(isPresented: $readyToNavigate){
                             UpdateEntry(diaryEntry: diaryEntry, originalEntry: diaryEntry)
                         }
-                    // edit button end
                     // delete button begin
                     Button(action: {                       
                         confirmationShown.toggle()
@@ -98,6 +97,7 @@ struct ReviewEntry: View {
                           }.confirmationDialog("Are you sure?",
                                           isPresented: $confirmationShown) {
                                           Button("Confirm Delete", role: .destructive) {
+                                              // Perform deletion and dismiss view
                                               diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
                                               dismiss()
                                           }

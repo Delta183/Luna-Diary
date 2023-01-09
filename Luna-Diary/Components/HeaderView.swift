@@ -12,7 +12,6 @@ struct HeaderView: View {
     @EnvironmentObject var userNameController: UserNameController
     @EnvironmentObject var csController: ColourSchemeController
     var body: some View {
-        // var userName = UserDefaults.standard.string(forKey: "name")
         HStack {
             Image(systemName: "square.and.pencil")
                 .resizable()
@@ -33,16 +32,17 @@ struct HeaderView: View {
             }
             
             Spacer()
-            Button(action: {
-                // To be implemented: Extra settings
-                print("button pressed")
-            }) {
-                Image(systemName: "ellipsis.circle")
-                    .resizable()
-                    .frame(width: 28.0, height: 28.0)
-                    .padding(.trailing, 12.0)
-                    .foregroundColor(Color(hex: csController.headerItemColour))
-            }
+            // Below is the options button but it is currently unused
+//            Button(action: {
+//                // To be implemented: Extra settings
+//                print("button pressed")
+//            }) {
+//                Image(systemName: "ellipsis.circle")
+//                    .resizable()
+//                    .frame(width: 28.0, height: 28.0)
+//                    .padding(.trailing, 12.0)
+//                    .foregroundColor(Color(hex: csController.headerItemColour))
+//            }
         }.frame(width: UIScreen.main.bounds.width, height: 150)
         .offset(y:40)
         .background(Color(hex: csController.headerColour))

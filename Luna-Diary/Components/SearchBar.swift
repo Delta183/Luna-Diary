@@ -8,10 +8,12 @@
 import SwiftUI
 import Combine
 
+// Subclass purely for purposes of debouncing the text given in the searchbar
 class TextFieldObserver : ObservableObject {
     @Published var debouncedText = ""
     @Published var searchText = ""
         
+    // The init function of this class demands a delay time be given, standard is 1 second for now
     init(delay: DispatchQueue.SchedulerTimeType.Stride) {
         $searchText
             .debounce(for: delay, scheduler: DispatchQueue.main)
@@ -46,7 +48,6 @@ struct SearchBar: View {
                         if isEditing {
                             Button(action: {
                                 textObserver.searchText = ""
-                                
                             }) {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)

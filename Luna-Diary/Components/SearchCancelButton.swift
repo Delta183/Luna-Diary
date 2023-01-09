@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 // Structures can be used to create classes, a style for a button in this case
+// Similar to ThemeButton but this exists just for the Cancel in SearchView
 struct SearchCancelButton: ButtonStyle {
     @EnvironmentObject var csController: ColourSchemeController
     func makeBody(configuration: Configuration) -> some View {

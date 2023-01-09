@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// The view is nothing complex, just a component to be called when no entries appear in ContentView
 struct NoEntriesView: View{
     @EnvironmentObject var csController: ColourSchemeController
 

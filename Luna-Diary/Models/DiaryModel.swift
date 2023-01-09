@@ -12,7 +12,7 @@ import Foundation
 struct DiaryModel: Identifiable, Equatable, Codable, Hashable{
     var id = UUID()
     var title: String
-    var content: String
+    var content: String // The content of the diary entry, rather the entry text proper
     var date: Date // creation date
     var modifiedDate: Date? // last date of change, defaults to nil (or creation date if we mark as non-nil)
     

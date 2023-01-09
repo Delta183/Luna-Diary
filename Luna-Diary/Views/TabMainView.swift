@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-// A TabView shows the entire class and is the frame
-// for all the views so to speak and that frame gets
-// replaced each time hence it is alone
+// A TabView shows the entire class and is the frame for all the views so to speak and that frame gets
+// replaced each time hence it is alone and what the Luna_DiaryApp class calls
 struct TabMainView: View {
     var csController: ColourSchemeController
     var userNameController: UserNameController
@@ -21,8 +20,8 @@ struct TabMainView: View {
     }
     
     var body: some View {
-        // This is the tab view on the bottom
-        TabView { // <- Use selection here
+        // This is the tab view on the bottom of the screen. Seems they are ran individually but do not reset after their first vist
+        TabView {
             ContentView().environmentObject(csController).environmentObject(userNameController)
                 .tabItem {
                     Label("Today", systemImage: "heart")
@@ -45,7 +44,7 @@ struct TabMainView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }.tag(4)
-        }.accentColor(Color(hex: csController.headerItemColour))
+        }.accentColor(Color(hex: csController.headerItemColour)) // changes colour of icons but also Navigation Stack items
     }
 }
 

@@ -24,6 +24,7 @@ struct CalendarView: View {
             // Call the array directly rather than make a copy
             var entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)})
             VStack {
+                // In general, this is used to create the illusion of a full screen colour, some issue was presented with the new colour schemes
                 Color(hex: csController.backgroundColour)
                     .ignoresSafeArea(edges: .top)
                     .frame(height:5)
@@ -32,7 +33,7 @@ struct CalendarView: View {
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .multilineTextAlignment(.center)
                     .frame(height: 73)
-                
+                // Calendar section below
                 VStack {
                     Divider()
                         .frame(height: 2.0)
@@ -53,12 +54,12 @@ struct CalendarView: View {
                         .background(Color(hex: csController.headerItemColour))
                 }.background(.white) // DatePicker VStack end
                 
+                // Button row below
                 HStack {
                     Button("Make an Entry") {
                         navigateEntry.toggle()
                     }.buttonStyle(ThemeButton())
-                        .font(.system(size: 16))
-
+                    .font(.system(size: 16))
                     .navigationDestination(isPresented: $navigateEntry) {
                         // This will be subject to change 
                         EntryView(diaryEntry: DiaryModel(title: "[New Entry]", content: "Enter Text here...", date: date))
@@ -70,12 +71,10 @@ struct CalendarView: View {
                     .navigationDestination(isPresented: $navigateReview) {
                         ReviewAllEntriesView()
                     }
-                    
                 }.padding(.top, 6.0) // Buttons HStack
                 // Below is the entries preview if applicable
                 Text("There are \(entries.count) entries for that day")
-                    .font(.system(size: 15))
-                    .fontWeight(.bold)
+                    .font(.system(size: 15).bold())
                     .foregroundColor(Color(hex: csController.entryTextColour))
                     .frame(height: 16)
                 VStack {
@@ -87,7 +86,7 @@ struct CalendarView: View {
                                 ForEach(entries, id: \.self) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                         EntryRow(diaryEntry: diaryEntry)
-                                    }.id(diaryEntry) // important
+                                    }
                                 }
                             }
                         }.padding(.top, 50)
@@ -98,8 +97,7 @@ struct CalendarView: View {
                 }.offset(y:-50)
                 // offset the stack by a bit so that the title isn't as high up
             }.background(Color(hex: csController.backgroundColour))
-                
-        }.accentColor(Color(hex: csController.entryTextColour))
+        }.accentColor(Color(hex: csController.entryTextColour)) // Nav stack end
     }
 }
 

@@ -20,9 +20,8 @@ class DiaryModelController: ObservableObject {
     
     //MARK: - CRUD Functions
     func createDiaryEntry(title: String?, content: String?, date: Date) {
-
+        // Using the information from the entry view, make a new instance of the DiaryModel class
         let newDiaryEntry = DiaryModel(title: title, content: content, date: date)
-        
         diaryEntries.append(newDiaryEntry)
         saveToPersistentStore()
         print("Diary Entry Added!")
@@ -35,7 +34,6 @@ class DiaryModelController: ObservableObject {
         guard let index = diaryEntries.firstIndex(of: diaryEntry) else { return }
         
         diaryEntries.remove(at: index)
-        
         saveToPersistentStore()
         print("Diary Entry Deleted!")
     }
@@ -44,6 +42,7 @@ class DiaryModelController: ObservableObject {
         // Ensure the array is not empty prior to deletion of all entries
         guard !diaryEntries.isEmpty else {return}
         diaryEntries.removeAll()
+        // For changes to persist through multiple runs, the information of this controller must be saved
         saveToPersistentStore()
     }
     

@@ -11,7 +11,7 @@ struct SearchView: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State private var readyToNavigate : Bool = false
     let calendar = Calendar.current
-    
+    // Text for the SearchBar that is Binding in the actual view
     @State private var searchText = ""
 
     var body: some View {
