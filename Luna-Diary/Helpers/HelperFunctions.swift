@@ -28,3 +28,7 @@ func getShortStringFromDate(date: Date) -> String{
     return (formatter1.string(from: date))
 }
 
+// Function exists purely to get the most up-to-date Date information
+func getCurrentDate() -> Date{
+    return Date()
+}

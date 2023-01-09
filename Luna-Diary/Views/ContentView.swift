@@ -98,6 +98,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
+
 // Fix the date bug when sent over to the next page
 
 

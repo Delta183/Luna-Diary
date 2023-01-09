@@ -30,10 +30,10 @@ struct SearchView: View {
                         ScrollView {
                             VStack{
                                 // bounding id makes each navigation link unique and refreshable on filter.
-                                ForEach(searchResults, id: \.id) { diaryEntry in
+                                ForEach(searchResults, id: \.self) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                         EntryRowDate(diaryEntry: diaryEntry)
-                                    }.id(diaryEntry) // important
+                                    }
                                 }
                             }
                         }

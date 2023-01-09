@@ -32,7 +32,7 @@ struct ReviewAllEntriesView: View {
                                 ForEach(entries, id: \.self) { diaryEntry in
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
                                             EntryRow(diaryEntry: diaryEntry)
-                                    }.id(diaryEntry) // important
+                                    }
                                 }
                             }
                         }.padding(.top, -20)
