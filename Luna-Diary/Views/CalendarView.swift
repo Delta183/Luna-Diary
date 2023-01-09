@@ -73,10 +73,19 @@ struct CalendarView: View {
                     }
                 }.padding(.top, 6.0) // Buttons HStack
                 // Below is the entries preview if applicable
-                Text("There are \(entries.count) entries for that day")
-                    .font(.system(size: 15).bold())
-                    .foregroundColor(Color(hex: csController.entryTextColour))
-                    .frame(height: 16)
+                if entries.count == 1{
+                    Text("There is 1 entry for that day")
+                        .font(.system(size: 15).bold())
+                        .foregroundColor(Color(hex: csController.entryTextColour))
+                        .frame(height: 16)
+                }
+                else{
+                    Text("There are \(entries.count) entries for that day")
+                        .font(.system(size: 15).bold())
+                        .foregroundColor(Color(hex: csController.entryTextColour))
+                        .frame(height: 16)
+                }
+                
                 VStack {
                     // Present entries if any otherwise put a spacer
                     if !entries.isEmpty {
