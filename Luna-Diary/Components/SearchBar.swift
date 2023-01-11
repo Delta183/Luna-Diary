@@ -22,16 +22,20 @@ class TextFieldObserver : ObservableObject {
 }
 
 struct SearchBar: View {
+    
     // Binding string for the search
     @Binding var text: String
     // Instantiate the textObserver object with a given delay
     @StateObject var textObserver = TextFieldObserver(delay: 1)
     // Boolean to monitor the state of editing
     @State private var isEditing = false
+    @FocusState private var nameIsFocused: Bool
+
  
     var body: some View {
         HStack {
             TextField("Search ...", text: $textObserver.searchText)
+                .focused($nameIsFocused)
                 .padding(7)
                 .font(Font.custom("San Francisco" , fixedSize: 20))
                 .padding(.horizontal, 25)
@@ -67,6 +71,7 @@ struct SearchBar: View {
                         self.isEditing = false
                         // perhaps this needs to be the debouncedText?
                         textObserver.searchText = ""
+                        nameIsFocused = false
                     }) {
                         Text("Cancel")
                     }
