@@ -50,7 +50,10 @@ struct SettingsView: View {
                                             diaryModelController.deleteAllEntries()
                                             dismiss()
                                          }
-                         }// delete button end
+                    }// delete button end
+                    NavigationLink(destination: CreditsView()){
+                        Text("Credits").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
+                    }.listRowBackground(Color(hex: csController.entryRowColour))
                 }.listStyle(.grouped)
                 .scrollContentBackground(Visibility.hidden)
                 .background(Color(hex: csController.backgroundColour))

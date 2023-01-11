@@ -24,7 +24,7 @@ class DiaryModelController: ObservableObject {
         let newDiaryEntry = DiaryModel(title: title, content: content, date: date)
         diaryEntries.append(newDiaryEntry)
         saveToPersistentStore()
-        print("Diary Entry Added!")
+        // print("Diary Entry Added!")
     }
     
     // Change this to check for ID rather than other attributes
@@ -35,7 +35,7 @@ class DiaryModelController: ObservableObject {
         
         diaryEntries.remove(at: index)
         saveToPersistentStore()
-        print("Diary Entry Deleted!")
+        // print("Diary Entry Deleted!")
     }
     
     func deleteAllEntries(){
@@ -57,7 +57,7 @@ class DiaryModelController: ObservableObject {
         updatedDiaryEntry.modifiedDate = Date()
         diaryEntries[index] = updatedDiaryEntry
         saveToPersistentStore()
-        print("Diary Entry Updated!")
+        // print("Diary Entry Updated!")
     }
     
     // MARK: Save, Load from Persistent
@@ -79,7 +79,7 @@ class DiaryModelController: ObservableObject {
             let data = try encoder.encode(diaryEntries)
             try data.write(to: url)
         } catch {
-            print("Error saving diary data: \(error)")
+            // print("Error saving diary data: \(error)")
         }
     }
     
@@ -94,7 +94,7 @@ class DiaryModelController: ObservableObject {
             let decoder = PropertyListDecoder()
             diaryEntries = try decoder.decode([DiaryModel].self, from: data)
         } catch {
-            print("error loading diary data: \(error)")
+            // print("error loading diary data: \(error)")
         }
     }
 }
