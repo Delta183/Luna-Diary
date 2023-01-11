@@ -45,7 +45,7 @@ struct ContentView: View {
                                 ForEach(entries, id: \.self) { diaryEntry in
                                     // Wrap each EntryRow in a Navigation link to the ReviewEntry Page
                                     NavigationLink(destination: ReviewEntry(diaryEntry: diaryEntry)){
-                                            EntryRow(diaryEntry: diaryEntry)
+                                            EntryRowDate(diaryEntry: diaryEntry)
                                     }
                                 }
                             }

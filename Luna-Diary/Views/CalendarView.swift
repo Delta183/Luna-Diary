@@ -45,6 +45,7 @@ struct CalendarView: View {
                     ).datePickerStyle(.graphical)
                     .frame(width: 320)
                     .accentColor(Color(hex: csController.headerItemColour))
+                    
                     .onChange(of: date, perform: { value in
                         // On change of the date, update the filter and in turn fetch accurate entries from that date
                         entries = self.diaryModelController.diaryEntries.filter({calendar.isDate($0.date, inSameDayAs: date)}
@@ -52,7 +53,7 @@ struct CalendarView: View {
                     Divider()
                         .frame(height: 2.0)
                         .background(Color(hex: csController.headerItemColour))
-                }.background(.white) // DatePicker VStack end
+                }.background(Color(hex: csController.headerColour))
                 
                 // Button row below
                 HStack {
