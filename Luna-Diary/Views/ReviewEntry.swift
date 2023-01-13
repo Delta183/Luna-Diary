@@ -28,7 +28,6 @@ struct ReviewEntry: View {
                 VStack{
                     Color(hex: csController.headerColour)
                         .ignoresSafeArea(edges: .top)
-                        .frame(height:30)
                     // HStack displaying the date in full
                     HStack {
                         Text(diaryEntry.date, style: .date)

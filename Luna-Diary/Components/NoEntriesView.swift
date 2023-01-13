@@ -18,7 +18,7 @@ struct NoEntriesView: View{
             .frame(width: 300.0, height: 300.0)
         Text("No Entries... Yet.")
             .font(Font.custom("Holla", fixedSize: 48).bold())
-            .foregroundColor(Color(hex: csController.headerItemColour))
+            .foregroundColor(Color(hex: csController.entryTextColour))
     }
 }
 struct NoEntriesView_Previews: PreviewProvider {

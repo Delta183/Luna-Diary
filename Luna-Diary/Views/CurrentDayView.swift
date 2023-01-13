@@ -70,10 +70,10 @@ struct CurrentDayView: View {
         // Subtract the current date's year by the year of the provided other date (of diary entry)
         let numOfYearDiff = currDateComponents.year! - date2Components.year!
         if numOfYearDiff <= 1 {
-            return Text("\(numOfYearDiff) year ago").foregroundColor(Color(hex: csController.headerItemColour))
+            return Text("\(numOfYearDiff) year ago").foregroundColor(Color(hex: csController.entryTextColour))
         }
         else{
-            return Text("\(numOfYearDiff) years ago").foregroundColor(Color(hex: csController.headerItemColour))
+            return Text("\(numOfYearDiff) years ago").foregroundColor(Color(hex: csController.entryTextColour))
         }
     }
 }
