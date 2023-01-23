@@ -93,7 +93,8 @@ struct ReviewEntry: View {
                 VStack{
                     Text("Share").font(.system(size: 20).bold()).foregroundColor(Color(hex: csController.entryTextColour))
                     Button(action: {
-                        exportPDF(diaryEntry: diaryEntry)
+                        // exportPDF(diaryEntry: diaryEntry)
+                        createPdf(diaryEntry: diaryEntry)
                         showingAlert.toggle()
                         // readyToNavigatePDF.toggle()
                     }) {
@@ -144,35 +145,66 @@ struct ReviewEntry: View {
         }// Outer VStack
     } // NavigationStack end
 }
-@MainActor
-private func exportPDF(diaryEntry: DiaryModel) {
-    let entryShareView = EntryShareView(diaryEntry: diaryEntry)
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
- 
-    let renderedUrl = documentDirectory.appending(path: "diaryEntry.pdf")
- 
-    // PDF media box rect (A4)
-    if let consumer = CGDataConsumer(url: renderedUrl as CFURL),
-       // Create the CGContext for our PDF pages
-       let pdfContext = CGContext(consumer: consumer, mediaBox: nil, nil) {
- 
-        let renderer = ImageRenderer(content: entryShareView)
-        renderer.render { size, renderer in
-            let options: [CFString: Any] = [
-                //
-                kCGPDFContextMediaBox: CGRect(origin: .zero, size: size)
-            ]
-            // beginPDFPage and endPDFPage are needed for however many pages are needed
-            pdfContext.beginPDFPage(options as CFDictionary)
-            pdfContext.translateBy(x: 0, y: 600)
-            // Render the SwiftUI view data onto the page
-            renderer(pdfContext)
-            pdfContext.endPDFPage()
-            pdfContext.closePDF()
-        }
+
+
+// This function creates a PDF of however many pages are needed
+func createPdf(diaryEntry: DiaryModel) {
+
+    let outputFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("diaryEntry.pdf")
+    let title = "\(diaryEntry.title)\n"
+    let text =  "Written on \(getLongStringFromDate(date: diaryEntry.date))\n\n\(diaryEntry.content)\n"
+
+    let titleAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28)]
+
+    let textAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)]
+
+    let formattedTitle = NSMutableAttributedString(string: title, attributes: titleAttributes)
+    let formattedText = NSAttributedString(string: text, attributes: textAttributes)
+    formattedTitle.append(formattedText)
+
+    // 1. Create Print Formatter with your text.
+
+    let formatter = UISimpleTextPrintFormatter(attributedText: formattedTitle)
+
+    // 2. Add formatter with pageRender
+
+    let render = UIPrintPageRenderer()
+    render.addPrintFormatter(formatter, startingAtPageAt: 0)
+
+    // 3. Assign paperRect and printableRect
+
+    let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+    // These insets seem to be responsible for the padding
+    let printable = page.insetBy(dx: 20, dy: 20)
+
+    render.setValue(NSValue(cgRect: page), forKey: "paperRect")
+    render.setValue(NSValue(cgRect: printable), forKey: "printableRect")
+
+    // 4. Create PDF context and draw
+    let rect = CGRect.zero
+
+    let pdfData = NSMutableData()
+    UIGraphicsBeginPDFContextToData(pdfData, rect, nil)
+
+    for i in 1...render.numberOfPages {
+
+        UIGraphicsBeginPDFPage();
+        let bounds = UIGraphicsGetPDFContextBounds()
+        render.drawPage(at: i - 1, in: bounds)
     }
- 
-    print("Saving PDF to \(renderedUrl.path())")
+
+    UIGraphicsEndPDFContext();
+
+    // 5. Save PDF file
+
+    do {
+        try pdfData.write(to: outputFileURL, options: .atomic)
+
+        print("wrote PDF file with multiple pages to: \(outputFileURL.path)")
+    } catch {
+
+         print("Could not create PDF file: \(error.localizedDescription)")
+    }
 }
 
 struct ReviewEntry_Previews: PreviewProvider {
@@ -180,3 +212,36 @@ struct ReviewEntry_Previews: PreviewProvider {
         ReviewEntry(diaryEntry: DiaryModel(title: "Steps to achieve Heaven", content: "Spiral staircase, Rhinoceros beetle, Spiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation RowSpiral staircase, Rhinoceros beetle, Desolation Row", date: Date()))
     }
 }
+
+// Leftover of previous implementation of PDF exporting
+
+//@MainActor
+//private func exportPDF(diaryEntry: DiaryModel) {
+//    let entryShareView = EntryShareView(diaryEntry: diaryEntry)
+//    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+//
+//    let renderedUrl = documentDirectory.appending(path: "diaryEntry.pdf")
+//
+//    // PDF media box rect (A4)
+//    if let consumer = CGDataConsumer(url: renderedUrl as CFURL),
+//       // Create the CGContext for our PDF pages
+//       let pdfContext = CGContext(consumer: consumer, mediaBox: nil, nil) {
+//
+//        let renderer = ImageRenderer(content: entryShareView)
+//        renderer.render { size, renderer in
+//            let options: [CFString: Any] = [
+//                //
+//                kCGPDFContextMediaBox: CGRect(origin: .zero, size: size)
+//            ]
+//            // beginPDFPage and endPDFPage are needed for however many pages are needed
+//            pdfContext.beginPDFPage(options as CFDictionary)
+//            pdfContext.translateBy(x: 0, y: 600)
+//            // Render the SwiftUI view data onto the page
+//            renderer(pdfContext)
+//            pdfContext.endPDFPage()
+//            pdfContext.closePDF()
+//        }
+//    }
+//
+//    print("Saving PDF to \(renderedUrl.path())")
+//}

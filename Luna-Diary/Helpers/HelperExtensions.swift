@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import UIKit
 // Extenstion to the color class to allow creation of colors from hex code
 extension Color {
     init?(hex: String) {
@@ -43,3 +43,5 @@ extension Color {
         self.init(red: r, green: g, blue: b, opacity: a)
     }
 }
+
+

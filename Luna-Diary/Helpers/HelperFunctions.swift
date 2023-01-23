@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // Returns a list of Dates corresponding to the day but of the last n years
 func generateLastDays(date: Date, limit: Int) -> [Date]{
@@ -39,3 +40,4 @@ func getLongStringFromDate(date: Date) -> String{
 func getCurrentDate() -> Date{
     return Date()
 }
+

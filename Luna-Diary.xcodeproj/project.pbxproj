@@ -179,8 +179,6 @@
 				9835735B294509B200038530 /* SearchView.swift */,
 				987D8DE2294621EA00C807F2 /* TabMainView.swift */,
 				9899EC242966869C00E02277 /* SettingsView.swift */,
-				98F1224B29693D2300E4F4D1 /* ReviewAllEntriesView.swift */,
-				98364528296F36BB0097B34E /* CreditsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +190,7 @@
 				981D3829294C237200B30715 /* ReviewEntry.swift */,
 				9899EC2229665AAB00E02277 /* UpdateEntry.swift */,
 				9883EB66297ED3D600BD27E3 /* EntryShareView.swift */,
+				98F1224B29693D2300E4F4D1 /* ReviewAllEntriesView.swift */,
 			);
 			path = EntryViews;
 			sourceTree = "<group>";
@@ -199,6 +198,7 @@
 		9899EC2629668AC700E02277 /* SettingViews */ = {
 			isa = PBXGroup;
 			children = (
+				98364528296F36BB0097B34E /* CreditsView.swift */,
 				9899EC2729668C5A00E02277 /* NotificationsView.swift */,
 				9899EC2929668C7300E02277 /* ColourPaletteView.swift */,
 				98F122492969320200E4F4D1 /* NameChangeView.swift */,

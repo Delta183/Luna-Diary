@@ -45,6 +45,7 @@ struct EntryView: View {
                         .offset(y:-10)
                         .scrollContentBackground(.hidden) // This has to be done to implement custom backgrounds to some components
                         .background(Color(hex: csController.headerColour))
+                       
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
                     .background(Color(hex: csController.headerColour))
                     .offset(y: 40)
@@ -59,6 +60,7 @@ struct EntryView: View {
                         .scrollContentBackground(.hidden)
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
+                        .accentColor(Color(hex: csController.entryTextColour))
                 }.padding(.horizontal, 4.0)
                     .offset(y: -100)
                 
