@@ -200,10 +200,9 @@ func createPdf(diaryEntry: DiaryModel) {
     do {
         try pdfData.write(to: outputFileURL, options: .atomic)
 
-        print("wrote PDF file with multiple pages to: \(outputFileURL.path)")
+        // print("wrote PDF file with multiple pages to: \(outputFileURL.path)")
     } catch {
-
-         print("Could not create PDF file: \(error.localizedDescription)")
+        print("Could not create PDF file: \(error.localizedDescription)")
     }
 }
 
