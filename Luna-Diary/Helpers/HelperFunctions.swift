@@ -28,6 +28,13 @@ func getShortStringFromDate(date: Date) -> String{
     return (formatter1.string(from: date))
 }
 
+func getLongStringFromDate(date: Date) -> String{
+    let formatter = DateFormatter()
+    // If anything goes wrong, it was the commma after yyyy
+    formatter.dateFormat = "EEEE, MMMM d, yyyy, h:mm a"
+    return (formatter.string(from: date))
+}
+
 // Function exists purely to get the most up-to-date Date information
 func getCurrentDate() -> Date{
     return Date()

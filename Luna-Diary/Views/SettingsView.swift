@@ -30,8 +30,7 @@ struct SettingsView: View {
                     
                     // Change Colour Scheme
                     NavigationLink(destination: ColourPaletteView()){
-                        Text("Change Colour Scheme").foregroundColor(Color(hex: csController.entryTextColour))                        .font(Font.custom("San Francisco" , fixedSize: 16).bold())
-
+                        Text("Change Colour Scheme").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
                     }.listRowBackground(Color(hex: csController.entryRowColour))
                     
                     // Change Name
@@ -43,17 +42,17 @@ struct SettingsView: View {
                     Text("Delete All Entries").font(Font.custom("San Francisco" , fixedSize: 16).bold())
                         .listRowBackground(Color(hex: csController.entryRowColour)).foregroundColor(Color(hex: csController.entryTextColour)).onTapGesture {
                         confirmationShown.toggle()
-                    }.confirmationDialog("Are you sure you want to delete all entries?",
-                                         isPresented: $confirmationShown) {
+                    }.confirmationDialog("Are you sure you want to delete all entries?", isPresented: $confirmationShown) {
                                          Button("Delete all Entries", role: .destructive) {
                                             // Delete all elements in the array
                                             diaryModelController.deleteAllEntries()
                                             dismiss()
-                                         }
+                        }
                     }// delete button end
                     NavigationLink(destination: CreditsView()){
                         Text("Credits").foregroundColor(Color(hex: csController.entryTextColour)).font(Font.custom("San Francisco" , fixedSize: 16).bold())
                     }.listRowBackground(Color(hex: csController.entryRowColour))
+                    
                 }.listStyle(.grouped)
                 .scrollContentBackground(Visibility.hidden)
                 .background(Color(hex: csController.backgroundColour))

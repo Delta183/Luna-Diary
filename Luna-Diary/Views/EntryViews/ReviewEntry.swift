@@ -12,6 +12,9 @@ struct ReviewEntry: View {
     @EnvironmentObject var diaryModelController : DiaryModelController
     @State var diaryEntry: DiaryModel
     @State private var readyToNavigate : Bool = false
+    @State private var readyToNavigatePDF : Bool = false
+    @State private var showingAlert = false
+
     // boolean for the confrimation dialog
     @State private var confirmationShown = false // Unused
     // boolean for review or creation mode
@@ -43,17 +46,22 @@ struct ReviewEntry: View {
                     .padding(.leading, 6.0)
                     // This is how you pass information to objects
                     // Also formatting the passed date for only day, month and year
-                    HStack {
-                        ScrollView{
+                    
+                        ScrollView(.vertical) {
                             Text(diaryEntry.title)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .lineLimit(nil)
                                 .font(Font.custom("MADEWaffleSlab", fixedSize: 20))
-                                .fontWeight(.bold)
                                 .foregroundColor(Color(hex: csController.headerItemColour))
-                                .multilineTextAlignment(.leading)
+                                .padding(.leading, 5.0)
+                                .frame(
+                                    minWidth: UIScreen.main.bounds.width,
+                                    maxWidth: UIScreen.main.bounds.width,
+                                    alignment: .leading)
                         }.offset(y:-15)
-                        Spacer()
+                        
                         // currentDateObject.date
-                    }.padding(.leading, 6.0)
+            
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
                     .background(Color(hex: csController.headerColour))
                     .offset(y: 40)
@@ -62,14 +70,44 @@ struct ReviewEntry: View {
                     .ignoresSafeArea(edges: .top)
                 
                 // TextEditor VStack begin
-                VStack {
+                VStack{
                     // Look into putting underlines on each line
-                    Text(diaryEntry.content)
-                        .foregroundColor(Color(hex: csController.entryTextColour))
-                        .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
-                        .lineSpacing(2)
-                }.padding(.horizontal, 2)
+                        ScrollView(.vertical) {
+                            Text(diaryEntry.content)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .lineLimit(nil)
+                                .foregroundColor(Color(hex: csController.entryTextColour))
+                                .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
+                                .lineSpacing(2)
+                                .padding(.horizontal, 8.0)
+                                .frame(
+                                    minWidth: UIScreen.main.bounds.width,
+                                    maxWidth: UIScreen.main.bounds.width,
+                                    alignment: .topLeading)
+                        }
+                        //Spacer()
+                    
+                }
                 .offset( y:-90)
+                // Button for exporting file into a PDF as one file
+                VStack{
+                    Text("Share").font(.system(size: 20).bold()).foregroundColor(Color(hex: csController.entryTextColour))
+                    Button(action: {
+                        exportPDF(diaryEntry: diaryEntry)
+                        showingAlert.toggle()
+                        // readyToNavigatePDF.toggle()
+                    }) {
+                        // The rendering mode makes it so that the custom immage color can change
+                        Image(systemName: "square.and.arrow.up")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(Color(hex: csController.entryTextColour))
+                            .frame(width: 32.0, height: 36.0)
+                    }.alert(isPresented: $showingAlert) {
+                        Alert(title: Text("PDF Exported!"), dismissButton: .default(Text("OK")))
+                    }.padding(.bottom, 10)
+                    // .navigationDestination(isPresented: $readyToNavigatePDF) { EntryShareView(diaryEntry: diaryEntry)}
+                }
                 Spacer()
             }.background(Color(hex: csController.backgroundColour))
             // NavigationBar button placed below
@@ -105,6 +143,36 @@ struct ReviewEntry: View {
                )
         }// Outer VStack
     } // NavigationStack end
+}
+@MainActor
+private func exportPDF(diaryEntry: DiaryModel) {
+    let entryShareView = EntryShareView(diaryEntry: diaryEntry)
+    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+ 
+    let renderedUrl = documentDirectory.appending(path: "diaryEntry.pdf")
+ 
+    // PDF media box rect (A4)
+    if let consumer = CGDataConsumer(url: renderedUrl as CFURL),
+       // Create the CGContext for our PDF pages
+       let pdfContext = CGContext(consumer: consumer, mediaBox: nil, nil) {
+ 
+        let renderer = ImageRenderer(content: entryShareView)
+        renderer.render { size, renderer in
+            let options: [CFString: Any] = [
+                //
+                kCGPDFContextMediaBox: CGRect(origin: .zero, size: size)
+            ]
+            // beginPDFPage and endPDFPage are needed for however many pages are needed
+            pdfContext.beginPDFPage(options as CFDictionary)
+            pdfContext.translateBy(x: 0, y: 600)
+            // Render the SwiftUI view data onto the page
+            renderer(pdfContext)
+            pdfContext.endPDFPage()
+            pdfContext.closePDF()
+        }
+    }
+ 
+    print("Saving PDF to \(renderedUrl.path())")
 }
 
 struct ReviewEntry_Previews: PreviewProvider {
