@@ -173,7 +173,7 @@ func createPdf(diaryEntry: DiaryModel) {
 
     // 3. Assign paperRect and printableRect
 
-    let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+    let page = CGRect(x: 0, y: 0, width: 595.2, height: 810.8) // A4, 72 dpi
     // These insets seem to be responsible for the padding
     let printable = page.insetBy(dx: 20, dy: 20)
 
