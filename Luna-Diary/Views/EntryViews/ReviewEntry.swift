@@ -70,25 +70,24 @@ struct ReviewEntry: View {
                     .ignoresSafeArea(edges: .top)
                 
                 // TextEditor VStack begin
-                VStack{
-                    // Look into putting underlines on each line
-                        ScrollView(.vertical) {
-                            Text(diaryEntry.content)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .lineLimit(nil)
-                                .foregroundColor(Color(hex: csController.entryTextColour))
-                                .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
-                                .lineSpacing(2)
-                                .padding(.horizontal, 8.0)
-                                .frame(
-                                    minWidth: UIScreen.main.bounds.width,
-                                    maxWidth: UIScreen.main.bounds.width,
-                                    alignment: .topLeading)
-                        }
-                        //Spacer()
-                    
-                }
-                .offset( y:-90)
+          
+                // Look into putting underlines on each line
+                    ScrollView(.vertical) {
+                        Text(diaryEntry.content)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(nil)
+                            .foregroundColor(Color(hex: csController.entryTextColour))
+                            .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
+                            .lineSpacing(2)
+                            .padding(.horizontal, 8.0)
+                            .frame(
+                                minWidth: UIScreen.main.bounds.width,
+                                maxWidth: UIScreen.main.bounds.width,
+                                alignment: .topLeading)
+                    }.frame(height:  UIScreen.main.bounds.height / 1.75).offset(y: -55)
+                    //Spacer()
+
+                
                 // Button for exporting file into a PDF as one file
                 VStack{
                     Text("Share").font(.system(size: 20).bold()).foregroundColor(Color(hex: csController.entryTextColour))
@@ -108,12 +107,25 @@ struct ReviewEntry: View {
                         Alert(title: Text("PDF Exported!"), dismissButton: .default(Text("OK")))
                     }.padding(.bottom, 10)
                     // .navigationDestination(isPresented: $readyToNavigatePDF) { EntryShareView(diaryEntry: diaryEntry)}
-                }
+                }.offset(y: -50)
                 Spacer()
             }.background(Color(hex: csController.backgroundColour))
             // NavigationBar button placed below
             .navigationBarItems(trailing:
                 HStack {
+                    // delete button begin
+                    Button(action: {
+                        confirmationShown.toggle()
+                    // dismiss()
+                    }){
+                        Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", fixedSize: 24))
+                      }.confirmationDialog("Are you sure?", isPresented: $confirmationShown) {
+                                      Button("Confirm Delete", role: .destructive) {
+                                          // Perform deletion and dismiss view
+                                          diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
+                                          dismiss()
+                                      }
+                    }// delete button end
                     // Edit Button begin
                     Button(action: {
                         // function of button
@@ -126,20 +138,7 @@ struct ReviewEntry: View {
                         }.navigationDestination(isPresented: $readyToNavigate){
                             UpdateEntry(diaryEntry: diaryEntry, originalEntry: diaryEntry)
                         }
-                    // delete button begin
-                    Button(action: {                       
-                        confirmationShown.toggle()
-                        // dismiss()
-                        }){
-                            Text("Delete").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", fixedSize: 24))
-                          }.confirmationDialog("Are you sure?",
-                                          isPresented: $confirmationShown) {
-                                          Button("Confirm Delete", role: .destructive) {
-                                              // Perform deletion and dismiss view
-                                              diaryModelController.deleteDiaryEntry(diaryEntry: diaryEntry)
-                                              dismiss()
-                                          }
-                          }// delete button end
+                    
                 }// Hstack end for nav buttons
                )
         }// Outer VStack

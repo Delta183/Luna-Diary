@@ -61,12 +61,22 @@ struct UpdateEntry: View {
                         .scrollContentBackground(.hidden)
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
+                        .accentColor(Color(hex: csController.entryTextColour))
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
             }.background(Color(hex: csController.backgroundColour))
             .navigationBarItems(trailing:
                 // HStack containing the buttons
                 HStack{
+                    // Revert Button Begin
+                    Button(action: {
+                        // Revert text and dates to their original state
+                        diaryEntry.title = originalEntry.title
+                        diaryEntry.content = originalEntry.content
+                        diaryEntry.date = originalEntry.date
+                    }) {
+                        Text("Revert").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
+                    }
                     // Save button begin
                     Button(action: {
                         let entries = self.diaryModelController.diaryEntries
@@ -78,14 +88,7 @@ struct UpdateEntry: View {
                     }) {
                         Text("Save").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
                     }
-                    Button(action: {
-                        // Revert text and dates to their original state
-                        diaryEntry.title = originalEntry.title
-                        diaryEntry.content = originalEntry.content
-                        diaryEntry.date = originalEntry.date
-                    }) {
-                        Text("Revert").foregroundColor(.white).font(Font.custom("MADEWaffleSlab", size: 24))
-                    }
+                 
                 })
             
         }.navigationBarBackButtonHidden(true)// Outer VStack

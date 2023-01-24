@@ -61,6 +61,7 @@ struct EntryView: View {
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                         .accentColor(Color(hex: csController.entryTextColour))
+                        .limitInputLength(value: $diaryEntry.content, length: 7500)
                 }.padding(.horizontal, 4.0)
                     .offset(y: -100)
                 
@@ -81,6 +82,24 @@ struct EntryView: View {
             )
         }// Outer VStack
     } // NavigationStack end
+}
+
+struct TextFieldLimitModifer: ViewModifier {
+    @Binding var value: String
+    var length: Int
+
+    func body(content: Content) -> some View {
+        content
+            .onReceive(value.publisher.collect()) {
+                value = String($0.prefix(length))
+            }
+    }
+}
+
+extension View {
+    func limitInputLength(value: Binding<String>, length: Int) -> some View {
+        self.modifier(TextFieldLimitModifer(value: value, length: length))
+    }
 }
 
 struct EntryView_Previews: PreviewProvider {

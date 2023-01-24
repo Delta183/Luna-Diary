@@ -25,7 +25,7 @@ func generateLastDays(date: Date, limit: Int) -> [Date]{
 // Formatter for Date object to return a string in DD/MM/YY format
 func getShortStringFromDate(date: Date) -> String{
     let formatter1 = DateFormatter()
-    formatter1.dateStyle = .short
+    formatter1.dateFormat = "MM/dd/yyyy"
     return (formatter1.string(from: date))
 }
 
