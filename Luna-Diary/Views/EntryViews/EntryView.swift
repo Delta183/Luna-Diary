@@ -45,6 +45,8 @@ struct EntryView: View {
                         .offset(y:-10)
                         .scrollContentBackground(.hidden) // This has to be done to implement custom backgrounds to some components
                         .background(Color(hex: csController.headerColour))
+                        .limitInputLength(value: $diaryEntry.title, length: 500)
+
                        
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
                     .background(Color(hex: csController.headerColour))
@@ -61,7 +63,7 @@ struct EntryView: View {
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                         .accentColor(Color(hex: csController.entryTextColour))
-                        .limitInputLength(value: $diaryEntry.content, length: 7500)
+                        .limitInputLength(value: $diaryEntry.content, length: 10000)
                 }.padding(.horizontal, 4.0)
                     .offset(y: -100)
                 
@@ -84,6 +86,7 @@ struct EntryView: View {
     } // NavigationStack end
 }
 
+// This is the additional struct used to limit the number of characters in an entry
 struct TextFieldLimitModifer: ViewModifier {
     @Binding var value: String
     var length: Int

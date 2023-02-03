@@ -45,6 +45,7 @@ struct UpdateEntry: View {
                         .offset(y:-10)
                         .scrollContentBackground(.hidden)
                         .background(Color(hex: csController.headerColour))
+                        .limitInputLength(value: $diaryEntry.title, length: 500)
                 }.frame(width: UIScreen.main.bounds.width, height: 150)
                     .background(Color(hex: csController.headerColour))
                     .offset(y: 40)
@@ -62,6 +63,8 @@ struct UpdateEntry: View {
                         .foregroundColor(Color(hex: csController.entryTextColour))
                         .font(Font.custom("YanoneKaffeesatz-Light", fixedSize: 20))
                         .accentColor(Color(hex: csController.entryTextColour))
+                        .limitInputLength(value: $diaryEntry.content, length: 10000)
+
                 }.padding(.horizontal, 4.0)
                 .offset(y: -100)
             }.background(Color(hex: csController.backgroundColour))
