@@ -82,8 +82,8 @@ struct SearchBar: View {
                 }
         // The text that comes in from the debouncer will go to the actual search for text
         }.onReceive(textObserver.$debouncedText) { (val) in
-            // Ensure single character searches don't fire
-            if val.count > 1{
+            // Ensure single or double character searches don't fire
+            if val.count > 2{
                 text = val
             }
             else{
